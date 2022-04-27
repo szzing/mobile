@@ -32,12 +32,13 @@
 		
 		<div class="form_heading">
 			<h3>SNS 계정으로 로그인</h3>
-			<div class="sns_icons">
-				<a href="#"><img alt="kakaotalk" src="../css/icon/kakao-talk.png" class="sns_icon"/></a>
-				<a href="#"><img alt="naver" src="../css/icon/naver.png" class="sns_icon"/></a>
-				<a href="#"><img alt="google" src="../css/icon/google.png" class="sns_icon"/></a>
+			<div class="sns_box">
+				<div class="sns_item kakao">
+					<img alt="kakaotalk" src="../css/icon/kakao-talk.png" class="sns_icon"/>
+					<p>카카오톡으로 로그인</p>
+				</div>
 			</div>
-			<span class="span_txt">아직 회원이 아니신가요? <a><b>회원가입하러 가기</b></a></span>
+			<span class="span_txt">아직 회원이 아니신가요? <a><b>회원가입하기</b></a></span>
 		</div>
 		
 	</div>

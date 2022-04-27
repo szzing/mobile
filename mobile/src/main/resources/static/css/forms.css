@@ -190,15 +190,35 @@ section {
 	text-decoration: underline;
 }
 
-.sns_icons {
-	display: flex;
-	justify-content: center;
+.sns_box {
 	padding: 2rem;
 	border: 1px solid #e3e3e3;
 }
 
+.sns_item {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	
+	border-radius: 8px;
+	margin: 0 auto;
+	width: 80%;
+	cursor: pointer;
+}
+
+.sns_item:hover {
+	filter: brightness(96%);
+}
+
+.sns_item.kakao {
+	background:rgb(255,235,59);
+}
+
+.sns_item > p {
+	padding: 0 2rem;
+	border-left: 2px solid white;;
+}
+
 .sns_icon {
 	width: 50px;
-	margin: 0.5rem 1rem;
-	border-radius: 12px;
 }
