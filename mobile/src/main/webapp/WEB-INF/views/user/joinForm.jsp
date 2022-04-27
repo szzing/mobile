@@ -4,9 +4,7 @@
 <link rel="stylesheet" href="../css/forms.css">
 
 <section>
-
 	<div class="form_container">
-	
 		<div class="form_title">
 			<h1><span class="logo">MO:BILE</span> 회원가입</h1>
 		</div>
@@ -34,15 +32,17 @@
 					<input id="pwcheck" class="input_item" type="password" required/>
 				</div>
 			
-				<div class="input_box">
-					<label for="name" class="labels">이름<span class="point">*</span></label>
-					<input id="name" class="input_item" type="text" required/>
-				</div>
+
+			<div class="input_box">
+				<label for="username" class="labels">이름<span class="point">*</span></label>
+				<input id="username" class="input_item" type="text" required/>
+			</div>
+
 				
-				<div class="input_box">
-					<label for="tel" class="labels">전화번호<span class="point">*</span></label>
-					<input id="tel" class="input_item" type="tel" required/>
-				</div>
+			<div class="input_box">
+				<label for="phone" class="labels">전화번호<span class="point">*</span></label>
+				<input id="phone" class="input_item" type="text" required/>
+			</div>
 				
 				<div class="input_box">
 					<label for="email" class="labels">이메일<span class="point">*</span></label>
@@ -72,11 +72,10 @@
 		</form>
 		
 		<div class="btns">
-			<button type="submit" class="btn submit_btn">회원가입</button>
+			<button id="btn-save" class="btn submit_btn">회원가입</button>
 		</div>
-		
 	</div>
-	
 </section>
 
+<script type="text/javascript" src="../script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

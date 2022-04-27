@@ -12,6 +12,11 @@ body {
 	background-color: rgba(230, 230, 230, 0.5);
 }
 
+section {
+	padding: 2rem;
+}
+
 a {
 	color: #6d6d6d;
+	cursor: pointer;
 }

@@ -27,6 +27,7 @@
 			<button type="submit" class="btn submit_btn">로그인</button>
 			<button type="button" class="btn button_btn skyblue">아이디 찾기</button>
 			<button type="button" class="btn button_btn pink">비밀번호 찾기</button>
+			<span class="span_txt"><b>▶ 아직 회원이 아니신가요?</b> <a href="/user/joinForm"><button type="button" class="btn btn_alt">회원가입하기</button></a></span>
 		</div>
 		
 		
@@ -37,8 +38,8 @@
 					<img alt="kakaotalk" src="../css/icon/kakao-talk.png" class="sns_icon"/>
 					<p>카카오톡으로 로그인</p>
 				</div>
+				<span class="span_txt">SNS 계정으로 더 간편하게 이용하세요</span>
 			</div>
-			<span class="span_txt">아직 회원이 아니신가요? <a><b>회원가입하기</b></a></span>
 		</div>
 		
 	</div>
