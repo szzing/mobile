@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
 
-	<h1>메인화면</h1>
+	<h1>게시판</h1>
 
-<%@ include file="layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp"%>
