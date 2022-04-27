@@ -8,7 +8,8 @@
 <!-- css -->
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/index.css">
-
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -27,7 +28,7 @@
 			</ul>
 			<ul class="header_right_menu">
 				<li class="menu_item"><a>고객센터</a></li>
-				<li class="menu_item"><a>로그인</a></li>
+				<li class="menu_item"><a href="/user/joinForm">로그인</a></li>
 			</ul>
 		</div>
 		<div class="menu_toggle toggle_btn">

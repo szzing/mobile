@@ -4,7 +4,6 @@
 
 <link rel="stylesheet" href="../css/forms.css">
 
-<section>
 
 	<div class="form_container">
 	
@@ -36,13 +35,13 @@
 			</div>
 			
 			<div class="input_box">
-				<label for="name" class="labels">이름<span class="point">*</span></label>
-				<input id="name" class="input_item" type="text" required/>
+				<label for="username" class="labels">이름<span class="point">*</span></label>
+				<input id="username" class="input_item" type="text" required/>
 			</div>
 				
 			<div class="input_box">
-				<label for="tel" class="labels">전화번호<span class="point">*</span></label>
-				<input id="tel" class="input_item" type="tel" required/>
+				<label for="phone" class="labels">전화번호<span class="point">*</span></label>
+				<input id="phone" class="input_item" type="text" required/>
 			</div>
 				
 			<div class="input_box">
@@ -72,11 +71,11 @@
 		</form>
 		
 		<div class="btns">
-			<button type="submit" class="btn submit_btn">회원가입</button>
+			<button id="btn-save" class="btn submit_btn">회원가입</button>
 		</div>
 		
 	</div>
 	
-</section>
 
+<script type="text/javascript" src="/script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>
