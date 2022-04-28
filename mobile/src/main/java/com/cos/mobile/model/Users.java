@@ -49,7 +49,7 @@ public class Users {
 	@Column(nullable=true, length=30)
 	private String phone;
 	
-	@Column(nullable=false, length=50)
+	@Column(nullable=true, length=50)
 	private String email;
 	
 	@Column(nullable=true, length=20)

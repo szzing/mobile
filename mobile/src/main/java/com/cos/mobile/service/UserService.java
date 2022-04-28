@@ -30,4 +30,12 @@ public class UserService {
 //		user.setRoles(RoleType.USER);
 //		userRepository.save(user);
 //	}
+	
+	@Transactional
+	public void adminJoin(Users user) {
+		String encPassword = user.getPassword();
+		user.setPassword(encPassword);
+		user.setRoles(RoleType.ADMIN);
+		userRepository.save(user);
+	}
 }

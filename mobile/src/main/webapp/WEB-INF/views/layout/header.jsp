@@ -29,6 +29,7 @@
 			<ul class="header_right_menu">
 				<li class="menu_item"><a>고객센터</a></li>
 				<li class="menu_item"><a href="/user/loginForm">로그인</a></li>
+				<li class="menu_item"><a href="admin/joinForm">관리자회원가입폼(임시)</a></li>
 			</ul>
 		</div>
 		<div class="menu_toggle toggle_btn">

@@ -21,4 +21,10 @@ public class UserApiController {
 		userService.join(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
+	
+	@PostMapping("/api/admin")
+	public ResponseDto<Integer> adminSave(@RequestBody Users user){
+		userService.adminJoin(user);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
 }

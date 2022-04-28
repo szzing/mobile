@@ -4,6 +4,10 @@ let index = {
 			this.save();
 		});
 		
+		$("#btn-adminsave").on("click", () => {
+			this.adminsave();
+		});
+		
 		$("#btn-update").on("click", () => {
 			this.update();
 		});
@@ -33,6 +37,34 @@ let index = {
 				alert("회원가입에 실패하였습니다.");
 			}else{
 				alert("회원가입이 완료되었습니다.");
+				location.href="/";
+			}
+			
+		}).fail(function(error){
+			// alert(JSON.stringify(error));
+		});
+	},
+	
+	adminsave: function() {
+		let data={
+			userid: $("#userid").val(),
+			username: $("#username").val(),
+			password: $("#password").val(),
+			phone: $("#phone").val(),
+			email: $("#email").val()
+		};
+		console.log(data); //자바스크립트 오브젝트
+		$.ajax({ 
+			type:"POST",
+			url:"/api/admin",
+			data:JSON.stringify(data),
+			contentType:"application/json; charset=utf-8",	
+			dataType:"json" 
+		}).done(function(resp){
+			if(resp.status==500){
+				alert("관리자 계정 생성에 실패하였습니다.");
+			}else{
+				alert("관리자 계정 생성이 완료되었습니다.");
 				location.href="/";
 			}
 			

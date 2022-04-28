@@ -14,4 +14,9 @@ public class UserController {
 	public String joinForm() {
 		return "user/joinForm";
 	}
+	
+	@GetMapping("/admin/joinForm")
+	public String adminjoinForm() {
+		return "admin/joinForm";
+	}
 }
