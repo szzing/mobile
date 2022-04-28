@@ -8,5 +8,8 @@ import com.cos.mobile.model.Users;
 
 public interface UserRepository extends JpaRepository<Users, Integer>{
 	// SELECT*FROM USERS WHERE USERID=?;
-		Optional<Users> findByUserid(String userid);
+	Optional<Users> findByUserid(String userid);
+		
+	// 시큐리티 미사용 로그인
+	Users findByUseridAndPassword(String userid, String password);
 }

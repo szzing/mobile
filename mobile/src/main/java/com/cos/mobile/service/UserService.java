@@ -35,7 +35,14 @@ public class UserService {
 	public void adminJoin(Users user) {
 		String encPassword = user.getPassword();
 		user.setPassword(encPassword);
+		user.setEmail("admin");
+		user.setPhone("admin");
 		user.setRoles(RoleType.ADMIN);
 		userRepository.save(user);
+	}
+	
+	@Transactional(readOnly=true)
+	public Users login(Users user) {
+		return userRepository.findByUseridAndPassword(user.getUserid(), user.getPassword());
 	}
 }

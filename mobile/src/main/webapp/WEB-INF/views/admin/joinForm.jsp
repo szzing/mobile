@@ -33,21 +33,11 @@
 				</div>
 			
 
-			<div class="input_box">
-				<label for="username" class="labels">이름<span class="point">*</span></label>
-				<input id="username" class="input_item" type="text" required/>
-			</div>
-
-				
-			<div class="input_box">
-				<label for="phone" class="labels">전화번호<span class="point">*</span></label>
-				<input id="phone" class="input_item" type="text" required/>
-			</div>
-				
 				<div class="input_box">
-					<label for="email" class="labels">이메일<span class="point">*</span></label>
-					<input id="email" class="input_item" type="email" required/>
+					<label for="username" class="labels">이름<span class="point">*</span></label>
+					<input id="username" class="input_item" type="text" required/>
 				</div>
+
 			</div>
 
 		</form>

@@ -24,7 +24,7 @@
 		</form>
 		
 		<div class="btns">
-			<button type="submit" class="btn submit_btn">로그인</button>
+			<button id="btn-login" class="btn submit_btn">로그인</button>
 			<button type="button" class="btn button_btn skyblue">아이디 찾기</button>
 			<button type="button" class="btn button_btn pink">비밀번호 찾기</button>
 			<span class="span_txt"><b>▶ 아직 회원이 아니신가요?</b> <a href="/user/joinForm"><button type="button" class="btn btn_alt">회원가입하기</button></a></span>
@@ -45,5 +45,5 @@
 	</div>
 	
 </section>
-
+<script type="text/javascript" src="../script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

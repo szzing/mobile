@@ -19,4 +19,14 @@ public class UserController {
 	public String adminjoinForm() {
 		return "admin/joinForm";
 	}
+	
+	@GetMapping("/admin/adminPage")
+	public String adminPage() {
+		return "admin/adminPage";
+	}
+	
+	@GetMapping("/user/myPage")
+	public String myPage() {
+		return "user/myPage";
+	}
 }

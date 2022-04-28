@@ -46,10 +46,10 @@ public class Users {
 	@Column(nullable=false, length=100)
 	private String password;
 	
-	@Column(nullable=true, length=30)
+	@Column(nullable=false, length=30)
 	private String phone;
 	
-	@Column(nullable=true, length=50)
+	@Column(nullable=false, length=50)
 	private String email;
 	
 	@Column(nullable=true, length=20)

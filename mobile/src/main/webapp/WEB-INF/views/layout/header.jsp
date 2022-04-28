@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +27,30 @@
 				<li class="menu_item"><a>사용자후기</a></li>
 				<li class="menu_item"><a>이벤트안내</a></li>
 			</ul>
-			<ul class="header_right_menu">
-				<li class="menu_item"><a>고객센터</a></li>
-				<li class="menu_item"><a href="/user/loginForm">로그인</a></li>
-				<li class="menu_item"><a href="admin/joinForm">관리자회원가입폼(임시)</a></li>
-			</ul>
+		<c:choose>
+			<c:when test="${empty sessionScope.principal}">
+				<ul class="header_right_menu">
+					<li class="menu_item"><a>고객센터</a></li>
+					<li class="menu_item"><a href="/user/loginForm">로그인</a></li>
+					<li class="menu_item"><a href="/admin/joinForm">관리자회원가입폼(임시)</a></li>
+				</ul>
+			</c:when>
+			<c:when test="${principal.roles eq 'ADMIN'}">
+				<ul class="header_right_menu">
+					<li class="menu_item"><a>고객센터</a></li>
+					<li class="menu_item"><a href="/admin/adminPage">관리자페이지</a></li>
+					<li class="menu_item"><a href="/logout">로그아웃</a></li>
+				</ul>
+			</c:when>
+			<c:otherwise>
+				<ul class="header_right_menu">
+					<li class="menu_item"><a>고객센터</a></li>
+					<li class="menu_item"><a href="/user/myPage">마이페이지</a></li>
+					<li class="menu_item"><a href="/logout">로그아웃</a></li>
+				</ul>
+			</c:otherwise>
+		</c:choose>
+			
 		</div>
 		<div class="menu_toggle toggle_btn">
 			<i class="bi bi-three-dots-vertical"></i>

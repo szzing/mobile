@@ -1,5 +1,5 @@
 package com.cos.mobile.model;
 
 public enum RoleType {
-	USER, ADMIN
+	USER, ADMIN, SYSTEM
 }

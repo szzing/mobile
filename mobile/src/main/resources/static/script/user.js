@@ -8,6 +8,10 @@ let index = {
 			this.adminsave();
 		});
 		
+		$("#btn-login").on("click", () => {
+			this.login();
+		});
+		
 		$("#btn-update").on("click", () => {
 			this.update();
 		});
@@ -65,6 +69,31 @@ let index = {
 				alert("관리자 계정 생성에 실패하였습니다.");
 			}else{
 				alert("관리자 계정 생성이 완료되었습니다.");
+				location.href="/";
+			}
+			
+		}).fail(function(error){
+			// alert(JSON.stringify(error));
+		});
+	},
+	
+	login: function() {
+		let data={
+			userid: $("#userid").val(),
+			password: $("#password").val(),
+		};
+		console.log(data); //자바스크립트 오브젝트
+		$.ajax({ 
+			type:"POST",
+			url:"/api/user/login",
+			data:JSON.stringify(data),
+			contentType:"application/json; charset=utf-8",	
+			dataType:"json" 
+		}).done(function(resp){
+			if(resp.status==500){
+				alert("로그인 실패! 다시 확인해주세요.");
+			}else{
+				alert("로그인 성공");
 				location.href="/";
 			}
 			
