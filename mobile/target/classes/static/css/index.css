@@ -20,3 +20,28 @@ a {
 	color: #6d6d6d;
 	cursor: pointer;
 }
+
+button {
+	display: inline-block;
+	margin: auto;
+	border: none;
+	border-radius: 8px;
+	background-color: #dadada;
+	font-size: 13px;
+	padding: 6px 12px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #ccc;
+}
+
+.page_title {
+	background-color: rgb(182, 182, 182);
+	background-repeat: no-repeat;
+    height: 300px;
+}
+
+.header {
+	height: 80px;
+}

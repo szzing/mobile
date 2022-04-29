@@ -20,20 +20,22 @@
 <body>
 	<header>
 		<div class="header_logo">
-			<a href="/"><h1>MO:BILE</h1></a>
+			<h1><a href="/">MO:BILE</a></h1>
 		</div>
 		<div class="header_menubar">
 			<ul class="header_left_menu">
-				<li class="menu_item"><a>제품</a></li>
-				<li class="menu_item"><a>사용자후기</a></li>
+				<li class="menu_item"><a href="/test/product">제품</a></li>
+				<li class="menu_item"><a href="/test/review">사용자후기</a></li>
 				<li class="menu_item"><a href="/event">이벤트안내</a></li>
 			</ul>
+			
 		<c:choose>
 			<c:when test="${empty sessionScope.principal}">
 				<ul class="header_right_menu">
-					<li class="menu_item"><a href="/notice">고객센터</a></li>
+
+					<li class="menu_item"><a href="/notice">공지사항</a></li>
+					<li class="menu_item"><a href="/test/qna">고객센터</a></li>
 					<li class="menu_item"><a href="/user/loginForm">로그인</a></li>
-					<li class="menu_item"><a href="/admin/joinForm">관리자회원가입폼(임시)</a></li>
 				</ul>
 			</c:when>
 			<c:when test="${principal.roles eq 'USER'}">
@@ -58,5 +60,6 @@
 			<i class="bi bi-three-dots-vertical"></i>
 		</div>
 	</header>
+	<div class="header"></div>
 	
 	<script type="text/javascript" src="../script/header.js"></script>

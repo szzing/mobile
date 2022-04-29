@@ -1,0 +1,13 @@
+.page_title {
+	background-image: url(./images/pagetitle/product.png);
+	background-position: right;
+}
+
+.title {
+	color: white;
+	text-shadow: 0 0 5px #35353580;
+	width: 450px;
+	position: absolute;
+	top: 200px;
+	left: 5rem;
+}
