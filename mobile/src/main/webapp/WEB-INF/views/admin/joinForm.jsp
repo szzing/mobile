@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/joinform.css">
 
 <section>
 	<div class="form_container">

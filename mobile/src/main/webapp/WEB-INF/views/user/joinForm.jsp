@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="../css/forms.css">
+<link rel="stylesheet" href="../css/joinform.css">
 
 <section>
 	<div class="form_container">
@@ -16,6 +17,12 @@
 				<span class="necessary">* 은 필수 입력 항목입니다.</span>
 			</div>
 			<div class="input_boxes">
+			
+				<div class="input_box">
+					<label for="username" class="labels">이름<span class="point">*</span></label>
+					<input id="username" class="input_item" type="text" required/>
+				</div>
+				
 				<div class="input_box">
 					<label for="userid" class="labels">아이디<span class="point">*</span></label>
 					<input id="userid" class="input_item" type="text" required/>
@@ -31,18 +38,11 @@
 					<label for="password"  class="labels">비밀번호 확인<span class="point">*</span></label>
 					<input id="pwcheck" class="input_item" type="password" required/>
 				</div>
-			
-
-			<div class="input_box">
-				<label for="username" class="labels">이름<span class="point">*</span></label>
-				<input id="username" class="input_item" type="text" required/>
-			</div>
-
 				
-			<div class="input_box">
-				<label for="phone" class="labels">전화번호<span class="point">*</span></label>
-				<input id="phone" class="input_item" type="text" required/>
-			</div>
+				<div class="input_box">
+					<label for="phone" class="labels">전화번호<span class="point">*</span></label>
+					<input id="phone" class="input_item" type="text" required/>
+				</div>
 				
 				<div class="input_box">
 					<label for="email" class="labels">이메일<span class="point">*</span></label>

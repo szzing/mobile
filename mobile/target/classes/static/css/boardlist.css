@@ -1,0 +1,90 @@
+.board_container {
+	margin: 2rem auto;
+	width: 960px;
+	background: white;
+	padding: 2rem;
+	border-radius: 8px;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.board_container h3 {
+	text-align: center;
+	width: 300px;
+	margin: 1rem auto;
+}
+
+.title {
+	color: white;
+	text-shadow: 0 0 5px #35353580;
+	width: 450px;
+	position: absolute;
+	top: 200px;
+	left: 5rem;
+}
+
+.buttons {
+	margin: auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.skyblue {
+	border: 1px solid skyblue;
+	background: none;
+	flex-grow:1;
+}
+
+.pink {
+	border: 1px solid pink;
+	background: none;
+	flex-grow:1;
+}
+
+.skyblue:hover {
+	background: rgba(135,206,235,0.2);
+}
+
+.pink:hover {
+	background: rgba(255,192,203,0.2);
+}
+
+.list_title {
+	width: 60%;
+	text-align: center;
+}
+
+.board_index {
+	height: 40px;
+	border-bottom: 2px solid #ccc;
+}
+
+.board_list {
+	width: 100%;
+	margin: 1rem auto;
+	border-collapse: collapse;
+	border: 2px solid #ccc;
+	border-left: none;
+	border-right: none;
+	text-align: left;
+}
+
+.board_item {
+	height: 40px;
+	cursor: pointer;
+	border-top: 1px solid #eee;
+}
+
+.board_item:hover {
+	border: none;
+	background-color: rgba(190, 144, 208, 0.1);
+	transition: 0.3s;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+}
+
+.page_item {
+	margin: 1rem;
+}

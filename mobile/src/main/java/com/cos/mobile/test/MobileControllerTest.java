@@ -23,6 +23,36 @@ public class MobileControllerTest {
 	
 	@GetMapping("/test/product")
 	public String product() {
-		return "user/product";
+		return "product/product";
+	}
+	
+	@GetMapping("/test/mypage")
+	public String mypage() {
+		return "user/myPage";
+	}
+	
+	@GetMapping("/test/userupdate")
+	public String userupdate() {
+		return "user/updateForm";
+	}
+	
+	@GetMapping("/test/delivery")
+	public String delivery() {
+		return "user/delivery";
+	}
+	
+	@GetMapping("/test/qna")
+	public String qna() {
+		return "board/qnaBoard";
+	}
+	
+	@GetMapping("/test/review")
+	public String review() {
+		return "board/reviewBoard";
+	}
+	
+	@GetMapping("/test/event")
+	public String event() {
+		return "board/event";
 	}
 }

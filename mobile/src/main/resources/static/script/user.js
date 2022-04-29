@@ -1,6 +1,15 @@
 let index = {
 	init: function() {
 		$("#btn-save").on("click", () => {
+			if(document.querySelector("#userid").value == "" || document.querySelector("#username").value == "" || document.querySelector("#password").value == "" || document.querySelector("#phone").value == "" || document.querySelector("#email").value == "") {
+				alert("필수 입력란을 모두 채워주세요.");
+				return false;
+			}
+			if(document.querySelector("#password").value != document.querySelector("#pwcheck").value) {
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			}
+			
 			this.save();
 		});
 		
