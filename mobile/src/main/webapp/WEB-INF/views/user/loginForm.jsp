@@ -24,12 +24,11 @@
 		</form>
 		
 		<div class="btns">
-			<button id="btn-login" class="btn submit_btn">로그인</button>
+			<button type="button" id="btn-login" class="btn submit_btn" onclick="loginCheck();">로그인</button>
 			<button type="button" class="btn button_btn skyblue">아이디 찾기</button>
 			<button type="button" class="btn button_btn pink">비밀번호 찾기</button>
 			<span class="span_txt"><b>▶ 아직 회원이 아니신가요?</b> <a href="/user/joinForm"><button type="button" class="btn btn_alt">회원가입하기</button></a></span>
 		</div>
-		
 		
 		<div class="form_heading">
 			<h3>SNS 계정으로 로그인</h3>
@@ -45,5 +44,20 @@
 	</div>
 	
 </section>
+<script type="text/javascript">
+function loginCheck(){
+	if (document.loginform.userid.value == ""){
+		alert("아이디를 입력하세요.");
+		document.loginform.userid.focus();
+		return false;
+	} else if (document.loginform.password.value == ""){
+		alert("비밀번호를 입력하세요.");
+		document.loginform.password.focus();
+		return false;
+	} else {
+		return true;
+	}
+}
+</script>
 <script type="text/javascript" src="../script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>
