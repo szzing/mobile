@@ -40,6 +40,7 @@ button:hover {
 	background-color: rgb(182, 182, 182);
 	background-repeat: no-repeat;
     height: 300px;
+    min-width: 1280px;
 }
 
 .header {

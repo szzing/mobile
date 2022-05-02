@@ -1,26 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-	<h1>공지사항</h1>
-	<br/>
-	<c:choose>
-		<c:when test="${principal.roles eq 'ADMIN'}">
-			<a href="/board/noticeForm">공지사항 게시판에 글쓰기(클릭시 작성페이지 이동)</a>
-		</c:when>
-	</c:choose>
-	<br/>
-	<br/>//이하로는 게시판 목록 출력 테스트, 글 작성 시 출력됩니다//
-	<br/>//로그인한 관리자 계정만 글작성 링크가 출력되는 상태//
-	<br/>//카테고리는 메소드가 게시판별로 구분하여 출력하는지 확인위해 표시중//
-	<br/>
-	<hr>
-	<div class="container">
-	<c:forEach var="board" items="${boards.content }">
-		<div>카테고리 : <b>${board.category }</b></div>
-		<div>작성일시 : <fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd"/></div>
-		<div>조회수 : ${board.count }</div>
-		<h4><a href="/notice/${board.id}"> 글제목(클릭시 글 상세보기 페이지) :  ${board.title }</a></h4>
-		<hr>
-	</c:forEach>
-	</div>
+<link rel="stylesheet" href="../css/boardlist.css">
+<link rel="stylesheet" href="../css/qna.css">
+<link rel="stylesheet" href="../css/boardform.css">
+
+<div class="page_title">
+	<h1 class="title">고객센터</h1>
+</div>
+
+<section class="board_wrap">
+
+	<aside class="side_menu_bar">	
+		<h3>고객센터</h3>
+		<ul class="side_menu_box">
+			<li class="side_menu_item menu_now"><a href="/notice">공지사항</a></li>
+			<li class="side_menu_item"><a href="/test/qna">1:1 문의</a></li>
+		</ul>
+	</aside>
+	
+	<div class="board_container">	
+			<h2>공지사항</h2>
+			
+				<c:choose>
+					<c:when test="${principal.roles eq 'ADMIN'}">
+						<div class="buttons">
+							<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
+							<a href="/board/noticeForm"><button class="btn pink">공지작성</button></a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="buttons">
+							<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				
+			<table class="board_list">
+				<thead class="board_index">
+					<tr>
+						<th>번호</th>
+						<th class="list_title">제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+			
+				<tbody class="board_items">
+
+				<c:forEach var="board" items="${boards.content}">
+					<tr class="board_item" onclick="location.href='/notice/${board.id}'">
+						<td>${board.id}</td>
+						<td>${board.title}</td>
+						<td>${board.user.username}</td>
+						<td><fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd"/></td>
+					</tr>
+				</c:forEach>
+				
+				</tbody>
+			
+			</table>
+
+			<div class="pagination">
+				<a><button class="page_item">이전페이지</button></a>
+				<a><button class="page_item">다음페이지</button></a>
+			</div>
+		</div>
+	</section>
+	
 <%@ include file="../layout/footer.jsp"%>

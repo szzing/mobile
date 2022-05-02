@@ -1,28 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-<div class="container">
-	<form>
-		<h1>글 작성하기</h1><br/>
-		<div>
-			<label for="title"></label>
-			<input type="text" placeholder="Enter title" id="title">
+<link rel="stylesheet" href="../css/boardlist.css">
+<link rel="stylesheet" href="../css/boardform.css">
+
+<section>
+	<div class="board_container">
+		
+		<h2>[관리자] 공지사항 작성</h2>
+		
+		<div class="buttons">
+			<a><button class="btn skyblue" onclick="history.back()">돌아가기</button></a>
+			<a><button class="btn pink"  onclick="location.href=''">다시작성</button></a>
 		</div>
-		<div>
-			<select id="category">
-				<!-- ajax 카테고리 값 전송을 위해 필수입니다 보이지않게 숨기려면 id="category" 보존하여 hidden으로-->
-			    <option value="notice">공지사항</option>
-			</select>
+		
+		<form class="board_form">
+			<div class="board_input_boxes">
+			<div class="board_input_box">
+				<label for="title" class="labels">제목</label>
+				<input type="text" class="input_item board_txt" placeholder="제목을 입력해주세요." id="title">
+				
+				<select id="category" class="select_category" disabled>
+			    	<option value="notice">공지사항</option>
+				</select>
+			</div>
+
+			<div class="board_input_box">
+				<label for="content" class="labels">내용</label>
+				<textarea class="input_item board_textarea" placeholder="내용을 입력해주세요." id="content" rows="15" style="resize:none;"></textarea>
+			</div>
+			</div>
+		</form>
+
+		<div class="buttons_submit">
+			<button id="btn-noticesave" class="btn submit_btn">공지사항 등록</button>
 		</div>
-		<div>
-			<label for="content"></label>
-			<textarea rows="5" id="content"></textarea>
-		</div>
-	</form>
-	<div>
-	<button id="btn-noticesave">작성하기</button>
+	
 	</div>
 
-</div>
+</section>
+
 <script type="text/javascript" src="/script/board.js"></script>
 <%@ include file="../layout/footer.jsp" %>

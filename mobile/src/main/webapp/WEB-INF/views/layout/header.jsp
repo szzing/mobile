@@ -26,7 +26,7 @@
 			<ul class="header_left_menu">
 				<li class="menu_item"><a href="/test/product">제품</a></li>
 				<li class="menu_item"><a href="/test/review">사용자후기</a></li>
-				<li class="menu_item"><a href="event">이벤트안내</a></li>
+				<li class="menu_item"><a href="/event">이벤트안내</a></li>
 			</ul>
 			
 		<c:choose>
