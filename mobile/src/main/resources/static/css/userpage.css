@@ -1,0 +1,95 @@
+.mypage_card {
+	width: 640px;
+	background-color: white;
+	border-radius: 8px;
+	padding: 1rem;
+	margin: 1rem auto;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.mypage_user {
+	width: 100%;
+	margin: auto;
+	border-radius: 8px;
+	background: linear-gradient(to right, skyblue, pink);
+}
+
+.greeting {
+	text-align: center;
+	padding: 2rem;
+}
+
+.greeting i {
+	color: white;
+	font-size: 2em;
+}
+
+.greeting h3 {
+	color: white;
+}
+
+.mypage_menu {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+}
+
+.mypage_menu_item {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	margin: 0.5rem;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.mypage_menu_item a {
+	display: inline-block;
+	padding: 1rem;
+	width: 100%;
+}
+
+.mypage_menu_item:hover {
+	background-color: #eee;
+	transform: translate(10px, 0);
+	transition: 0.5s;
+}
+
+.mypage_title {
+	text-align: center;
+	margin: 1rem auto;
+}
+
+.mypage_process {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.mypage_process_item {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 0.5rem;
+	margin: 0.5rem;
+	transition: 0.5s;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+}
+
+.mypage_process_item:hover {
+	transform: translate(0, -5px);
+	transition: 0.5s;
+}
+
+.mypage_process_item img {
+	height: 35px;
+}
+
+.process_arrow img {
+	width: 10px;
+}
+
+.mypage_process_item span {
+	display: block;
+	font-size: 13px;
+}

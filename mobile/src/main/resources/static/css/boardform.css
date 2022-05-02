@@ -1,0 +1,96 @@
+.board_form {
+	margin-top: 1rem;
+	padding: 0.5rem 0;
+	border-top: 2px solid #ccc;
+}
+.form_title {
+	padding: 1rem;
+	margin: 1rem auto;
+	width: 540px;
+	text-align: center;
+	color: rgb(75, 75, 75);
+}
+
+.form_title h1 {
+	font-size: 30px;
+	padding: 0.5rem;
+}
+
+.labels {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 0.5rem;
+	width: 100%;
+	color: #6a6a6a;
+}
+
+.board_input_boxes {
+	padding: 1rem 2rem;
+}
+
+.board_input_box {
+	margin: 1rem 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+}
+
+.input_item {
+	outline: none;
+	border:none;
+	border-bottom: 1.5px solid #aaa;
+	border-radius: 4px 4px 0 0;
+	height: 40px;
+	margin:0 0.5rem 0.5rem 0.5rem;
+	padding: 0.5rem;
+	font-size: 15px;
+	margin-right: 1rem;
+	flex-grow: 2;
+}
+
+.input_item:focus {
+	background-color: #f7f7f7;
+	border-bottom: 3px solid transparent;
+	border-image: linear-gradient(to right, skyblue, pink);
+    border-image-slice: 1;
+}
+
+.board_textarea {
+	height: 300px;
+}
+
+.select_category {
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	padding: 0.5rem;
+	background: none;
+}
+
+.submit_btn {
+	display: block;
+	margin: 1rem auto 0;
+	padding: 1rem 5rem;
+	border-radius: 12px;
+	background: linear-gradient(to right, skyblue, pink);
+	color: white;
+	text-shadow: 0 0 3px rgba(0,0,0,0.3);
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.submit_btn:hover {
+	box-shadow: 0 0 10px #d0d0ff;
+}
+
+.button_btn {
+	display: inline-block;
+	margin: 1rem;
+	padding: 0.8rem 2rem;
+	border-radius: 12px;
+	
+	background: none;
+	font-size: 15px;
+	font-weight: bold;
+}
