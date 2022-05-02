@@ -3,11 +3,8 @@
 <%@ include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="../css/userpage.css">
 
-
 <section>
-	
 	<div class="mypage_card">
-	
 		<div class="mypage_user">
 			<div class="greeting">
 				<i class="bi bi-person-fill"></i>
@@ -30,24 +27,24 @@
 				<img alt="입금대기" src="../css/images/mypage/1.png">
 				<span>입금대기</span>
 			</li>
-			<li class="process_arrow"><img alt="입금대기" src="../css/images/mypage/v.png"></li>
+			<li class="process_arrow"><img alt=">" src="../css/images/mypage/v.png"></li>
 			<li class="mypage_process_item">
-				<img alt="입금대기" src="../css/images/mypage/2.png">
+				<img alt="결제완료" src="../css/images/mypage/2.png">
 				<span>결제완료</span>
 			</li>
-			<li class="process_arrow"><img alt="입금대기" src="../css/images/mypage/v.png"></li>
+			<li class="process_arrow"><img alt=">" src="../css/images/mypage/v.png"></li>
 			<li class="mypage_process_item">
-				<img alt="입금대기" src="../css/images/mypage/3.png">
+				<img alt="상품준비" src="../css/images/mypage/3.png">
 				<span>상품준비</span>
 			</li>
-			<li class="process_arrow"><img alt="입금대기" src="../css/images/mypage/v.png"></li>
+			<li class="process_arrow"><img alt=">" src="../css/images/mypage/v.png"></li>
 			<li class="mypage_process_item">
-				<img alt="입금대기" src="../css/images/mypage/4.png">
+				<img alt="배송중" src="../css/images/mypage/4.png">
 				<span>배송중</span>
 			</li>
-			<li class="process_arrow"><img alt="입금대기" src="../css/images/mypage/v.png"></li>
+			<li class="process_arrow"><img alt=">" src="../css/images/mypage/v.png"></li>
 			<li class="mypage_process_item">
-				<img alt="입금대기" src="../css/images/mypage/5.png">
+				<img alt="배송완료" src="../css/images/mypage/5.png">
 				<span>배송완료</span>
 			</li>
 		</ul>

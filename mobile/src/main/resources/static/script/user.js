@@ -87,6 +87,7 @@ let index = {
 	},
 	
 	login: function() {
+		
 		let data={
 			userid: $("#userid").val(),
 			password: $("#password").val(),
