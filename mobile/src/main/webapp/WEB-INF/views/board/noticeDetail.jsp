@@ -24,6 +24,9 @@
 		<div class="buttons">
 			<a><button class="btn skyblue" onclick="history.back()">목록으로 돌아가기</button></a>
 		</div>
+		<!-- 수정, 삭제시 ajax로 글번호 정보를 전송 -->
+		<input id="id" type="hidden" value="${board.id}">
+		<!--  -->
 		
 		<div class="detail_info">
 			<span>작성일 : <fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd HH:mm" /></span>
@@ -48,12 +51,12 @@
 		
 		<c:if test="${principal.roles eq 'ADMIN'}">
 			<div class="detail_btns">
-				<a href="/board/${board.id}/updateForm"><button type="button">수정</button></a>
+				<a href="/board/${board.id}/noticeUpdate"><button type="button">수정</button></a>
 				<button id="btn-delete">삭제</button>
 			</div>
 		</c:if>
 	</div>
 
 </section>
-<script type="text/javascript" src="/js/board.js"></script>
+<script type="text/javascript" src="/script/board.js"></script>
 <%@ include file="../layout/footer.jsp"%>

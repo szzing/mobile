@@ -12,6 +12,9 @@
 		</div>
 		
 		<form id="join" class="form join_form">
+			<!-- 전송용 -->
+			<input type="hidden" id="oauth" name="oauth" value="${principal.oauth}"/>
+			<<input type="hidden" id="id" value="${principal.id }"/>
 			<!--필수정보 입력란-->
 			<div class="form_heading">
 				<h3>변경할 회원 정보를 입력해주세요.</h3>
@@ -21,11 +24,11 @@
 			<div class="input_boxes">
 				<div class="input_box">
 					<label for="username" class="labels">이름</label>
-					<input id="username" class="input_item" type="text" required disabled/>
+					<input id="username" value="${principal.username}" class="input_item" type="text" required disabled/>
 				</div>
 				<div class="input_box">
 					<label for="userid" class="labels">아이디</label>
-					<input id="userid" class="input_item" type="text" required disabled/>
+					<input id="userid" value="${principal.userid}" class="input_item" type="text" required disabled/>
 				</div>
 				
 				<div class="input_box">
@@ -43,12 +46,12 @@
 				
 			<div class="input_box">
 				<label for="phone" class="labels">전화번호<span class="point">*</span></label>
-				<input id="phone" class="input_item" type="text" required/>
+				<input id="phone" value="${principal.phone}" class="input_item" type="text" required/>
 			</div>
 				
 				<div class="input_box">
 					<label for="email" class="labels">이메일<span class="point">*</span></label>
-					<input id="email" class="input_item" type="email" required/>
+					<input id="email" value="${principal.email}" class="input_item" type="email" required/>
 				</div>
 			</div>
 			
@@ -58,8 +61,8 @@
 			</div>
 			<div class="input_boxes">
 				<div class="input_box">
-					<label for="postnum" class="labels">우편번호</label>
-					<input id="postnum" class="input_item" type="text"/>
+					<label for="zipcode" class="labels">우편번호</label>
+					<input id="zipcode" class="input_item" type="text"/>
 					<input type="button" class="btn btn_alt" value="우편번호찾기">
 				</div>
 				<div class="input_box">
@@ -74,7 +77,7 @@
 		</form>
 		
 		<div class="btns">
-			<button id="btn-save" class="btn submit_btn">수정완료</button>
+			<button id="btn-update" class="btn submit_btn">수정완료</button>
 		</div>
 	</div>
 </section>

@@ -8,7 +8,7 @@
 		<div class="mypage_user">
 			<div class="greeting">
 				<i class="bi bi-person-fill"></i>
-				<h3>{회원이름}님, 환영합니다!</h3>
+				<h3>${principal.username}님, 환영합니다!</h3>
 			</div>
 		</div>
 		<ul class="mypage_menu">

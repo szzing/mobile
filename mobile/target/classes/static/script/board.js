@@ -8,6 +8,9 @@ let index = {
 			this.noticesave();
 		});
 		
+		$("#btn-faqsave").on("click", () => {
+			this.faqsave();
+		});
 		
 		$("#btn-delete").on("click", () => {
 			this.deleteById();
@@ -67,8 +70,30 @@ let index = {
 		});
 	},
 	
+	faqsave:function(){
+		let data={
+			title: $("#title").val(),
+			category: $("#category").val(),
+			content: $("#content").val()
+		};
+		$.ajax({ 
+			type:"POST",
+			url:"/api/adminboard",
+			data:JSON.stringify(data),
+			contentType:"application/json; charset=utf-8",
+			dataType:"json" 
+		}).done(function(resp){
+			alert("글쓰기가 완료되었습니다.");
+			location.href="/faq";
+
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+
+		});
+	},
+	
 	deleteById: function(){
-		var id=$("#id").text();
+		var id=$("#id").val();
 		$.ajax({ 
 			type:"DELETE",
 			url:"/api/board/"+id,
@@ -76,7 +101,7 @@ let index = {
 
 		}).done(function(resp){
 			alert("삭제가 완료되었습니다.");
-			location.href="/";
+			location.href = document.referrer;	// 삭제된 게시판 목록 새로고침
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});
@@ -86,7 +111,6 @@ let index = {
 		var id=$("#id").val();
 		let data={
 			title: $("#title").val(),
-			category: $("#category").val(),
 			content: $("#content").val()
 		};
 		$.ajax({ 
@@ -97,7 +121,7 @@ let index = {
 			dataType:"json" 
 		}).done(function(resp){
 			alert("글 수정이 완료되었습니다.");
-			location.href="/";
+			location.href = document.referrer;
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});

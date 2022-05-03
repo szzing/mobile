@@ -3,6 +3,7 @@
 <%@ include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="../css/boardlist.css">
 <link rel="stylesheet" href="../css/qna.css">
+<link rel="stylesheet" href="../css/boardform.css">
 
 <div class="page_title">
 	<h1 class="title">고객센터</h1>
@@ -10,31 +11,32 @@
 
 <section class="board_wrap">
 
-	<aside class="side_menu_bar">
+	<aside class="side_menu_bar">	
 		<h3>고객센터</h3>
 		<ul class="side_menu_box">
 			<li class="side_menu_item"><a href="/notice">공지사항</a></li>
-			<li class="side_menu_item menu_now"><a href="/test/qna">1:1 문의</a></li>
-			<li class="side_menu_item"><a href="/faq">FAQ</a></li>
+			<li class="side_menu_item"><a href="test/qna">1:1 문의</a></li>
+			<li class="side_menu_item menu_now"><a href="/faq">FAQ</a></li>
 		</ul>
 	</aside>
 	
-		<div class="board_container">	
-			<h2>1:1 문의</h2>
+	<div class="board_container">	
+			<h2>FAQ</h2>
 			
-			<c:choose>
-				<c:when test="${empty principal}">
-					<div class="buttons">
-						<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="buttons">
-						<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
-						<a href="/test/qnaForm"><button class="btn pink">문의하기</button></a>
-					</div>
-				</c:otherwise>
-			</c:choose>
+				<c:choose>
+					<c:when test="${principal.roles eq 'ADMIN'}">
+						<div class="buttons">
+							<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
+							<a href="/board/faqForm"><button class="btn pink">FAQ작성</button></a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="buttons">
+							<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				
 			<table class="board_list">
 				<thead class="board_index">
 					<tr>
@@ -46,9 +48,9 @@
 				</thead>
 			
 				<tbody class="board_items">
-				
+
 				<c:forEach var="board" items="${boards.content}">
-					<tr class="board_item" onclick="location.href=''">
+					<tr class="board_item" onclick="location.href='/faq/${board.id}'">
 						<td>${board.id}</td>
 						<td>${board.title}</td>
 						<td>관리자</td>
@@ -66,5 +68,5 @@
 			</div>
 		</div>
 	</section>
-        
+	
 <%@ include file="../layout/footer.jsp"%>

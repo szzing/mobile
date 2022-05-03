@@ -34,6 +34,7 @@
 				<ul class="header_right_menu">
 					<li class="menu_item"><a href="/notice">고객센터</a></li>
 					<li class="menu_item"><a href="/user/loginForm">로그인</a></li>
+					<li class="menu_item"><a href="/admin/joinForm">관리자계정생성(임시)</a></li>
 				</ul>
 			</c:when>
 			<c:when test="${principal.roles eq 'USER'}">

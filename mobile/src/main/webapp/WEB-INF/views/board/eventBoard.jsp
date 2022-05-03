@@ -39,10 +39,10 @@
 			<tbody class="board_items">
 
 			<c:forEach var="board" items="${boards.content}">
-				<tr class="board_item" onclick="location.href='/notice/${board.id}'">
-					<td>{id}</td>
-					<td>{title}</td>
-					<td>{name}</td>
+				<tr class="board_item" onclick="location.href='/event/${board.id}'">
+					<td>${board.id}</td>
+					<td>${board.title}</td>
+					<td>관리자</td>
 					<td><fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd"/></td>
 				</tr>
 			</c:forEach>

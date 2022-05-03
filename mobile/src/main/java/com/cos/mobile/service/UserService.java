@@ -20,7 +20,6 @@ public class UserService {
 		user.setRoles(RoleType.USER);
 		userRepository.save(user);
 	}
-	
 // 시큐리티 사용시
 //	@Transactional
 //	public void join(Users user) {
@@ -45,4 +44,20 @@ public class UserService {
 	public Users login(Users user) {
 		return userRepository.findByUseridAndPassword(user.getUserid(), user.getPassword());
 	}
+	
+	@Transactional
+	public void update(Users user) {
+		Users persistence = userRepository.findById(user.getId()).orElseThrow(()->{
+			return new IllegalArgumentException("회원 찾기 실패" + user.getId());
+		});
+		persistence.setPassword(user.getPassword());
+		persistence.setEmail(user.getEmail());
+		persistence.setUsername(user.getUsername());
+		persistence.setPhone(user.getPhone());
+		persistence.setZipcode(user.getZipcode());
+		persistence.setAddress1(user.getAddress1());
+		persistence.setAddress2(user.getAddress2());
+	}
+	
+	
 }

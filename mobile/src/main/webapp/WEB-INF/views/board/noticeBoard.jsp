@@ -15,7 +15,8 @@
 		<h3>고객센터</h3>
 		<ul class="side_menu_box">
 			<li class="side_menu_item menu_now"><a href="/notice">공지사항</a></li>
-			<li class="side_menu_item"><a href="/test/qna">1:1 문의</a></li>
+			<li class="side_menu_item"><a href="test/qna">1:1 문의</a></li>
+			<li class="side_menu_item"><a href="/faq">FAQ</a></li>
 		</ul>
 	</aside>
 	
@@ -52,7 +53,7 @@
 					<tr class="board_item" onclick="location.href='/notice/${board.id}'">
 						<td>${board.id}</td>
 						<td>${board.title}</td>
-						<td>${board.user.username}</td>
+						<td>관리자</td>
 						<td><fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd"/></td>
 					</tr>
 				</c:forEach>

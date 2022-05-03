@@ -11,7 +11,7 @@
 			<h1><span class="logo">MO:BILE</span> 로그인</h1>
 		</div>
 		
-		<form id="login" class="form login_form">
+		<form id="login" class="form login_form" name="loginform">
 				<div class="input_box">
 					<label for="userid" class="labels">아이디</label>
 					<input id="userid" class="input_item" type="text" required/>
@@ -44,6 +44,20 @@
 	</div>
 	
 </section>
-
+<!-- 로그인 성공 팝업 뜨는 문제는 시큐리티 로그인 후 수정예정 -->
+<script type="text/javascript">
+function loginCheck(){
+	if (document.loginform.userid.value == ""){
+		alert("아이디를 입력하세요.");
+		document.loginform.userid.focus();
+		return false;
+	} else if (document.loginform.password.value == ""){
+		alert("비밀번호를 입력하세요.");
+		document.loginform.password.focus();
+		return false;
+	} else {
+		return true;
+	}
+}</script>
 <script type="text/javascript" src="../script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

@@ -9,7 +9,6 @@ let index = {
 				alert("비밀번호가 일치하지 않습니다.");
 				return false;
 			}
-			
 			this.save();
 		});
 		
@@ -92,6 +91,17 @@ let index = {
 			userid: $("#userid").val(),
 			password: $("#password").val(),
 		};
+		if (userid === '') {
+			alert('아이디를 입력해주세요.');
+			return;
+		}
+
+		if (password === '') {
+			alert('비밀번호를 입력해주세요.');
+			return;
+		}
+		
+		
 		console.log(data); //자바스크립트 오브젝트
 		$.ajax({ 
 			type:"POST",
@@ -121,8 +131,8 @@ let index = {
 			phone: $("#phone").val(),
 			email: $("#email").val(),
 			zipcode: $("#zipcode").val(),
-			address1: $("#address1").val(),
-			address2: $("#address2").val(),
+			address1: $("#address").val(),
+			address2: $("#addrdetail").val(),
 			oauth: $("#oauth").val()
 			};
 			
@@ -135,7 +145,7 @@ let index = {
 			
 			}).done(function(resp){
 				alert("회원수정이 완료되었습니다.");
-				location.href="/";
+				location.href="/user/myPage";
 	
 			}).fail(function(error){
 				// alert(JSON.stringify(error));
