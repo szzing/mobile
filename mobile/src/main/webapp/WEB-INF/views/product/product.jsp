@@ -6,6 +6,7 @@
 <div class="page_title">
 	<h1 class="title">제품 페이지</h1>
 </div>
+<h2><a href="/admin/regiProduct">클릭하면 상품등록페이지로 이동</a></h2>
 <section>
 	<h1></h1>
 </section>

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<link rel="stylesheet" href="../css/boardlist.css">
-<link rel="stylesheet" href="../css/event.css">
+<link rel="stylesheet" href="/css/boardlist.css">
+<link rel="stylesheet" href="/css/event.css">
 
 <div class="page_title">
 	<h1 class="title">이벤트 안내</h1>

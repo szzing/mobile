@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
-<link rel="stylesheet" href="../css/boardlist.css">
-<link rel="stylesheet" href="../css/boardform.css">
+<link rel="stylesheet" href="/css/boardlist.css">
+<link rel="stylesheet" href="/css/boardform.css">
 
 <section>
 	<div class="board_container">
@@ -13,7 +13,7 @@
 			<a><button class="btn skyblue" onclick="history.back()">돌아가기</button></a>
 		</div>
 		
-		<form class="board_form">
+		<form class="board_form" method="post">
 			<input type="hidden" id="id" value="${board.id}"/>
 			<div class="board_input_boxes">
 			<div class="board_input_box">
@@ -27,7 +27,7 @@
 
 			<div class="board_input_box">
 				<label for="content" class="labels">내용</label>
-				<textarea class="input_item board_textarea" id="content" rows="15" style="resize:none;">${board.content}</textarea>
+				<textarea id="summernote" name="editordata">${board.content}</textarea>
 			</div>
 			</div>
 		</form>
@@ -39,6 +39,6 @@
 	</div>
 
 </section>
-
+<script type="text/javascript" src="/script/summernote.js"></script>
 <script type="text/javascript" src="/script/board.js"></script>
 <%@ include file="../layout/footer.jsp" %>

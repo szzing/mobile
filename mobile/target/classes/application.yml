@@ -16,6 +16,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
+    converters:      preferred-json-mapper: gso
   jpa:
     open-in-view: true
     hibernate:
