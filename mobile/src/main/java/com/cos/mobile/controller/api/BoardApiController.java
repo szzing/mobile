@@ -36,7 +36,7 @@ public class BoardApiController {
 	}
 	
 	@PutMapping("/api/board/{id}")
-	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Boards board){
+	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Boards board) throws IllegalStateException, IOException{
 		boardService.update(id, board);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
