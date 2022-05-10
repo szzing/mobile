@@ -8,13 +8,17 @@
 <meta charset="UTF-8">
 <title>MO:BILE</title>
 <!-- css -->
-<link rel="stylesheet" href="../css/header.css">
-<link rel="stylesheet" href="../css/index.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/index.css">
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<!-- summernote -->
+<script src="/summernote/summernote-lite.js"></script>
+<script src="/summernote/lang/summernote-ko-KR.js"></script>
+<link rel="stylesheet" href="/summernote/summernote-lite.css">
 </head>
 
 <body>
@@ -61,4 +65,5 @@
 	</header>
 	<div class="header"></div>
 	
-	<script type="text/javascript" src="../script/header.js"></script>
+	<script type="text/javascript" src="/script/header.js"></script>
+	<script type="text/javascript" src="/script/jquery.form.min.js"></script>

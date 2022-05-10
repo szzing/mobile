@@ -30,7 +30,7 @@ let index = {
 		let data={
 			title: $("#title").val(),
 			category: $("#category").val(),
-			content: $("#content").val()
+			content: $("#summernote").val()
 		};
 		$.ajax({ 
 			type:"POST",
@@ -52,7 +52,7 @@ let index = {
 		let data={
 			title: $("#title").val(),
 			category: $("#category").val(),
-			content: $("#content").val()
+			content: $("#summernote").val()
 		};
 		$.ajax({ 
 			type:"POST",
@@ -74,7 +74,7 @@ let index = {
 		let data={
 			title: $("#title").val(),
 			category: $("#category").val(),
-			content: $("#content").val()
+			content: $("#summernote").val()
 		};
 		$.ajax({ 
 			type:"POST",
@@ -111,7 +111,7 @@ let index = {
 		var id=$("#id").val();
 		let data={
 			title: $("#title").val(),
-			content: $("#content").val()
+			content: $("#summernote").val()
 		};
 		$.ajax({ 
 			type:"PUT",

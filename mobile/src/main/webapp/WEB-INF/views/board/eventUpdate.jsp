@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp" %>
-<link rel="stylesheet" href="../css/boardlist.css">
-<link rel="stylesheet" href="../css/boardform.css">
+<%@ include file="../layout/header.jsp"%>
+<link rel="stylesheet" href="/css/boardlist.css">
+<link rel="stylesheet" href="/css/boardform.css">
 
 <section>
 	<div class="board_container">
@@ -12,22 +12,22 @@
 			<a><button class="btn skyblue" onclick="history.back()">돌아가기</button></a>
 		</div>
 		
-		<form class="board_form">
+		<form class="board_form" method="POST">
 			<input type="hidden" id="id" value="${board.id}"/>
 			<div class="board_input_boxes">
-			<div class="board_input_box">
-				<label for="title" class="labels">제목</label>
-				<input type="text" value="${board.title}" class="input_item board_txt" id="title">
+				<div class="board_input_box">
+					<label for="title" class="labels">제목</label>
+					<input type="text" value="${board.title}" class="input_item board_txt" id="title">
 				
-				<select id="category" class="select_category" disabled>
-			    	<option value="event">이벤트</option>
-				</select>
-			</div>
+					<select id="category" class="select_category" disabled>
+			    		<option value="event">이벤트</option>
+					</select>
+				</div>
 
-			<div class="board_input_box">
-				<label for="content" class="labels">내용</label>
-				<textarea class="input_item board_textarea" id="content" rows="15" style="resize:none;">${board.content}</textarea>
-			</div>
+				<div class="board_input_box">
+					<label for="content" class="labels">내용</label>
+					<textarea id="summernote" name="editordata">${board.content}</textarea>
+				</div>
 			</div>
 		</form>
 
@@ -38,6 +38,6 @@
 	</div>
 
 </section>
-
+<script type="text/javascript" src="/script/summernote.js"></script>
 <script type="text/javascript" src="/script/board.js"></script>
 <%@ include file="../layout/footer.jsp" %>
