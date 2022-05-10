@@ -1,0 +1,295 @@
+.intro_background {
+    background-color: black;
+    height: 540px;
+    overflow: hidden;
+    margin: auto;
+    width: 100%;
+    min-width: 940px;
+
+    position: relative;
+}
+
+.intro_background img {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.main_intro {    
+    text-align: center;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main_intro input[type="button"] {
+    background-color: rgba(0,0,0,0);
+    border: 1px solid white;
+    color: white;
+    border-radius: 500px;
+    box-shadow: 0px 0px 100px black;
+
+    width: 50px;
+    height: 50px;
+
+    font-size: 15px;
+    font-weight: lighter;
+    
+    cursor: pointer;
+}
+
+.main_intro h1 {
+    color: white;
+    text-shadow: 0px 0px 30px black;
+    font-size: 45px;
+    margin: 10px;
+}
+
+.main_intro p {
+    color: white;
+    text-shadow: 0px 0px 20px black;
+    font-size: 18px;
+}
+
+
+/* 배너 */
+.banners {
+    height: 450px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banners div {
+    background-color: #eee;
+    border-radius: 20px;
+    width: 550px;
+    min-width: 400px;
+    height: 250px;
+    margin: 20px;
+
+    padding: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.ban_item {
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.ban_item:hover {
+	transform: scale(1.02);
+}
+
+.ban1 {
+    background-image: url(../css/images/main/london-g1c5172a27_1920.jpg);
+    background-size: 800px;
+}
+
+.ban2 {
+    background-image: url(../css/images/main/headphones-g1c73dec84_1920.jpg);
+    background-size: 800px;
+    background-position: center;
+}
+
+/* 상품관련 */
+
+/* 베스트상품 */
+.main_best {
+    text-align: center;
+    margin: 50px 0px;
+}
+
+.main_best > h2 {
+    padding: 20px;
+}
+
+.main_best > hr {
+    width: 1px;
+    height: 100px;
+    margin: auto;
+}
+
+.best_goods {
+    background: linear-gradient(to right, rgba(135, 207, 235, 0.7), rgba(255, 192, 203, 0.7));
+    padding: 3rem 0;
+}
+
+.best_goods_wrap {
+    margin: auto;  
+    width: 100%;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.best_item {
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 18px;
+    
+    width: 100%;
+    max-width: 270px;
+    height: 550px;
+
+    margin: 15px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content:space-around;
+    
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.best_goods > div img {
+    margin: 20px;
+}
+
+.best_item:hover {
+	transform: translate(0, -10px);
+	transition: 0.5s;
+    text-shadow: 0px 0px 10px #aaa;
+}
+
+.best_pre {
+    font-size: 0.9em;
+    line-height: 180%;
+    color: #555;
+}
+
+.best_pre > h3 {
+    background-color: #eee;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px 0px;
+}
+
+.best_pre .line-through {
+	text-decoration: line-through;
+}
+
+.best_pre .emphasis {
+    font-size: 1.5em;
+    color: black;
+    font-weight: bold;
+}
+
+.best_goods input {
+    width: 250px;
+    height: 50px;
+    margin: 20px;
+
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    font-size: 1em;
+    background-color: rgba(0,0,0,0);
+    
+    cursor: pointer;
+}
+
+.best_goods input:hover {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 판매상품 */
+.main_products {
+    text-align: center;
+    margin: 200px 0px;
+}
+
+.main_products > h2 {
+    margin: 50px;
+}
+
+.products_wrap {
+    margin: 50px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.products_wrap .products_left_item {
+    background-image: url(../css/images/main/technology-gcf2dad002_1920.jpg);
+    background-size: 800px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+
+    margin: 10px;
+    width: 400px;
+    height: 510px;
+
+    color: white;
+    text-shadow: 0px 0px 20px #333;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: 1s;
+}
+
+.products_left_item:hover {
+	background-size: 850px;
+	transition: 1s;
+}
+
+.products_left_item h3 {
+	color: white;
+}
+
+.products_wrap .products_right_item {
+    width: 640px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.products_wrap .products_right_item div {
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+    background-color: #eee;
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.products_right_item div:hover {
+	transform: translate(0, -5px);
+	transition: 0.5s;
+}
+
+.products_wrap img {
+    height: 150px;
+    margin: 20px;
+}
