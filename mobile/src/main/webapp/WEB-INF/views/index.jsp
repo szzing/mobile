@@ -7,7 +7,7 @@
         <img src="../css/images/main/background-g8d3776f9d_1920.jpg" id="intro_img">
         
     <div class="main_intro">
-	    <input type="button" value="◀" id="imgBackBtn" >
+	    <input type="button" value="◀" id="imgBackBtn">
             <div>
                 <h1>Welcome to MO:BILE World</h1>
                 <p>모빌에서만 누릴 수 있는 구매 혜택을 절대 놓치지 마세요!</p>
