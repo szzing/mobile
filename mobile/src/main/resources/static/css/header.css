@@ -19,6 +19,7 @@ header {
     background: linear-gradient(to right, skyblue, pink);
     color: transparent;
     -webkit-background-clip: text;
+    
     font-size: 34px;
     margin-right: 2rem;
     padding: 1rem;

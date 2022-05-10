@@ -24,7 +24,7 @@
 <body>
 	<header>
 		<div class="header_logo">
-			<a href="/"><h1>MO:BILE</h1></a>
+			<h1><a href="/">MO:BILE</a></h1>
 		</div>
 		<div class="header_menubar">
 			<ul class="header_left_menu">
