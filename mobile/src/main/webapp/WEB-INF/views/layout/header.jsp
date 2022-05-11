@@ -17,7 +17,7 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <!-- summernote -->
 <script src="/summernote/summernote-lite.js"></script>
-<script src="/summernote/lang/summernote-ko-KR.js"></script>
+<script src="/summernote/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="/summernote/summernote-lite.css">
 </head>
 

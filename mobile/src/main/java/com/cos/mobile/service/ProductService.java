@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.mobile.dto.TelecomFeeDto;
+import com.cos.mobile.model.Product;
 import com.cos.mobile.model.Telecom;
 import com.cos.mobile.model.TelecomFee;
+import com.cos.mobile.repository.ProductRepository;
 import com.cos.mobile.repository.TelecomFeeRepository;
 import com.cos.mobile.repository.TelecomRepository;
 
@@ -19,6 +21,9 @@ public class ProductService {
 	
 	@Autowired
 	TelecomFeeRepository telfeeRepository;
+	
+	@Autowired
+	ProductRepository proRepository;
 	
 	@Transactional
 	public void telsave(Telecom tel) {
@@ -34,6 +39,11 @@ public class ProductService {
 	@Transactional(readOnly=true)
 	public List<TelecomFee> selectFeeAll(){
 		return telfeeRepository.findAll();
+	}
+	
+	@Transactional(readOnly=true)
+	public List<Product> selectProAll(){
+		return proRepository.findAll();
 	}
 	
 	@Transactional
@@ -53,5 +63,12 @@ public class ProductService {
 				.feeName(telfeeDto.getFeename())
 				.fee(telfeeDto.getFee()).build();
 		telfeeRepository.save(telfee);
+	}
+	
+	@Transactional(readOnly=true)
+	public Product proDetail(int id) {
+		return proRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("상품 상세보기 실패 : 찾을 수 없습니다.");
+		});
 	}
 }

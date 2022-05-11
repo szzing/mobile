@@ -1,3 +1,24 @@
+function checkId(){
+        var userid = $('#userid').val();
+        $.ajax({
+            url:'/auth/idcheck', //Controller에서 인식할 주소
+            type:'post', //POST 방식으로 전달
+            data:{userid: userid},
+            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+                if(cnt != 1){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+                   	alert('사용가능한 아이디입니다');
+                   	return false;
+                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                    alert('이미 사용중인 아이디입니다');
+                    return false;
+                }
+            },
+            error:function(){
+                alert("에러입니다");
+            }
+        });
+    };
+
 let index = {
 	init: function() {
 		$("#btn-save").on("click", () => {

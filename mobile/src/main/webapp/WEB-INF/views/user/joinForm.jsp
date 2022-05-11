@@ -26,7 +26,7 @@
 				<div class="input_box">
 					<label for="userid" class="labels">아이디<span class="point">*</span></label>
 					<input id="userid" class="input_item" type="text" required/>
-					<input type="button" class="btn btn_alt" value="중복확인">
+					<input type="button" class="btn btn_alt" value="중복확인" onClick = "checkId()">
 				</div>
 				
 				<div class="input_box">

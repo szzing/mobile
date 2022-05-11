@@ -59,5 +59,12 @@ public class UserService {
 		persistence.setAddress2(user.getAddress2());
 	}
 	
+	@Transactional(readOnly=true)
+	public Users findUserid(String userid) {
+		Users user = userRepository.findByUserid(userid).orElseGet(()->{
+			return new Users();
+		});
+		return user;
+	}
 	
 }

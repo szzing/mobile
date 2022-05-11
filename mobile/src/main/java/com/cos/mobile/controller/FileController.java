@@ -5,21 +5,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.RandomStringUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cos.mobile.model.Files;
 import com.cos.mobile.repository.FileRepository;
 import com.cos.mobile.service.FileService;
 import com.google.gson.JsonObject;
@@ -31,31 +28,6 @@ public class FileController {
 	
 	@Autowired
 	FileRepository fileRepository;
-	
-	@RequestMapping("/fileinsert")
-	public String fileinsert(HttpServletRequest request, @RequestPart MultipartFile files) throws Exception{
-		Files file = new Files();
-		
-		String sourceFileName = files.getOriginalFilename(); 
-        		String sourceFileNameExtension = FilenameUtils.getExtension(sourceFileName).toLowerCase(); 
-        		File destinationFile; 
-        		String destinationFileName;
-        		String fileUrl = "C:\\workspace\\images\\";	//외부경로
-
-        		do { 
-            			destinationFileName = RandomStringUtils.randomAlphanumeric(32) + "." + sourceFileNameExtension; 
-            			destinationFile = new File(fileUrl + destinationFileName); 
-        		} while (destinationFile.exists()); 
-        
-        		destinationFile.getParentFile().mkdirs(); 
-        		files.transferTo(destinationFile);
-        
-        		file.setFilename(destinationFileName);
-        		file.setFileOriName(sourceFileName);
-        		file.setFileurl(fileUrl);
-        		fileService.save(file);
-			return "redirect:/insert";
-	}
 	
 	@PostMapping(value="/uploadSummernoteImageFile", produces = "application/json")
 	@ResponseBody
