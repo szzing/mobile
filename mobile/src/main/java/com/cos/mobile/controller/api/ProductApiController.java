@@ -39,6 +39,12 @@ public class ProductApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	
+	@DeleteMapping("/api/prodelete/{productId}")
+	public ResponseDto<Integer> proDelete(@PathVariable int productId){
+		productService.proDelete(productId);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
 	@PostMapping("/api/fee")
 	public ResponseDto<Integer> feesave(@RequestBody TelecomFeeDto telfeeDto) throws IllegalStateException, IOException{
 		productService.feesave(telfeeDto);

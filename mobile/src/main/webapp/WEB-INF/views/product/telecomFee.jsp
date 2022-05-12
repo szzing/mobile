@@ -41,6 +41,11 @@ display:none;
 	<div class="feeHide">
 		<h2>요금제 관리</h2>
 		<form>
+			<select id="productid">
+				<c:forEach var="product" items="${product}">
+					<option value="${product.id}">${product.name}</option>
+				</c:forEach>
+			</select>
 			<select id="telid">
 				<c:forEach var="telecom" items="${telecom}">
 					<option value="${telecom.id}">${telecom.name}</option>
@@ -50,6 +55,12 @@ display:none;
 			<input type="text" id="feename"/>
 			<label for="fee">요금(원)</label>
 			<input type="text" id="fee"/>
+			<br/>
+			<label for="officialDc">공시지원(원)</label>
+			<input type="text" id="officialDc"/>
+			<label for="contractDc">선약할인(원)</label>
+			<input type="text" id="contractDc"/>
+			
 		</form>
 		<button id="btn-feesave">요금제 등록</button>
 		<hr>
@@ -57,9 +68,12 @@ display:none;
 				<!-- 반복문으로 요금제 목록 출력 -->
 		<c:forEach var="telecomfee" items="${telecomfee}">
 			<div>
+				상품명 ${telecomfee.product.name}/
 				통신사명 ${telecomfee.telecom.name}/
 				요금제명 ${telecomfee.feeName}/
-				요금(원) ${telecomfee.fee}
+				요금(원) ${telecomfee.fee}/
+				공시지원 ${telecomfee.officialDc}/
+				선약할인 ${telecomfee.contractDc}
 				<button onClick="index.feeDelete(${telecomfee.id})">삭제</button>
 			</div>
 		</c:forEach>

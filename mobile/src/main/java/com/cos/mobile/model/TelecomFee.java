@@ -34,11 +34,21 @@ public class TelecomFee {
 	
 	@ManyToOne
 	@JoinColumn(name="telid")
-	private Telecom telecom;
+	private Telecom telecom;	// 통신사id로 join
+	
+	@ManyToOne
+	@JoinColumn(name="productid")
+	private Product product;	// 상품id로 join
+	
+	@Column(nullable=true, length=10)
+	private Integer contractDc;	// 선택약정할인(원)
+	
+	@Column(nullable=true, length=10)
+	private Integer officialDc;	// 공시지원할인(원)
 	
 	@Column(nullable=false, length=50)
-	private String feeName;
+	private String feeName;		// 요금제명
 	
 	@Column(nullable=false, length=10)
-	private int fee;
+	private int fee;	// 요금제(원)
 }

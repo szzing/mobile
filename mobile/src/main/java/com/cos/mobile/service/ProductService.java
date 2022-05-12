@@ -57,18 +57,28 @@ public class ProductService {
 	}
 	
 	@Transactional
+	public void proDelete(int id) {
+		proRepository.deleteById(id);
+	}
+
+	
+	@Transactional
 	public void feesave(TelecomFeeDto telfeeDto) {
+		Product product = proRepository.findById(telfeeDto.getProductid());
 		Telecom tel = telRepository.findById(telfeeDto.getTelid());
-		TelecomFee telfee = TelecomFee.builder().telecom(tel)
+		TelecomFee telfee = TelecomFee.builder()
+				.product(product)
+				.telecom(tel)
 				.feeName(telfeeDto.getFeename())
-				.fee(telfeeDto.getFee()).build();
+				.fee(telfeeDto.getFee())
+				.contractDc(telfeeDto.getContractDc())
+				.officialDc(telfeeDto.getOfficialDc())
+				.build();
 		telfeeRepository.save(telfee);
 	}
 	
 	@Transactional(readOnly=true)
 	public Product proDetail(int id) {
-		return proRepository.findById(id).orElseThrow(()->{
-			return new IllegalArgumentException("상품 상세보기 실패 : 찾을 수 없습니다.");
-		});
+		return proRepository.findById(id);
 	}
 }

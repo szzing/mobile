@@ -39,7 +39,7 @@
 		<input name="tel" id="tel3" value="LGUplus" type="radio">
 		<label for="tel3">LGU+</label>
 	</div>
-	<div class="color">
+	<div id="colors" class="colors">
 		색상: 색상옵션 자바스크립트 반복문으로 출력하려했으나 document.body.append 태그를 바꾸면 화면에 출력이 안됨<br>
 		다른 위치에서 출력 필요, 화면 맨 아래에 나오고있어요<br>
 	</div>
@@ -73,7 +73,8 @@ ${product.content}
 			for(var i=0; i< afterStr.length; i++){
 				// 콘솔에서 배열로 저장된 색상옵션 확인 가능함
 				console.log(afterStr[i]);
-			} 
+			}
+	
 			// 요소 생성 함수
 			function createInput(color) {
 				for(var i=0; i< afterStr.length; i++){

@@ -99,4 +99,6 @@ public class BoardController {
 		model.addAttribute("board", boardService.eventDetail(id));
 		return "board/noticeUpdate";
 	}
+	
+	
 }
