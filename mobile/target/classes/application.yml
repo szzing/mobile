@@ -1,34 +1,0 @@
-server:
-  port : 8086
-  servlet:
-    context-path: /
-    encoding:
-      charset: UTF-8
-      enabled: true
-      force: true
-spring:
-  datasource:
-    url: jdbc:oracle:thin:@oracle.interstander.com:41521:xe
-    username: mobile02
-    password: 1234
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-  mvc:
-    view:
-      prefix: /WEB-INF/views/
-      suffix: .jsp
-    converters:      preferred-json-mapper: gso
-  jpa:
-    open-in-view: true
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      use-new-id-generator-mappings: false
-    properties:
-      hibernate.format_sql: true
-  jackson:
-    serialization:
-      fail-on-empty-beans: false
-  servlet:    multipart:      enabled: true
-      max-file-size: 10MB
-      max-request-size: 50MB
