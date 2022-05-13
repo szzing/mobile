@@ -6,11 +6,11 @@ function checkId(){
             data:{userid: userid},
             success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
                 if(cnt != 1){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
-                   	alert('사용가능한 아이디입니다');
-                   	return false;
+                   	$('.id_ok').css("display","inline-block"); 
+                    $('.id_already').css("display", "none");
                 } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
-                    alert('이미 사용중인 아이디입니다');
-                    return false;
+                    $('.id_already').css("display","inline-block");
+                    $('.id_ok').css("display", "none");
                 }
             },
             error:function(){
@@ -61,7 +61,7 @@ let index = {
 		console.log(data); //자바스크립트 오브젝트
 		$.ajax({ 
 			type:"POST",
-			url:"/api/user",
+			url:"/auth/joinProc",
 			data:JSON.stringify(data),
 			contentType:"application/json; charset=utf-8",	
 			dataType:"json" 
@@ -89,7 +89,7 @@ let index = {
 		console.log(data); //자바스크립트 오브젝트
 		$.ajax({ 
 			type:"POST",
-			url:"/api/admin",
+			url:"/auth/adminjoin",
 			data:JSON.stringify(data),
 			contentType:"application/json; charset=utf-8",	
 			dataType:"json" 
@@ -98,43 +98,6 @@ let index = {
 				alert("관리자 계정 생성에 실패하였습니다.");
 			}else{
 				alert("관리자 계정 생성이 완료되었습니다.");
-				location.href="/";
-			}
-			
-		}).fail(function(error){
-			// alert(JSON.stringify(error));
-		});
-	},
-	
-	login: function() {
-		
-		let data={
-			userid: $("#userid").val(),
-			password: $("#password").val(),
-		};
-		if (userid === '') {
-			alert('아이디를 입력해주세요.');
-			return;
-		}
-
-		if (password === '') {
-			alert('비밀번호를 입력해주세요.');
-			return;
-		}
-		
-		
-		console.log(data); //자바스크립트 오브젝트
-		$.ajax({ 
-			type:"POST",
-			url:"/api/user/login",
-			data:JSON.stringify(data),
-			contentType:"application/json; charset=utf-8",	
-			dataType:"json" 
-		}).done(function(resp){
-			if(resp.status==500){
-				alert("로그인 실패! 다시 확인해주세요.");
-			}else{
-				alert("로그인 성공");
 				location.href="/";
 			}
 			

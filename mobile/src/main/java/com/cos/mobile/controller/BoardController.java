@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import com.cos.mobile.config.auth.PrincipalDetail;
 import com.cos.mobile.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,7 +21,13 @@ public class BoardController {
 	@Autowired
 	private final BoardService boardService;
 	
-	@GetMapping({"/event"})
+	@GetMapping({"","/"})
+	public String index(@AuthenticationPrincipal PrincipalDetail principal) {
+		return "index";
+	}
+	
+	
+	@GetMapping({"/auth/event"})
 	public String eventBoard(Model model, @PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable) {
 		// 이벤트 게시판 목록 출력
 		model.addAttribute("boards", boardService.toEvent(pageable));
@@ -30,7 +39,7 @@ public class BoardController {
 		return "board/eventForm";
 	}
 	
-	@GetMapping({"/notice"})
+	@GetMapping({"/auth/notice"})
 	public String noticeBoard(Model model, @PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable) {
 		// 공지사항 게시판 목록 출력
 		model.addAttribute("boards", boardService.toNotice(pageable));
@@ -42,7 +51,7 @@ public class BoardController {
 		return "board/noticeForm";
 	}
 	
-	@GetMapping({"/faq"})
+	@GetMapping({"/auth/faq"})
 	public String faqBoard(Model model, @PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable) {
 		// FAQ 게시판 목록 출력
 		model.addAttribute("boards", boardService.toFaq(pageable));

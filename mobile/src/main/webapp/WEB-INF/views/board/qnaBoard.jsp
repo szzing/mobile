@@ -13,9 +13,9 @@
 	<aside class="side_menu_bar">
 		<h3>고객센터</h3>
 		<ul class="side_menu_box">
-			<li class="side_menu_item"><a href="/notice">공지사항</a></li>
+			<li class="side_menu_item"><a href="/auth/notice">공지사항</a></li>
 			<li class="side_menu_item menu_now"><a href="/test/qna">1:1 문의</a></li>
-			<li class="side_menu_item"><a href="/faq">FAQ</a></li>
+			<li class="side_menu_item"><a href="/auth/faq">FAQ</a></li>
 		</ul>
 	</aside>
 	

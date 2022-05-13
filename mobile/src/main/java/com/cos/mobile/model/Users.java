@@ -56,10 +56,10 @@ public class Users {
 	private int zipcode;
 	
 	@Column(nullable=true, length=50)
-	private String address1;
+	private String address;
 	
 	@Column(nullable=true, length=50)
-	private String address2;
+	private String addrdetail;
 	
 	@Enumerated(EnumType.STRING)
 	private RoleType roles;

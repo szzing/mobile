@@ -34,7 +34,7 @@ public class ProductController {
 		return "product/telecomFee";
 	}
 	
-	@GetMapping("/product")
+	@GetMapping("/auth/product")
 	public String productList(Model model) {
 		model.addAttribute("product",productService.selectProAll());
 		return "product/product";

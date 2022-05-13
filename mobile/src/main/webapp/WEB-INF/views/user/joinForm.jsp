@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<link rel="stylesheet" href="../css/forms.css">
-<link rel="stylesheet" href="../css/joinform.css">
-
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/joinform.css">
+<style>
+.id_ok{color:#0064FF; display: none;}
+.id_already{color:#FF1E9D; display: none;}
+</style>
 <section>
 	<div class="form_container">
 		<div class="form_title">
@@ -25,8 +28,10 @@
 				
 				<div class="input_box">
 					<label for="userid" class="labels">아이디<span class="point">*</span></label>
-					<input id="userid" class="input_item" type="text" required/>
-					<input type="button" class="btn btn_alt" value="중복확인" onClick = "checkId()">
+					<input id="userid" class="input_item" type="text" required oninput = "checkId()"/>
+					<span class="id_ok">사용 가능한 아이디입니다.</span>
+					<span class="id_already">이미 사용중인 아이디입니다.</span>
+					<input type="button" class="btn btn_alt" value="중복확인">
 				</div>
 				
 				<div class="input_box">
@@ -77,5 +82,5 @@
 	</div>
 </section>
 
-<script type="text/javascript" src="../script/user.js"></script>
+<script type="text/javascript" src="/script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>
