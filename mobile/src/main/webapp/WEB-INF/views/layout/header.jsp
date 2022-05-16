@@ -30,6 +30,8 @@
 <script src="/summernote/summernote-lite.js"></script>
 <script src="/summernote/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="/summernote/summernote-lite.css">
+<!-- ckeditor -->
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
 </head>
 
 <body>
@@ -53,7 +55,7 @@
 			</sec:authorize>
 			<sec:authorize access="hasRole('ROLE_USER')">
 				<ul class="header_right_menu">
-					<li class="menu_item"><a href="/notice">고객센터</a></li>
+					<li class="menu_item"><a href="/auth/notice">고객센터</a></li>
 					<li class="menu_item"><a href="/user/myPage">마이페이지</a></li>
 					<li class="menu_item"><a href="/logout">로그아웃</a></li>
 				</ul>

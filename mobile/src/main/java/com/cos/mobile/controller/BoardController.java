@@ -36,6 +36,7 @@ public class BoardController {
 	
 	@GetMapping({"/board/eventForm"})
 	public String saveeventForm() {
+		// 이벤트 게시판 작성페이지 이동
 		return "board/eventForm";
 	}
 	
@@ -48,6 +49,7 @@ public class BoardController {
 	
 	@GetMapping({"/board/noticeForm"})
 	public String savenoticeForm() {
+		// 공지사항 작성페이지 이동
 		return "board/noticeForm";
 	}
 	
@@ -60,34 +62,51 @@ public class BoardController {
 	
 	@GetMapping({"/board/faqForm"})
 	public String savefaqForm() {
+		// FAQ 작성페이지 이동
 		return "board/faqForm";
 	}
 	
-//	@GetMapping({"/qna"})
-//	public String qnaBoard(Model model, @PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable) {
-//		// QnA 게시판 목록 출력(미구현)
-//		model.addAttribute("boards", boardService.toQna(pageable));
-//		return "board/qnaBoard";
-//	}
+	@GetMapping({"/auth/qnaForm"})
+	public String qnaForm() {
+		// 1:1문의 (QnA) 작성페이지 이동
+		return "board/qnaForm";
+	}
+	
+	@GetMapping({"/auth/qna"})
+	public String qnaBoard(Model model, @PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable) {
+		// 1:1문의 (QnA) 게시판 목록 출력
+		model.addAttribute("boards", boardService.toQna(pageable));
+		return "board/qnaBoard";
+	}
 	
 	
 	
 	@GetMapping("/notice/{id}")
 	public String noticefindbyId(@PathVariable int id, Model model) {
+		// 공지사항 상세보기
 		model.addAttribute("board", boardService.noticeDetail(id));
 		return "board/noticeDetail";
 	}
 	
 	@GetMapping("/event/{id}")
 	public String eventfindbyId(@PathVariable int id, Model model) {
+		// 이벤트 상세보기
 		model.addAttribute("board", boardService.eventDetail(id));
 		return "board/eventDetail";
 	}
 	
 	@GetMapping("/faq/{id}")
 	public String faqfindbyId(@PathVariable int id, Model model) {
+		// FAQ 상세보기
 		model.addAttribute("board", boardService.faqDetail(id));
 		return "board/faqDetail";
+	}
+	
+	@GetMapping("/qna/{id}")
+	public String qnafindbyId(@PathVariable int id, Model model) {
+		// 1:1문의 (QnA) 상세보기
+		model.addAttribute("board", boardService.qnaDetail(id));
+		return "board/qnaDetail";
 	}
 	
 	// 글 수정하기(update)

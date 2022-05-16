@@ -20,7 +20,7 @@
 	</aside> -->
 	
 	<div class="board_container">	
-		<h2>FAQ 상세보기</h2>
+		<h2>공지 상세보기</h2>
 		<div class="buttons">
 			<a><button class="btn skyblue" onclick="history.back()">목록으로 돌아가기</button></a>
 		</div>
@@ -48,15 +48,23 @@
 			</tbody>
 			
 		</table>
-		
+		<!-- 삭제, 수정버튼  로그인한 작성자 본인에게 생성 -->
+		<c:if test="${board.users.id == principal.user.id}">
+			<div class="detail_btns">
+					<a href="/board/${board.id}/qnaUpdate"><button type="button">수정</button></a>
+					<button id="btn-delete">삭제</button>
+			</div>
+		</c:if>
+		<!-- 관리자 삭제, 수정버튼 -->
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SYSTEM')">
 			<div class="detail_btns">
-				<a href="/board/${board.id}/faqUpdate"><button type="button">수정</button></a>
+				<a href="/board/${board.id}/qnaUpdate"><button type="button">수정</button></a>
 				<button id="btn-delete">삭제</button>
 			</div>
 		</sec:authorize>
+		
 	</div>
 
 </section>
-<script type="text/javascript" src="/script/board.js"></script>
+<script type="text/javascript" src="/script/qnaboard.js"></script>
 <%@ include file="../layout/footer.jsp"%>
