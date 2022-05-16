@@ -1,6 +1,3 @@
-document.oncontextmenu = function(){return false};
-document.onselectstart = function(){return false};
-
 const header = document.querySelector("header");
 const toggleBtn = document.querySelector(".menu_toggle");
 const menubar = document.querySelector(".header_menubar");

@@ -1,5 +1,7 @@
 package com.cos.mobile.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +14,17 @@ import com.cos.mobile.repository.UserRepository;
 public class UserService {
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Transactional(readOnly=true)
+	public int idcheck(String userid) {
+		Optional<Users> user = userRepository.findByUserid(userid);
+		System.out.println(user);
+		if (user.isPresent()) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 	
 	@Transactional
 	public void join(Users user) {
