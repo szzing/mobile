@@ -70,4 +70,14 @@ public class MobileControllerTest {
 	public String noticedetail() {
 		return "board/noticeDetail";
 	}
+	
+	@GetMapping("/test/productList")
+	public String productlist() {
+		return "product/productList";
+	}
+	
+	@GetMapping("/test/productDetail")
+	public String productdetail() {
+		return "product/productDetail";
+	}
 }
