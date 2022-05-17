@@ -1,7 +1,13 @@
 package com.cos.mobile.controller.api;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,5 +48,17 @@ public class UserApiController {
 	public ResponseDto<Integer> update(@RequestBody Users user){
 		userService.update(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
+	@GetMapping("/api/idcheck/{userid}")
+	public Map<String, Integer> idcheck(@PathVariable String userid) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		boolean existId = userService.idcheck(userid);
+		if(existId) {
+			map.put("existId", 1);
+		} else {
+			map.put("existId", 0);
+		}
+		return map;
 	}
 }

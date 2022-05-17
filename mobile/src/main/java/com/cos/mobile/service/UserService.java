@@ -1,5 +1,7 @@
 package com.cos.mobile.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,8 +16,15 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+
 	@Autowired
 	private BCryptPasswordEncoder encodeer;
+
+	@Transactional(readOnly=true)
+	public boolean idcheck(String userid) {
+		Optional<Users> user = userRepository.findByUserid(userid);
+		return user.isPresent();
+	}
 	
 	@Transactional
 	public void join(Users user) {

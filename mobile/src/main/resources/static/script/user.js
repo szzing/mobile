@@ -21,9 +21,20 @@ function checkId(){
 
 let index = {
 	init: function() {
+		$('#btn-idchk').on("click", () => {
+			if(document.querySelector("#userid").value == "") {
+				alert("아이디를 입력하세요.");
+			}
+			this.idcheck();
+		});
+		
 		$("#btn-save").on("click", () => {
 			if(document.querySelector("#userid").value == "" || document.querySelector("#username").value == "" || document.querySelector("#password").value == "" || document.querySelector("#phone").value == "" || document.querySelector("#email").value == "") {
 				alert("필수 입력란을 모두 채워주세요.");
+				return false;
+			}
+			if(document.querySelector("#idchk").value == 0) {
+				alert("아이디 중복 확인을 해주세요.");
 				return false;
 			}
 			if(document.querySelector("#password").value != document.querySelector("#pwcheck").value) {
@@ -47,6 +58,28 @@ let index = {
 		
 		$("#btn-userdelete").on("click", () => {
 			this.userDelete();
+		});
+	},
+	
+	idcheck: function() {
+		const idchk = document.querySelector("#idchk");
+		idchk.value = 0;
+		let userid = $("#userid").val();
+		
+		$.ajax({
+			async:true,
+			type:"GET",
+			url:"/api/idcheck/"+userid,
+		}).done(function(resp){
+			if(resp.existId == 0) {
+				alert("사용 가능한 아이디입니다.");
+				idchk.value = 1;
+			} else {
+				alert("이미 존재하는 아이디 입니다.");
+				idchk.value = 0;
+			}
+		}).fail(function(error){
+			// alert(JSON.stringify(error));
 		});
 	},
 

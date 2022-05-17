@@ -28,8 +28,7 @@
 					<button type="submit" id="btn-login" class="btn submit_btn" onclick="loginCheck();">로그인</button>
 				</div>
 		</form>
-		
-		
+
 		<div class="btns">	
 			<button type="button" class="btn button_btn skyblue">아이디 찾기</button>
 			<button type="button" class="btn button_btn pink">비밀번호 찾기</button>
@@ -50,6 +49,7 @@
 	</div>
 	
 </section>
+<<<<<<< HEAD
 <script type="text/javascript">
 function loginCheck(){
 	if (document.loginform.userid.value == ""){
@@ -64,4 +64,8 @@ function loginCheck(){
 		return true;
 	}
 }</script>
+=======
+
+<script type="text/javascript" src="../script/user.js"></script>
+>>>>>>> update
 <%@ include file="../layout/footer.jsp"%>

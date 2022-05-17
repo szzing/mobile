@@ -28,10 +28,9 @@
 				
 				<div class="input_box">
 					<label for="userid" class="labels">아이디<span class="point">*</span></label>
-					<input id="userid" class="input_item" type="text" required oninput = "checkId()"/>
-					<span class="id_ok">사용 가능한 아이디입니다.</span>
-					<span class="id_already">이미 사용중인 아이디입니다.</span>
-					<input type="button" class="btn btn_alt" value="중복확인">
+					<input id="userid" class="input_item" type="text" required/>
+					<input id="idchk" hidden="hidden" type="text"/>
+					<input id="btn-idchk" type="button" class="btn btn_alt" value="중복확인">
 				</div>
 				
 				<div class="input_box">
