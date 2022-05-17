@@ -11,7 +11,5 @@
 		<br> <b>Copyright © 2022 MO:BILE. All Rights Reserved.</b>
 	</p>
 </footer>
-<!-- ckeditor -->
-<script type="text/javascript" src="/script/ckeditor.js"></script>       
 </body>
 </html>

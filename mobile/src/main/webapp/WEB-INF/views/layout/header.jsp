@@ -30,8 +30,6 @@
 <script src="/summernote/summernote-lite.js"></script>
 <script src="/summernote/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="/summernote/summernote-lite.css">
-<!-- ckeditor -->
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
 </head>
 
 <body>

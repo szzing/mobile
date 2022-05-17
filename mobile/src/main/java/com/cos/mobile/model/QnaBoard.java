@@ -52,7 +52,7 @@ public class QnaBoard {
 	private int count; // 조회수
 	
 	@Column(nullable=true, length=100)
-	private String password;
+	private String pass;
 	
 	@Lob
 	private String content;
@@ -73,6 +73,7 @@ public class QnaBoard {
 	@CreationTimestamp
 	private Timestamp createDate;
 	
+	@Column(nullable=false, length=1)
 	private boolean secret;
 
 }

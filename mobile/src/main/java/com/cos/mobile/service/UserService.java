@@ -56,7 +56,9 @@ public class UserService {
 		Users persistence = userRepository.findById(user.getId()).orElseThrow(()->{
 			return new IllegalArgumentException("회원 찾기 실패" + user.getId());
 		});
-		persistence.setPassword(user.getPassword());
+		String rawPassword = user.getPassword();
+		String encPassword = encodeer.encode(rawPassword);
+		persistence.setPassword(encPassword);
 		persistence.setEmail(user.getEmail());
 		persistence.setUsername(user.getUsername());
 		persistence.setPhone(user.getPhone());

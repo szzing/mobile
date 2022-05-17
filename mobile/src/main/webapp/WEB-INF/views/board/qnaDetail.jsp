@@ -22,11 +22,9 @@
 	<div class="board_container">	
 		<h2>공지 상세보기</h2>
 		<div class="buttons">
-			<a><button class="btn skyblue" onclick="history.back()">목록으로 돌아가기</button></a>
+			<a href="/auth/qna"><button class="btn skyblue">목록으로 돌아가기</button></a>
 		</div>
-		<!-- 수정, 삭제시 ajax로 글번호 정보를 전송 -->
 		<input id="id" type="hidden" value="${board.id}">
-		<!--  -->
 		
 		<div class="detail_info">
 			<span>작성일 : <fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd HH:mm" /></span>
@@ -44,25 +42,32 @@
 			<tbody>
 				<tr>
 					<td colspan="9" class="board_content">${board.content}</td>
+					
 				</tr>		
 			</tbody>
 			
 		</table>
-		<!-- 삭제, 수정버튼  로그인한 작성자 본인에게 생성 -->
-		<c:if test="${board.users.id == principal.user.id}">
-			<div class="detail_btns">
-					<a href="/board/${board.id}/qnaUpdate"><button type="button">수정</button></a>
+		<!-- 글작성자 본인과 관리자만 삭제버튼 -->
+		<c:choose>
+			<c:when test="${!empty principal && board.users.id == principal.user.id || principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
+				<div class="detail_btns">
+					<!-- 글 작성자 본인만 수정버튼 -->
+					<c:if test="${board.users.id == principal.user.id}">
+						<a href="/board/${board.id}/qnaUpdate"><button type="button">수정</button></a>
+					</c:if>
 					<button id="btn-delete">삭제</button>
-			</div>
-		</c:if>
-		<!-- 관리자 삭제, 수정버튼 -->
-		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SYSTEM')">
-			<div class="detail_btns">
-				<a href="/board/${board.id}/qnaUpdate"><button type="button">수정</button></a>
-				<button id="btn-delete">삭제</button>
-			</div>
-		</sec:authorize>
-		
+				</div>
+			</c:when>
+			<c:otherwise>
+				<!-- 비로그인 사용자가 작성한 글 -->
+				 <c:if test="${empty board.users.username}">
+					<div class="detail_btns">
+							<a href="/board/${board.id}/qnaUpdate"><button type="button">수정</button></a>
+							<button id="btn-delete2">삭제</button>
+					</div>
+				</c:if>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
 </section>

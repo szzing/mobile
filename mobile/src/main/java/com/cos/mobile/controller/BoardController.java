@@ -19,8 +19,8 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class BoardController {
 	@Autowired
-	private final BoardService boardService;
-	
+	private BoardService boardService;
+
 	@GetMapping({"","/"})
 	public String index(@AuthenticationPrincipal PrincipalDetail principal) {
 		return "index";
@@ -109,6 +109,12 @@ public class BoardController {
 		return "board/qnaDetail";
 	}
 	
+	@GetMapping("/qnachk/{id}")
+	public String qnaCheck(@PathVariable int id, Model model) {
+		model.addAttribute("board", boardService.qnaDetail(id));
+		return "board/qnaPassword";
+	}
+	
 	// 글 수정하기(update)
 	@GetMapping("/board/{id}/eventUpdate")
 	public String eventUpdate(@PathVariable int id, Model model) {
@@ -128,5 +134,9 @@ public class BoardController {
 		return "board/noticeUpdate";
 	}
 	
-	
+	@GetMapping("/board/{id}/qnaUpdate")
+	public String qnaUpdate(@PathVariable int id, Model model) {
+		model.addAttribute("board", boardService.qnaDetail(id));
+		return "board/qnaUpdate";
+	}
 }

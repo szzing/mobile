@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,10 +21,7 @@ public class BoardService {
 	
 	@Autowired
 	private QnaRepository qnaRepository;
-	
-	@Autowired
-	private BCryptPasswordEncoder encodeer;
-	
+
 	@Transactional
 	public void adminwrite(Boards board, Users user) throws IllegalStateException, IOException {
 		// 관리자 글 작성	
@@ -37,9 +33,16 @@ public class BoardService {
 	@Transactional
 	public void qnawrite(QnaBoard qna, Users user) throws IllegalStateException, IOException{
 		qna.setCount(0);
-		String rawPassword = qna.getPassword();
-		String encPassword = encodeer.encode(rawPassword);
-		qna.setPassword(encPassword);
+		if(qna.getWriter()==null) {
+			qna.setUsers(user);
+		}
+		qna.setPass(qna.getPass());
+		qnaRepository.save(qna);
+	}
+	
+	@Transactional
+	public void qnawrite2(QnaBoard qna)throws IllegalStateException, IOException{
+		qna.setCount(0);
 		qnaRepository.save(qna);
 	}
 	
@@ -112,6 +115,17 @@ public class BoardService {
 		board.setContent(requestBoard.getContent());
 	}
 	
+	@Transactional
+	public void qnaUpdate(int id, QnaBoard requestQna) {
+		QnaBoard qnaboard = qnaRepository.findById(id).orElseThrow(()->{
+			return new IllegalArgumentException("글 불러오기 실패 : 아이디를 찾을 수 없습니다.");
+		});
+		qnaboard.setTitle(requestQna.getTitle());
+		qnaboard.setPass(requestQna.getPass());
+		qnaboard.setSecret(requestQna.isSecret());
+		qnaboard.setContent(requestQna.getContent());
+	}
+	
 	
 	
 	@Transactional
@@ -126,4 +140,10 @@ public class BoardService {
 		qnaRepository.deleteById(id);
 	}
 	
+	@Transactional(readOnly=true)
+	public QnaBoard qnaPassCheck(QnaBoard qnaboard) {
+		System.out.println(qnaboard.getId());
+		System.out.println(qnaboard.getPass());
+		return qnaRepository.findByIdAndPass(qnaboard.getId(), qnaboard.getPass());
+	}
 }

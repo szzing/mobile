@@ -30,8 +30,9 @@ public class UserController {
 		return "user/joinForm";
 	}
 	
-	@GetMapping("/admin/joinForm")
+	@GetMapping("/auth/admin/joinForm")
 	public String adminjoinForm() {
+		// 관리자 계정생성 페이지 임시 접근가능
 		return "admin/joinForm";
 	}
 	

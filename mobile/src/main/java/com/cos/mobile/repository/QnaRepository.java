@@ -11,4 +11,6 @@ public interface QnaRepository extends JpaRepository<QnaBoard, Integer> {
 	@Modifying
     @Query(value="update Qnaboard p set p.count = p.count + 1 where p.id = :id", nativeQuery=true)
     int updateCount(int id);
+	
+	QnaBoard findByIdAndPass(int id, String pass);
 }

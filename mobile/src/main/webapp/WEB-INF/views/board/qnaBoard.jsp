@@ -24,20 +24,9 @@
 			
 					<div class="buttons">
 						<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
-						<c:choose>
-							<c:when test="${empty principal}">
-								<!-- 비로그인으로 문의하기 -->
-								<a href="/auth/qnaForm"><button class="btn pink">문의하기</button></a>
-							</c:when>
-							<c:otherwise>
-								<!--  로그인 상태에서 문의하기 -->
-								<a href="/qnaForm"><button class="btn pink">문의하기</button></a>
-							</c:otherwise>
-						</c:choose>
+						<a href="/auth/qnaForm"><button class="btn pink">문의하기</button></a>
 					</div>
-				
-				
-			
+
 			<table class="board_list">
 				<thead class="board_index">
 					<tr>
@@ -52,22 +41,49 @@
 				
 				<c:forEach var="board" items="${boards.content}">
 					<c:if test="${board.secret eq 'true'}">
-						<!-- 비밀글은 작성자 본인과 관리자만 상세보기 가능 -->
-							<tr class="board_item">
-								<td>${board.id}</td>
-								<c:choose>
-									<c:when test="board.users.id == principal.user.id || principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'">
-										<td onclick="location.href='/qna/${board.id}'">
-											<c:out value="${board.title}[${board.replyCnt}]"/>
-										</td>
-									</c:when>
-									<c:otherwise>
-										<td>
-											<img src="/css/icon/lock_icon.png" width="15px">
-											<c:out value="${board.title}[${board.replyCnt}]"/>
-										</td>
-									</c:otherwise>
-								</c:choose>
+					<!-- 비밀글 작성자 본인과 관리자만 상세보기 가능 -->
+						<tr class="board_item">
+							<td>${board.id}</td>
+								<c:if test="${empty board.users.username}">
+									<!-- 비회원 글작성 -->
+									<c:choose>
+										<c:when test="${principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
+											<!-- 관리자 상세보기 가능 -->
+											<td onclick="location.href='/qna/${board.id}'">
+												<img src="/css/icon/lock_icon.png" width="15px">
+												<c:out value="${board.title}[${board.replyCnt}]"/>
+											</td>
+										</c:when>
+										<c:otherwise>
+											<!-- 관리자가 아니면 비번확인 페이지로 -->
+											<td onclick="location.href='/qnachk/${board.id}'">
+												<img src="/css/icon/lock_icon.png" width="15px">
+												<c:out value="${board.title}[${board.replyCnt}]"/>
+											</td>
+										</c:otherwise>
+									</c:choose>
+								</c:if>
+								<c:if test="${empty board.writer}">
+									<!-- 회원 글작성 -->
+									<c:choose>
+										<c:when test="${!empty principal && board.users.id == principal.user.id || principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
+											<!-- 글작성 회원 본인 & 관리자 상세보기 가능 -->
+											<td onclick="location.href='/qna/${board.id}'">
+												<img src="/css/icon/lock_icon.png" width="15px">
+												<c:out value="${board.title}[${board.replyCnt}]"/>
+											</td>
+										</c:when>
+										<c:otherwise>
+											<!-- 그 외 접근은 클릭불가 -->
+											<td>
+												<img src="/css/icon/lock_icon.png" width="15px">
+												<c:out value="${board.title}[${board.replyCnt}]"/>
+											</td>
+										</c:otherwise>
+									</c:choose>
+								</c:if>
+				
+								<!-- 작성자명 시작 -->
 								<c:choose>
 									<c:when test="${empty board.users.username}">
 										<td>${board.writer}</td>
@@ -76,11 +92,13 @@
 										<td>${board.users.username}</td>
 									</c:otherwise>
 								</c:choose>
+								<!-- 작성자명 끝 -->
 								<td><fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd"/></td>
 							</tr>
 						
 					</c:if>
-					<c:if test="${board.secret eq 'false'}">
+
+<%-- 					<c:if test="${board.secret eq 'false'}">
 					<!-- 공개글은 누구나 상세보기 가능-->
 						<tr class="board_item">
 							<td>${board.id}</td>
@@ -95,7 +113,7 @@
 							</c:choose>
 							<td><fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd"/></td>
 						</tr>
-					</c:if>
+					</c:if> --%>
 				</c:forEach>
 				
 				</tbody>

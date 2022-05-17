@@ -1,6 +1,8 @@
 package com.cos.mobile.controller.api;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +40,13 @@ public class BoardApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	
+	@PostMapping("/api/qna")
+	public ResponseDto<Integer> qnaSave2(@RequestBody QnaBoard qnaboard) throws IllegalStateException, IOException{
+		// 문의 게시판 비회원 글쓰기
+		boardService.qnawrite2(qnaboard);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
 	@DeleteMapping("/api/board/{id}")
 	public ResponseDto<Integer> delete(@PathVariable int id){
 		boardService.deleteBoard(id);
@@ -54,5 +63,23 @@ public class BoardApiController {
 	public ResponseDto<Integer> update(@PathVariable int id, @RequestBody Boards board) throws IllegalStateException, IOException{
 		boardService.update(id, board);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
+	@PutMapping("/api/qna/{id}")
+	public ResponseDto<Integer> qnaUpdate(@PathVariable int id, @RequestBody QnaBoard qna) throws IllegalStateException, IOException{
+		boardService.qnaUpdate(id, qna);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
+	@PostMapping("/api/qnapass")
+	public Map<String, Integer> qnaCheck(@RequestBody QnaBoard qnaboard){
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		QnaBoard qna = boardService.qnaPassCheck(qnaboard);
+		if(qna == null) {
+			map.put("check", 0);
+		}else {
+			map.put("check", 1);
+		}
+		return map;
 	}
 }
