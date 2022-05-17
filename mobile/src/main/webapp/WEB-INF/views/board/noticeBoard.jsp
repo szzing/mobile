@@ -38,6 +38,13 @@
 				</c:choose>
 				
 			<table class="board_list">
+				<colgroup>
+					<col width="10%">
+					<col width="60%">
+					<col width="15%">
+					<col width="15%">
+				</colgroup>
+				
 				<thead class="board_index">
 					<tr>
 						<th>번호</th>

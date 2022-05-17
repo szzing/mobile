@@ -80,4 +80,9 @@ public class MobileControllerTest {
 	public String productdetail() {
 		return "product/productDetail";
 	}
+	
+	@GetMapping("/test/reviewForm")
+	public String reviewform() {
+		return "board/reviewForm";
+	}
 }

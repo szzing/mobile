@@ -14,7 +14,7 @@
 		<form id="join" class="form join_form">
 			<!-- 전송용 -->
 			<input type="hidden" id="oauth" name="oauth" value="${principal.oauth}"/>
-			<<input type="hidden" id="id" value="${principal.id }"/>
+			<input type="hidden" id="id" value="${principal.id}"/>
 			<!--필수정보 입력란-->
 			<div class="form_heading">
 				<h3>변경할 회원 정보를 입력해주세요.</h3>

@@ -49,11 +49,6 @@
 	background: rgba(255,192,203,0.2);
 }
 
-.list_title {
-	width: 60%;
-	text-align: center;
-}
-
 .board_index {
 	height: 40px;
 	border-bottom: 2px solid #ccc;
@@ -66,7 +61,6 @@
 	border: 2px solid #ccc;
 	border-left: none;
 	border-right: none;
-	text-align: left;
 }
 
 .board_item {
