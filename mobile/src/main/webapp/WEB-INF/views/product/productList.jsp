@@ -15,6 +15,7 @@
 		<h3>제품페이지</h3>
 		<ul class="side_menu_box">
 			<li class="side_menu_item menu_now"><a href="#">스마트폰</a></li>
+			<li class="side_menu_item"><a href="#">태블릿PC</a></li>
 			<li class="side_menu_item"><a href="#">주변기기</a></li>
 		</ul>
 	</aside>
