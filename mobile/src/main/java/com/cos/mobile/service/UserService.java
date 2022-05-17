@@ -16,14 +16,9 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	@Transactional(readOnly=true)
-	public int idcheck(String userid) {
+	public boolean idcheck(String userid) {
 		Optional<Users> user = userRepository.findByUserid(userid);
-		System.out.println(user);
-		if (user.isPresent()) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return user.isPresent();
 	}
 	
 	@Transactional

@@ -47,10 +47,8 @@ let index = {
 		
 		$.ajax({
 			async:true,
-			type:"POST",
-			url:"/api/idcheck",
-			data: userid,
-			dataType:"json" 
+			type:"GET",
+			url:"/api/idcheck/"+userid,
 		}).done(function(resp){
 			if(resp.existId == 0) {
 				alert("사용 가능한 아이디입니다.");
@@ -60,7 +58,7 @@ let index = {
 				idchk.value = 0;
 			}
 		}).fail(function(error){
-			//
+			// alert(JSON.stringify(error));
 		});
 	},
 

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,12 +51,15 @@ public class UserApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	
-	@PostMapping("/api/idcheck")
-	public Map<String, Integer> idcheck(@RequestBody String userid) {
+	@GetMapping("/api/idcheck/{userid}")
+	public Map<String, Integer> idcheck(@PathVariable String userid) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		int existId = userService.idcheck(userid);
-		map.put("existId", existId);
-		System.out.println(existId);
+		boolean existId = userService.idcheck(userid);
+		if(existId) {
+			map.put("existId", 1);
+		} else {
+			map.put("existId", 0);
+		}
 		return map;
 	}
 }
