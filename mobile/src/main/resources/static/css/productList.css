@@ -47,6 +47,30 @@
 	margin-right: 1rem;
 }
 
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio]+label {
+    display: inline-block;
+    background-color: white;
+    border-radius: 50rem;
+    padding: 0.5rem 1rem;
+    border: solid 2px;
+    box-shadow: 2px 1000px 1px #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+input[type=radio]+label:hover {
+    box-shadow: none;
+    background-color: rgba(255, 213, 227, 0.5);
+}
+
+input[type=date] {
+    font-size: 12px;
+}
+
 .tab_now {
 	border: 2px solid pink;
 	background-color: white;
@@ -97,3 +121,5 @@
 	font-size: 20px;
 	font-weight: bold;
 }
+
+

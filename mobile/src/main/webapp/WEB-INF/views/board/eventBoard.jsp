@@ -23,10 +23,17 @@
 				</div>
 		</sec:authorize>
 		<table class="board_list">
+			<colgroup>
+				<col width="10%">
+				<col width="60%">
+				<col width="15%">
+				<col width="15%">
+			</colgroup>
+			
 			<thead class="board_index">
 				<tr>
 					<th>번호</th>
-					<th class="list_title">제목</th>
+					<th>제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
 				</tr>

@@ -15,7 +15,7 @@
 			<!-- 전송용 -->
 			<input type="hidden" id="id" value="${principal.user.id }"/>
 			<input type="hidden" id="oauth" name="oauth" value="${principal.user.oauth}"/>
-			<<input type="hidden" id="id" value="${principal.user.id }"/>
+
 			<!--필수정보 입력란-->
 			<div class="form_heading">
 				<h3>변경할 회원 정보를 입력해주세요.</h3>
