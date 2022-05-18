@@ -8,6 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +26,9 @@ import com.cos.mobile.service.UserService;
 
 @RestController
 public class UserApiController {
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
 	
 	@Autowired
 	private UserService userService;
@@ -50,6 +57,8 @@ public class UserApiController {
 	@PutMapping("/user")
 	public ResponseDto<Integer> update(@RequestBody Users user){
 		userService.update(user);
+		Authentication autentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUserid(), user.getPassword()));
+		SecurityContextHolder.getContext().setAuthentication(autentication);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	

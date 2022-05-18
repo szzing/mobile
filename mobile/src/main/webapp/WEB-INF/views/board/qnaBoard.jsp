@@ -7,7 +7,6 @@
 <div class="page_title">
 	<h1 class="title">고객센터</h1>
 </div>
-
 <section class="board_wrap">
 
 	<aside class="side_menu_bar">
@@ -127,8 +126,36 @@
 			</table>
 
 			<div class="pagination">
-				<a><button class="page_item">이전페이지</button></a>
-				<a><button class="page_item">다음페이지</button></a>
+				<c:choose>
+					<c:when test="${board.first}">
+						<a><button class="page_item disabled">이전페이지</button></a>
+					</c:when>
+					<c:otherwise>
+						<a href="?page=${board.number-1}"><button class="page_item">이전페이지</button></a>
+					</c:otherwise>
+				</c:choose>
+				
+				<!-- 숫자 블럭 영역 -->
+				<c:forEach var="i" begin="${startBlockPage}" end="${endBlockPage}">
+					<c:choose>
+						<c:when test="${board.pageable.pageNumber+1==i}">
+							<a class="disable" href="?page=${i-1}">[${i}]</a>
+						</c:when>
+						<c:otherwise>
+							<a href="?page=${i-1}">[${i}]</a>
+						</c:otherwise>
+					</c:choose>
+		        </c:forEach>
+				<!--  -->
+				
+				<c:choose>
+					<c:when test="${board.last}">
+						<a><button class="page_item disabled">다음페이지</button></a>
+					</c:when>
+					<c:otherwise>
+						<a href="?page=${board.number+1}"><button class="page_item">다음페이지</button></a>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</section>

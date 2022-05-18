@@ -131,7 +131,7 @@
 					<button type="button" id="btn-replysave" >댓글 등록</button>
 				</div>
 			</c:otherwise>
-		</c:choose>	
+		</c:choose>	 
 			
 		
 	</div>

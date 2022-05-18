@@ -20,6 +20,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Formula;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -68,6 +69,7 @@ public class QnaBoard {
 	@OrderBy("id desc")
 	private List<Reply> reply;
 	
+	@Formula("(SELECT count(1) FROM reply r WHERE r.qnaboardid = id)")
 	private int replyCnt;
 	
 	@CreationTimestamp

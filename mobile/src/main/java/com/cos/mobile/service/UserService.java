@@ -56,6 +56,11 @@ public class UserService {
 		Users persistence = userRepository.findById(user.getId()).orElseThrow(()->{
 			return new IllegalArgumentException("회원 찾기 실패" + user.getId());
 		});
+		System.out.println("메일 : " + user.getEmail());
+		System.out.println("폰 : " + user.getPhone());
+		System.out.println("우편번호 : " + user.getZipcode());
+		System.out.println("주소 : " + user.getAddress());
+		System.out.println("상세주소 : " + user.getAddrdetail());
 		String rawPassword = user.getPassword();
 		String encPassword = encodeer.encode(rawPassword);
 		persistence.setPassword(encPassword);

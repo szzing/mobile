@@ -30,6 +30,8 @@
 <script src="/summernote/summernote-lite.js"></script>
 <script src="/summernote/summernote-ko-KR.js"></script>
 <link rel="stylesheet" href="/summernote/summernote-lite.css">
+<!-- 우편번호 검색 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 
 <body>
