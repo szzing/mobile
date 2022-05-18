@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @SequenceGenerator(
 		name="USER_SEQ_GENERATOR"
 		, sequenceName = "USER_SEQ"
-		, initialValue = 1
+		, initialValue = 200
 		, allocationSize = 1
 		)
 

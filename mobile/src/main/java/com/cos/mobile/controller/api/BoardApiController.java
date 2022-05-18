@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.mobile.config.auth.PrincipalDetail;
+import com.cos.mobile.dto.ReplySaveRequestDto;
 import com.cos.mobile.dto.ResponseDto;
 import com.cos.mobile.model.Boards;
 import com.cos.mobile.model.QnaBoard;
@@ -70,6 +71,19 @@ public class BoardApiController {
 		boardService.qnaUpdate(id, qna);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
+	
+	@PostMapping("/api/qna/{qnaboardId}/reply")
+	public ResponseDto<Integer> replySave(@RequestBody ReplySaveRequestDto replySaveRequestDto){
+		boardService.replySave(replySaveRequestDto);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
+	@DeleteMapping("/api/qna/{qnaboardId}/reply/{replyId}")
+	public ResponseDto<Integer> replyDelete(@PathVariable int replyId){
+		boardService.deleteReply(replyId);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+
 	
 	@PostMapping("/api/qnapass")
 	public Map<String, Integer> qnaCheck(@RequestBody QnaBoard qnaboard){

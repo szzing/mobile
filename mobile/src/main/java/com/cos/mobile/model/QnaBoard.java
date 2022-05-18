@@ -63,10 +63,10 @@ public class QnaBoard {
 	@JoinColumn(name="userid", foreignKey = @ForeignKey(foreignKeyDefinition = "FOREIGN KEY (userid) references users (id) ON DELETE SET NULL"))
 	private Users users;
 
-	@OneToMany (mappedBy="boards", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)	// board 삭제 시 댓글도 삭제함
-	@JsonIgnoreProperties({"boards"})
+	@OneToMany (mappedBy="qnaboard", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)	// qnaboard 삭제 시 댓글도 삭제함
+	@JsonIgnoreProperties({"qnaboard"})
 	@OrderBy("id desc")
-	private List<Reply> replys;
+	private List<Reply> reply;
 	
 	private int replyCnt;
 	

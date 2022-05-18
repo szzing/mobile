@@ -1,3 +1,56 @@
+let index = {
+	replyDelete : function(boardId, replyId){
+			$.ajax({ 
+				type: "DELETE",
+				url: `/api/qna/${boardId}/reply/${replyId}`,
+				dataType: "json"
+			}).done(function(resp){
+				alert("댓글삭제 성공");
+				location.href = `/qna/${boardId}`;
+			}).fail(function(error){
+				alert(JSON.stringify(error));
+			}); 
+		},
+}
+
+
+$(document).on("click", "#btn-replydelete", function(boardId, replyId){
+		console.log(boardId)
+		console.log(replyId)
+			$.ajax({ 
+				type: "DELETE",
+				url: `/api/qna/${boardId}/reply/${replyId}`,
+				dataType: "json"
+			}).done(function(resp){
+				alert("댓글삭제 성공");
+				location.href = `/qna/${boardId}`;
+			}).fail(function(error){
+				alert(JSON.stringify(error));
+			}); 
+});
+
+$(document).on("click", "#btn-replysave", function(){
+	let data={
+			userId: $("#userId").val(),
+			qnaboardId: $("#boardId").val(),
+			writer: $("#writer").val(),
+			content: $("#replycontent").val()
+		};
+		
+		$.ajax({ 
+			type:"POST",
+			url:`/api/qna/${data.qnaboardId}/reply`,
+			data:JSON.stringify(data),
+			contentType:"application/json; charset=utf-8",
+			dataType:"json" 
+		}).done(function(resp){
+			alert("댓글 작성이 완료되었습니다.");
+			location.href=`/qna/${data.qnaboardId}`;
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+});
+
 $(document).on("click", "#btn-qnachk", function(){
 	let id = $("#id").val();
 	let data={
@@ -110,3 +163,5 @@ $(document).on("click", "#btn-delete", function(){
 			alert(JSON.stringify(error));
 		});
 })
+
+index.init();

@@ -20,7 +20,7 @@
 	</aside> -->
 	
 	<div class="board_container">	
-		<h2>공지 상세보기</h2>
+		<h2>1:1문의 상세보기</h2>
 		<div class="buttons">
 			<a href="/auth/qna"><button class="btn skyblue">목록으로 돌아가기</button></a>
 		</div>
@@ -68,8 +68,73 @@
 				</c:if>
 			</c:otherwise>
 		</c:choose>
+		
+		
+		<!-- 댓글 표시 영역 -->
+	<div>
+		<br><hr>
+		<h2>댓글표시영역</h2>
+		<c:forEach var="reply" items="${board.reply}">
+				<c:choose>
+					<c:when test="${empty reply.users.username&&empty reply.writer}">
+						<b>작성자 : 알 수 없음</b>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${!empty reply.writer}">
+								<b>작성자 :${reply.writer}</b>
+							</c:when>
+							<c:otherwise>
+								<b>작성자 : ${reply.users.username}</b>
+							</c:otherwise>
+						</c:choose>
+					</c:otherwise>
+				</c:choose>
+				작성일자 : <fmt:formatDate value="${reply.createDate}" pattern="YYYY-MM-dd HH:mm" />
+				<div>내용 : ${reply.content}</div>
+				<div class="detail_btns">
+					<button onClick="index.replyDelete(${board.id}, ${reply.id})">삭제</button>
+				</div>
+		</c:forEach>
 	</div>
-
+		<!-- 댓글 작성 영역 -->
+		<c:choose>
+			<c:when test="${!empty principal}">
+			<!-- 로그인 댓글작성 -->
+			<form>
+			 	<input type="hidden" id="userId" value="${principal.user.id}" /> 
+				<input type="hidden" id="boardId" value="${board.id}" />
+				<div class="board_input_box">
+				
+					<label for="content" class="labels">댓글 작성</label>
+					<textarea class="input_item board_textarea" placeholder="댓글을 입력해주세요. rows 변경해도 영역 크기가 안줄어드는것같아요" id="replycontent" rows="2"></textarea>
+				</div>
+			</form>
+			<div class="detail_btns">
+				<button type="button" id="btn-replysave" >댓글 등록</button>
+			</div>
+			</c:when>
+			<c:otherwise>
+				<form>
+					<input type="hidden" id="boardId" value="${board.id}" />
+					<div>
+							<!-- json 전송용 데이터 -->
+							<input type="hidden" id="userId" value="100"/>
+							<!-- 로그인 안한 사용자는 작성자명 직접 입력함 -->
+							작성자명 : <input type="text" id="writer" name="writer"/> 
+				
+						<label for="content" class="labels">댓글 작성</label>
+						<textarea placeholder="댓글을 입력해주세요." id="replycontent" rows="3" cols="100"></textarea>
+					</div>
+				</form>
+				<div class="detail_btns">
+					<button type="button" id="btn-replysave" >댓글 등록</button>
+				</div>
+			</c:otherwise>
+		</c:choose>	
+			
+		
+	</div>
 </section>
 <script type="text/javascript" src="/script/qnaboard.js"></script>
 <%@ include file="../layout/footer.jsp"%>

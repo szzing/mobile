@@ -6,10 +6,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import lombok.*;
 import javax.persistence.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data	// getter, setter
+@NoArgsConstructor // 빈 생성자
+@AllArgsConstructor	// 전체 생성자
+@Builder	// 빌더 패턴
 @Entity
 @SequenceGenerator(
 		name = "REPLY_SEQ_GENERATOR"
@@ -24,15 +24,16 @@ public class Reply {
 	@Column(nullable=false, length=200)
 	private String content;
 	
-	@ManyToOne
-	@JoinColumn(name="boardsId")
-	private Boards boards;
+	@ManyToOne	// 여러개 답변은 하나의 게시글에 존재
+	@JoinColumn(name="qnaboardId")
+	private QnaBoard qnaboard;
 	
-	@ManyToOne(optional = true)
-	@JoinColumn(name="userid", foreignKey = @ForeignKey(foreignKeyDefinition = "FOREIGN KEY (userid) references users (id) ON DELETE SET NULL"))
+	@ManyToOne
+	@JoinColumn(name="userid")
 	private Users users;
+	
+	private String writer;
 	
 	@CreationTimestamp
 	private Timestamp createDate;
-
 }
