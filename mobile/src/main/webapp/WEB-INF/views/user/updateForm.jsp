@@ -79,6 +79,7 @@
 		
 		<div class="btns">
 			<button id="btn-update" class="btn submit_btn">수정완료</button>
+			<button id="btn-userdelete" class="btn submit_btn">회원탈퇴</button>
 		</div>
 	</div>
 </section>

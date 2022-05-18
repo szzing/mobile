@@ -4,8 +4,11 @@ package com.cos.mobile.controller.api;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,5 +63,11 @@ public class UserApiController {
 			map.put("existId", 0);
 		}
 		return map;
+	}
+	@DeleteMapping("/api/user/{id}")
+	public ResponseDto<Integer> delete(@PathVariable int id, HttpSession session){
+		userService.deleteUser(id);
+		session.invalidate(); // 회원데이터 삭제 후 로그아웃
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 }

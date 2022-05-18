@@ -75,4 +75,9 @@ public class UserService {
 		return user;
 	}
 	
+	@Transactional
+	public void deleteUser(int id) {
+		userRepository.deleteById(id);
+	}
+	
 }
