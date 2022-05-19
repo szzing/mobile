@@ -12,7 +12,7 @@
 <section>
 	<div class="board_container">
 		
-		<h2>1:1 문의글 작성</h2>
+		<h2>1:1 문의글 수정</h2>
 		
 		<div class="buttons">
 			<a><button class="btn skyblue" onclick="history.back()">돌아가기</button></a>
@@ -20,17 +20,18 @@
 		</div>
 		
 		<form class="board_form" method="post">
+			<input id="id" type="hidden" value="${board.id}">
 			<div class="board_input_boxes">
 				<div class="board_input_box">
 					<label for="title" class="labels">제목</label>
-					<input type="text" class="input_item board_txt" placeholder="제목을 입력해주세요." id="title" name="title">
+					<input type="text" class="input_item board_txt" value="${board.title}" id="title" name="title">
 				</div>
 			
 				<c:if test="${empty principal}">
 					<!-- 로그인 상태가 아닐때 작성자명과 비번 설정 -->
 					<div class="board_input_box">
 						<label for="writer" class="labels">작성자명</label>
-						<input type="text" class="input_item board_txt" placeholder="작성자명을 입력해주세요." id="writer" name="writer">
+						<input type="text" class="input_item board_txt" value="${board.writer}" id="writer" name="writer" readonly>
 					</div>
 					<div class="board_input_box">
 						<label for="pass" class="labels">비밀번호</label>
@@ -39,10 +40,9 @@
 				</c:if>
 				<!-- 항상 비밀글 -->
 				<input type="hidden" id="secret" name="secret" value="true">
-				
 				<div class="board_input_box">
 					<label for="content" class="labels">내용</label>
-					<textarea id="summernote" name="editordata"></textarea>
+					<textarea id="summernote" name="editordata">${board.content}</textarea>
 				</div>
 			</div>
 		</form>
@@ -51,13 +51,13 @@
 			<c:when test="${empty principal}">
 			<!-- 비로그인 -->
 				<div class="buttons_submit">
-					<button id="btn-qnasave2" class="btn submit_btn">등록</button>
+					<button id="btn-update" class="btn submit_btn">수정</button>
 				</div>
 			</c:when>
 			<c:otherwise>
 			<!-- 로그인 -->
 				<div class="buttons_submit">
-					<button id="btn-qnasave" class="btn submit_btn">등록</button>
+					<button id="btn-update" class="btn submit_btn">수정</button>
 				</div>
 			</c:otherwise>
 		</c:choose>

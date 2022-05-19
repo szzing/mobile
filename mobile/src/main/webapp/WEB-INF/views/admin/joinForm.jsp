@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<link rel="stylesheet" href="../css/forms.css">
-<link rel="stylesheet" href="../css/joinform.css">
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/joinform.css">
 
 <section>
 	<div class="form_container">
@@ -50,5 +50,5 @@
 	</div>
 </section>
 
-<script type="text/javascript" src="../script/user.js"></script>
+<script type="text/javascript" src="/script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.mobile.dto.TelecomFeeDto;
+import com.cos.mobile.model.Product;
 import com.cos.mobile.model.Telecom;
 import com.cos.mobile.model.TelecomFee;
+import com.cos.mobile.repository.ProductRepository;
 import com.cos.mobile.repository.TelecomFeeRepository;
 import com.cos.mobile.repository.TelecomRepository;
 
@@ -19,6 +21,9 @@ public class ProductService {
 	
 	@Autowired
 	TelecomFeeRepository telfeeRepository;
+	
+	@Autowired
+	ProductRepository proRepository;
 	
 	@Transactional
 	public void telsave(Telecom tel) {
@@ -36,6 +41,11 @@ public class ProductService {
 		return telfeeRepository.findAll();
 	}
 	
+	@Transactional(readOnly=true)
+	public List<Product> selectProAll(){
+		return proRepository.findAll();
+	}
+	
 	@Transactional
 	public void telDelete(int id) {
 		telRepository.deleteById(id);
@@ -47,11 +57,28 @@ public class ProductService {
 	}
 	
 	@Transactional
+	public void proDelete(int id) {
+		proRepository.deleteById(id);
+	}
+
+	
+	@Transactional
 	public void feesave(TelecomFeeDto telfeeDto) {
+		Product product = proRepository.findById(telfeeDto.getProductid());
 		Telecom tel = telRepository.findById(telfeeDto.getTelid());
-		TelecomFee telfee = TelecomFee.builder().telecom(tel)
+		TelecomFee telfee = TelecomFee.builder()
+				.product(product)
+				.telecom(tel)
 				.feeName(telfeeDto.getFeename())
-				.fee(telfeeDto.getFee()).build();
+				.fee(telfeeDto.getFee())
+				.contractDc(telfeeDto.getContractDc())
+				.officialDc(telfeeDto.getOfficialDc())
+				.build();
 		telfeeRepository.save(telfee);
+	}
+	
+	@Transactional(readOnly=true)
+	public Product proDetail(int id) {
+		return proRepository.findById(id);
 	}
 }

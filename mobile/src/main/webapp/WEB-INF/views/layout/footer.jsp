@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="/css/footer.css">
 
 <footer>
 	<p class="footer_info">
@@ -11,6 +11,5 @@
 		<br> <b>Copyright © 2022 MO:BILE. All Rights Reserved.</b>
 	</p>
 </footer>
-
 </body>
 </html>

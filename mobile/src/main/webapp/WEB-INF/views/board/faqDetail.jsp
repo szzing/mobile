@@ -49,12 +49,12 @@
 			
 		</table>
 		
-		<c:if test="${principal.roles eq 'ADMIN'}">
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SYSTEM')">
 			<div class="detail_btns">
 				<a href="/board/${board.id}/faqUpdate"><button type="button">수정</button></a>
 				<button id="btn-delete">삭제</button>
 			</div>
-		</c:if>
+		</sec:authorize>
 	</div>
 
 </section>

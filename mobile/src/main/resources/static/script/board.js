@@ -18,7 +18,7 @@ let index = {
 		$("#btn-update").on("click", () => {
 			this.update();
 		});
-		
+
 		$("#btn-reply-save").on("click", () => {
 			this.replySave();
 		});
@@ -40,7 +40,7 @@ let index = {
 			dataType:"json" 
 		}).done(function(resp){
 			alert("글쓰기가 완료되었습니다.");
-			location.href="/event";
+			location.href="/auth/event";
 
 		}).fail(function(error){
 			alert(JSON.stringify(error));
@@ -62,7 +62,7 @@ let index = {
 			dataType:"json" 
 		}).done(function(resp){
 			alert("글쓰기가 완료되었습니다.");
-			location.href="/notice";
+			location.href="/auth/notice";
 
 		}).fail(function(error){
 			alert(JSON.stringify(error));
@@ -84,7 +84,7 @@ let index = {
 			dataType:"json" 
 		}).done(function(resp){
 			alert("글쓰기가 완료되었습니다.");
-			location.href="/faq";
+			location.href="/auth/faq";
 
 		}).fail(function(error){
 			alert(JSON.stringify(error));

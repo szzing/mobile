@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @SequenceGenerator(
 		name="USER_SEQ_GENERATOR"
 		, sequenceName = "USER_SEQ"
-		, initialValue = 1
+		, initialValue = 200
 		, allocationSize = 1
 		)
 
@@ -56,10 +56,10 @@ public class Users {
 	private int zipcode;
 	
 	@Column(nullable=true, length=50)
-	private String address1;
+	private String address;
 	
 	@Column(nullable=true, length=50)
-	private String address2;
+	private String addrdetail;
 	
 	@Enumerated(EnumType.STRING)
 	private RoleType roles;

@@ -11,21 +11,17 @@
 <section>
 	<div class="board_container">	
 		<h2>이벤트 목록</h2>
-			
-			<c:choose>
-				<c:when test="${principal.roles eq 'ADMIN'}">
-					<div class="buttons">
-						<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
-						<a href="/board/eventForm"><button class="btn pink">이벤트등록</button></a>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="buttons">
-						<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
-					</div>
-				</c:otherwise>
-			</c:choose>			
-		
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SYSTEM')">
+				<div class="buttons">
+					<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
+					<a href="/board/eventForm"><button class="btn pink">이벤트등록</button></a>
+				</div>
+		</sec:authorize>
+		<sec:authorize access="isAnonymous()">
+				<div class="buttons">
+					<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
+				</div>
+		</sec:authorize>
 		<table class="board_list">
 			<colgroup>
 				<col width="10%">

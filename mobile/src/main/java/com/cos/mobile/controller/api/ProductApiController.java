@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.mobile.dto.ResponseDto;
 import com.cos.mobile.dto.TelecomFeeDto;
+
 import com.cos.mobile.model.Telecom;
 import com.cos.mobile.service.ProductService;
 
@@ -35,6 +36,12 @@ public class ProductApiController {
 	@DeleteMapping("/api/telecomfee/{feeId}")
 	public ResponseDto<Integer> feeDelete(@PathVariable int feeId){
 		productService.feeDelete(feeId);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
+	@DeleteMapping("/api/prodelete/{productId}")
+	public ResponseDto<Integer> proDelete(@PathVariable int productId){
+		productService.proDelete(productId);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	

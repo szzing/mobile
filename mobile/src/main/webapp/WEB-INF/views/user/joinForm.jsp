@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<link rel="stylesheet" href="../css/forms.css">
-<link rel="stylesheet" href="../css/joinform.css">
-
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/joinform.css">
+<style>
+.id_ok{color:#0064FF; display: none;}
+.id_already{color:#FF1E9D; display: none;}
+</style>
 <section>
 	<div class="form_container">
 		<div class="form_title">
@@ -57,13 +60,13 @@
 			</div>
 			<div class="input_boxes">
 				<div class="input_box">
-					<label for="postnum" class="labels">우편번호</label>
-					<input id="postnum" class="input_item" type="text"/>
-					<input type="button" class="btn btn_alt" value="우편번호찾기">
+					<label for="zipcode" class="labels">우편번호</label>
+					<input id="zipcode" name="zipcode" class="input_item" type="text"/>
+					<input type="button" onclick="execPostCode();" class="btn btn_alt" value="우편번호찾기">
 				</div>
 				<div class="input_box">
 					<label for="address" class="labels">주소</label>
-					<input id="address" class="input_item" type="text"/>
+					<input id="address" name="address" class="input_item" type="text"/>
 				</div>
 				<div class="input_box">
 					<label for="addrdetail" class="labels">상세 주소</label>
@@ -78,5 +81,5 @@
 	</div>
 </section>
 
-<script type="text/javascript" src="../script/user.js"></script>
+<script type="text/javascript" src="/script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

@@ -5,48 +5,57 @@
 <link rel="stylesheet" href="/css/boardform.css">
 <section>
 	<div class="board_container">
-	<h1>일단 만들어둔 상품등록페이지</h1>
-		<form class="board_form" action="/admin/saveproduct" method="post" enctype="multipart/form-data">
+	
+	<h1>상품수정페이지</h1>
+		
+		
+		<form class="board_form" action="/admin/proUpdate" method="post" enctype="multipart/form-data">
+		<!-- 수정, 삭제시 정보 전송 -->
+		<input id="id" name="id" type="hidden" value="${product.id}">
+		<input id="imgName" name="imgName" type="hidden" value="${product.imgName}">
+		<input id="imgOriName" name="imgOriName" type="hidden" value="${product.imgOriName}">
+		<input id="imgUrl" name="imgUrl" type="hidden" value="${product.imgUrl}">
+		<!--   -->
 				<div class="board_input_boxes">
 					<div class="board_input_box">
 						<label for="imgproduct" class="labels">상품이미지</label>
-						<input type="file" class="input_item board_txt" id="imgproduct" name="imgproduct">
+						<input type="file"  class="input_item board_txt" id="imgproduct" name="imgproduct">
 					</div>
 					<div class="board_input_box">
 						<label for="name" class="labels">상품명</label>
-						<input type="text" class="input_item board_txt" placeholder="상품명을 입력해주세요" id="name" name="name">
+						<input type="text" class="input_item board_txt" value="${product.name}" id="name" name="name">
 					</div>
 					<div class="board_input_box">
 						<label for="maker" class="labels">제조사</label>
-						<input type="text" class="input_item board_txt" placeholder="제조사를 입력해주세요" id="maker" name="maker">
+						<input type="text" class="input_item board_txt" value="${product.maker}" id="maker" name="maker">
 					</div>
 					<div class="board_input_box">
 						<label for="category" class="labels">상품종류</label>
-						<input type="text" class="input_item board_txt" placeholder="상품의 종류를 입력해주세요" id="category" name="category">
+						<input type="text" class="input_item board_txt" value="${product.category}" id="category" name="category">
 					</div>
 					<div class="board_input_box">
 						<label for="price" class="labels">출고가</label>
-						<input type="text" class="input_item board_txt" placeholder="출고가를 입력해주세요" id="price" name="price">
+						<input type="text" class="input_item board_txt" value="${product.price}" id="price" name="price">
 					</div>
 					<div class="board_input_box">
 						<label for="dcprice" class="labels">할인가</label>
-						<input type="text" class="input_item board_txt" placeholder="출고가-할인가-(추가할인)=할부원금" id="dcprice" name="dcprice">
+						<input type="text" class="input_item board_txt" value="${product.dcprice}" id="dcprice" name="dcprice">
 					</div>
 					<div class="board_input_box">
 						<label for="storage" class="labels">용량(G)</label>
-						<input type="text" class="input_item board_txt" placeholder="단말기 용량을 입력해주세요(ex:128, 256)" id="storage" name="storage">
+						<input type="text" class="input_item board_txt" value="${product.storage}" id="storage" name="storage">
 					</div>
 					<div class="board_input_box">
 						<label for="color" class="labels">색상</label>
-						<input type="text" class="input_item board_txt" placeholder="색상을 입력해주세요(ex:블랙, 그린, 레드)" id="color" name="color">
+						<input type="text" class="input_item board_txt" value="${product.color}" id="color" name="color">
 					</div>
 					<div class="board_input_box">
 						<label for="content" class="labels">상품설명</label>
-						<textarea id="summernote" name="content">일단 게시판 폼 복붙! 이미지나 옵션 등 테이블 생성 및 코드작성 후 추가예정!</textarea>
+						<textarea id="summernote" name="content">${product.content}</textarea>
 					</div>
 				</div>
 			<div class="buttons_submit">
-				<button type="submit" id="btn-regiproduct" class="btn submit_btn">상품 등록</button>
+				<button type="submit" id="btn-proupdate" class="btn submit_btn">상품 수정</button>
 			</div>
 		</form>
 		
