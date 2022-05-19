@@ -14,26 +14,27 @@
 		<form id="login" class="form login_form" name="loginform" action="/auth/loginProc" method="POST">
 				<div class="input_box">
 					<label for="userid" class="labels">아이디</label>
-					<input id="userid" name="userid" class="input_item" type="text" required/>
+					<input id="userid" name="userid" class="input_item" type="text" required autofocus="autofocus"/>
 				</div>
 				
 				<div class="input_box">
 					<label for="password"  class="labels">비밀번호</label>
 					<input id="password" name="password" class="input_item" type="password" required/>
 				</div>
-				<c:if test="${error eq 'true'}">
-					<p class="alert alert-danger">${exception}</p>
-				</c:if>
+				<div class="login_alert">
+					<c:if test="${error eq 'true'}">
+						<p class="alert alert-danger">${exception}</p>
+					</c:if>
+				</div>
+				
 				<div class="btns">
-					<button type="submit" id="btn-login" class="btn submit_btn" onclick="loginCheck();">로그인</button>
+					<button type="submit" id="btn-login" class="btn submit_btn">로그인</button>
+					<button type="button" class="btn button_btn skyblue">아이디 찾기</button>
+					<button type="button" class="btn button_btn pink">비밀번호 찾기</button>
+					<span class="span_txt"><b>▶ 아직 회원이 아니신가요?</b>
+					<a href="/auth/joinForm"><button type="button" class="btn btn_alt">회원가입하기</button></a></span>
 				</div>
 		</form>
-
-		<div class="btns">	
-			<button type="button" class="btn button_btn skyblue">아이디 찾기</button>
-			<button type="button" class="btn button_btn pink">비밀번호 찾기</button>
-			<span class="span_txt"><b>▶ 아직 회원이 아니신가요?</b> <a href="/auth/joinForm"><button type="button" class="btn btn_alt">회원가입하기</button></a></span>
-		</div>
 		
 		<div class="form_heading">
 			<h3>SNS 계정으로 로그인</h3>
@@ -49,23 +50,6 @@
 	</div>
 	
 </section>
-<<<<<<< HEAD
-<script type="text/javascript">
-function loginCheck(){
-	if (document.loginform.userid.value == ""){
-		alert("아이디를 입력하세요.");
-		document.loginform.userid.focus();
-		return false;
-	} else if (document.loginform.password.value == ""){
-		alert("비밀번호를 입력하세요.");
-		document.loginform.password.focus();
-		return false;
-	} else {
-		return true;
-	}
-}</script>
-=======
 
 <script type="text/javascript" src="../script/user.js"></script>
->>>>>>> update
 <%@ include file="../layout/footer.jsp"%>

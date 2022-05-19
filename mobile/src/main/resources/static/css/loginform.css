@@ -31,6 +31,37 @@
 	width: 50px;
 }
 
+@keyframes alert {
+	0%{
+		transform: translateX(3px);
+		opacity: 0;
+	}
+	33% {
+		transform: translateX(0px);
+	}
+	66% {
+		transform: translateX(3px);
+	}
+	100%{
+		transform: translateX(0px);
+		opacity:1;
+	}
+}
+
+.login_alert {
+	width: 100%;
+	margin: auto;
+	height: 12px;
+	padding-right: 3rem;
+	animation: alert 0.5s;
+}
+
+.login_alert p {
+	font-size:12px;
+	font-weight: bold;
+	text-align: right;
+	color: #800040;
+}
 
 .skyblue {
 	border: 1px solid skyblue;
