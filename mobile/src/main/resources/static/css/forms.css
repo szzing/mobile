@@ -1,11 +1,8 @@
-section {
-	padding: 2rem;
-}
-
 .form_container {
 	width: 640px;
 	margin: 2rem auto;
-	padding: 2rem;
+	padding: 3rem;
+	padding-bottom: 4rem;
 	border-radius: 12px;
 	box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
 	background: white;
@@ -30,13 +27,12 @@ section {
 .form_title h1 {
 	font-size: 30px;
 	padding: 0.5rem;
-	
 }
 
 .form_heading {
 	color: #666666;
-	padding: 2rem;
-	margin-top: 3rem;
+	padding: 1rem 2rem;
+	margin: 2rem 1rem 0 1rem;
 }
 
 .form_heading h3 {
@@ -54,9 +50,14 @@ section {
 	color: #6a6a6a;
 }
 
+.input_boxes {
+	padding: 0 2rem;
+}
+
 .input_box {
 	margin: 1rem;
-	padding: 1rem 3rem;
+	height: 90px;
+	padding: 1rem;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: baseline;
@@ -68,8 +69,8 @@ section {
 	border:none;
 	border-bottom: 1.5px solid #aaa;
 	border-radius: 4px 4px 0 0;
-	padding: 0.5rem;
 	margin:0 0.5rem 0.5rem 0.5rem;
+	padding: 0.5rem;
 	font-size: 15px;
 	margin-right: 1rem;
 	flex-grow: 2;
@@ -88,32 +89,28 @@ section {
     border-image-slice: 1;
 }
 
-
-.point {
-	color: palevioletred;
-}
-
-.necessary {
-	display: block;
-	width: 500px;
-	text-align: right;
-	color: palevioletred;
-	font-size: 12px;
-	margin-left: auto;
+.btns {
+	margin: 1rem auto;
+	padding: 1rem 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .btn {
-	display: block;
+	display: inline-block;
+	margin: auto;
 	border: none;
 	border-radius: 8px;
 	background-color: #dadada;
-	font-size: 12px;
+	font-size: 13px;
 	padding: 6px 12px;
 	cursor: pointer;
 }
 
 .btn_alt {
 	border: 1.5px solid #aaa;
+	margin: 0 12px;
 	background: none;
 }
 
@@ -123,17 +120,28 @@ section {
 
 .submit_btn {
 	display: block;
-	width: 80%;
-	margin: 3rem auto;
+	margin: 1rem auto 0;
 	padding: 1rem 5rem;
-	border-radius: 50px;
+	border-radius: 12px;
 	background: linear-gradient(to right, skyblue, pink);
 	color: white;
 	text-shadow: 0 0 3px rgba(0,0,0,0.3);
 	font-size: 15px;
 	font-weight: bold;
+	width: 95%;
 }
 
 .submit_btn:hover {
 	box-shadow: 0 0 10px #d0d0ff;
+}
+
+.button_btn {
+	display: inline-block;
+	margin: 1rem;
+	padding: 0.8rem 2rem;
+	border-radius: 12px;
+	
+	background: none;
+	font-size: 15px;
+	font-weight: bold;
 }
