@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.mobile.config.auth.PrincipalDetail;
 import com.cos.mobile.model.QnaBoard;
-import com.cos.mobile.repository.QnaRepository;
 import com.cos.mobile.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,9 +23,6 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@Autowired
-	private QnaRepository qnaRepository;
-
 	@GetMapping({"","/"})
 	public String index(@AuthenticationPrincipal PrincipalDetail principal) {
 		return "index";
@@ -79,14 +75,15 @@ public class BoardController {
 	}
 	
 	@GetMapping({"/auth/qna"})
-	public String qnaBoard(Model model, @PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable) {
+	public String qnaBoard(Model model, @PageableDefault
+			(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable) {
 		// 1:1문의 (QnA) 게시판 목록 출력
 		Page<QnaBoard> qna = boardService.toQna(pageable);
 		int pageNumber = qna.getPageable().getPageNumber();	// 현재페이지
 		int totalPages = qna.getTotalPages();	// 총 페이지수
 		int pageBlock = 4;	// 페이지 블럭 수 1, 2, 3, 4
-		int startBlockPage = ((pageNumber)/pageBlock)*pageBlock+1; //현재 페이지가 7이라면 1*5+1=6
-		int endBlockPage = startBlockPage+pageBlock-1; //6+5-1=10. 6,7,8,9,10해서 10.
+		int startBlockPage = ((pageNumber)/pageBlock)*pageBlock+1; 
+		int endBlockPage = startBlockPage+pageBlock-1;
 		endBlockPage= totalPages<endBlockPage? totalPages:endBlockPage;
 		
 		model.addAttribute("startBlockPage", startBlockPage);

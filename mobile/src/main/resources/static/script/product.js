@@ -1,3 +1,36 @@
+
+$("input:radio[name=dc]").click(function(){			
+		if($("input[name='dc']:checked").val()=='선택약정'){
+				$('.officialDc').hide();
+				$('.contractDc').show();
+			}else if($("input[name='dc']:checked").val()=='공시지원'){
+				$('.contractDc').hide();
+				$('.officialDc').show();
+			}
+	});
+
+
+$(document).ready(function(){
+			$('.kt').hide();
+			$('.lguplus').hide();
+			
+				$("input[name='tel']").change(function(){
+					if($("input[name='tel']:checked").val()=='SKT'){
+						$('.kt').hide();
+						$('.lguplus').hide();
+						$('.skt').show();
+					}else if($("input[name='tel']:checked").val()=='KT'){
+						$('.skt').hide();
+						$('.lguplus').hide();
+						$('.kt').show();
+					}else if($("input[name='tel']:checked").val()=='LGUplus'){
+						$('.skt').hide();
+						$('.kt').hide();
+						$('.lguplus').show();
+					}
+				});
+		});
+		
 let index = {
 	init: function() {
 		$("#btn-telsave").on("click", () => {
@@ -103,5 +136,6 @@ let index = {
 			}
 			
 		},	
-}
+};
 index.init();
+

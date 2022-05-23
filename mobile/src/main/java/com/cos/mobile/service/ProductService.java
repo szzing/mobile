@@ -46,6 +46,11 @@ public class ProductService {
 		return proRepository.findAll();
 	}
 	
+	@Transactional(readOnly=true)
+	public List<TelecomFee> feeTelidAndProId(int telid, int productid){
+		return telfeeRepository.findByTelidAndProductid(telid, productid);
+	}
+	
 	@Transactional
 	public void telDelete(int id) {
 		telRepository.deleteById(id);

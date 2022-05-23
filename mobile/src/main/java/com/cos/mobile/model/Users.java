@@ -53,7 +53,7 @@ public class Users {
 	private String email;
 	
 	@Column(nullable=true, length=20)
-	private int zipcode;
+	private String zipcode;
 	
 	@Column(nullable=true, length=50)
 	private String address;

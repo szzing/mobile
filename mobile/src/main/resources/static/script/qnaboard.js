@@ -158,10 +158,8 @@ $(document).on("click", "#btn-delete", function(){
 
 		}).done(function(resp){
 			alert("삭제가 완료되었습니다.");
-			location.href = document.referrer;	// 삭제된 게시판 목록 새로고침
+			location.href = "/auth/qna";
 		}).fail(function(error){
 			alert(JSON.stringify(error));
 		});
 })
-
-index.init();

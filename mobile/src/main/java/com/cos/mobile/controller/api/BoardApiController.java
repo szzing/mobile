@@ -27,7 +27,6 @@ public class BoardApiController {
 	@Autowired
 	private BoardService boardService;
 	
-	// 관리자 구분 위해 시큐리티 로그인 이후 인증 유저 추가예정
 	@PostMapping("/api/adminboard")
 	public ResponseDto<Integer> save(@RequestBody Boards board, @AuthenticationPrincipal PrincipalDetail principal) throws IllegalStateException, IOException{
 		boardService.adminwrite(board, principal.getUser());
@@ -35,14 +34,16 @@ public class BoardApiController {
 	}
 	
 	@PostMapping("/api/qnaboard")
-	public ResponseDto<Integer> qnaSave(@RequestBody QnaBoard qnaboard, @AuthenticationPrincipal PrincipalDetail principal) throws IllegalStateException, IOException{
+	public ResponseDto<Integer> qnaSave(@RequestBody QnaBoard qnaboard, @AuthenticationPrincipal PrincipalDetail principal)
+			throws IllegalStateException, IOException{
 		// 문의 게시판 회원 글쓰기
 		boardService.qnawrite(qnaboard, principal.getUser());
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 	
 	@PostMapping("/api/qna")
-	public ResponseDto<Integer> qnaSave2(@RequestBody QnaBoard qnaboard) throws IllegalStateException, IOException{
+	public ResponseDto<Integer> qnaSave2(@RequestBody QnaBoard qnaboard)
+			throws IllegalStateException, IOException{
 		// 문의 게시판 비회원 글쓰기
 		boardService.qnawrite2(qnaboard);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
@@ -67,7 +68,8 @@ public class BoardApiController {
 	}
 	
 	@PutMapping("/api/qna/{id}")
-	public ResponseDto<Integer> qnaUpdate(@PathVariable int id, @RequestBody QnaBoard qna) throws IllegalStateException, IOException{
+	public ResponseDto<Integer> qnaUpdate(@PathVariable int id, @RequestBody QnaBoard qna)
+			throws IllegalStateException, IOException{
 		boardService.qnaUpdate(id, qna);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}

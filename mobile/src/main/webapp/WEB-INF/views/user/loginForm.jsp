@@ -49,23 +49,5 @@
 	</div>
 	
 </section>
-<<<<<<< HEAD
-<script type="text/javascript">
-function loginCheck(){
-	if (document.loginform.userid.value == ""){
-		alert("아이디를 입력하세요.");
-		document.loginform.userid.focus();
-		return false;
-	} else if (document.loginform.password.value == ""){
-		alert("비밀번호를 입력하세요.");
-		document.loginform.password.focus();
-		return false;
-	} else {
-		return true;
-	}
-}</script>
-=======
-
 <script type="text/javascript" src="../script/user.js"></script>
->>>>>>> update
 <%@ include file="../layout/footer.jsp"%>

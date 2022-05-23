@@ -49,7 +49,8 @@
 		</table>
 		<!-- 글작성자 본인과 관리자만 삭제버튼 -->
 		<c:choose>
-			<c:when test="${!empty principal && board.users.id == principal.user.id || principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
+			<c:when test="${!empty principal && board.users.id == principal.user.id 
+			|| principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
 				<div class="detail_btns">
 					<!-- 글 작성자 본인만 수정버튼 -->
 					<c:if test="${board.users.id == principal.user.id}">
@@ -63,7 +64,7 @@
 				 <c:if test="${empty board.users.username}">
 					<div class="detail_btns">
 							<a href="/board/${board.id}/qnaUpdate"><button type="button">수정</button></a>
-							<button id="btn-delete2">삭제</button>
+							<button id="btn-delete">삭제</button>
 					</div>
 				</c:if>
 			</c:otherwise>

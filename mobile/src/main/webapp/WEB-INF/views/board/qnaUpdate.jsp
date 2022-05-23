@@ -11,9 +11,7 @@
 
 <section>
 	<div class="board_container">
-		
 		<h2>1:1 문의글 수정</h2>
-		
 		<div class="buttons">
 			<a><button class="btn skyblue" onclick="history.back()">돌아가기</button></a>
 			<a><button class="btn pink"  onclick="location.href=''">다시작성</button></a>
@@ -27,8 +25,8 @@
 					<input type="text" class="input_item board_txt" value="${board.title}" id="title" name="title">
 				</div>
 			
-				<c:if test="${empty principal}">
-					<!-- 로그인 상태가 아닐때 작성자명과 비번 설정 -->
+				<c:if test="${empty board.users.username}">
+					<!-- 로그인 하지않고 작성한 글일 경우에 비번 설정 -->
 					<div class="board_input_box">
 						<label for="writer" class="labels">작성자명</label>
 						<input type="text" class="input_item board_txt" value="${board.writer}" id="writer" name="writer" readonly>
@@ -46,26 +44,10 @@
 				</div>
 			</div>
 		</form>
-		
-		<c:choose>
-			<c:when test="${empty principal}">
-			<!-- 비로그인 -->
-				<div class="buttons_submit">
-					<button id="btn-update" class="btn submit_btn">수정</button>
-				</div>
-			</c:when>
-			<c:otherwise>
-			<!-- 로그인 -->
-				<div class="buttons_submit">
-					<button id="btn-update" class="btn submit_btn">수정</button>
-				</div>
-			</c:otherwise>
-		</c:choose>
-		
-		
-	
+		<div class="buttons_submit">
+			<button id="btn-update" class="btn submit_btn">수정</button>
+		</div>
 	</div>
-
 </section>
 <script type="text/javascript" src="/script/summernote.js"></script>
 <script type="text/javascript" src="/script/qnaboard.js"></script>        
