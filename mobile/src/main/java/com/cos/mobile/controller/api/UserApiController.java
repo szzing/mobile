@@ -73,6 +73,7 @@ public class UserApiController {
 		}
 		return map;
 	}
+	
 	@DeleteMapping("/api/user/{id}")
 	public ResponseDto<Integer> delete(@PathVariable int id, HttpSession session){
 		userService.deleteUser(id);

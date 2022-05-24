@@ -15,7 +15,6 @@ import com.cos.mobile.config.auth.PrincipalDetailService;
 
 import lombok.RequiredArgsConstructor;
 
-
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
@@ -31,13 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return super.authenticationManagerBean();
 	}
 	
-	
-	/* 로그인 실패 핸들러 */
+	// 로그인 실패 핸들러
 	@Bean
 	public LoginAuthFailureHandler loginFailHandler(){
 		return new LoginAuthFailureHandler();
 	}
-
+	
+	// 비밀번호 인코딩
 	@Bean
 	public BCryptPasswordEncoder encodePWD() {
 		return new BCryptPasswordEncoder();
@@ -47,7 +46,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth)throws Exception{
 		auth.userDetailsService(principalDetailService).passwordEncoder(encodePWD());
 	}
-	
 	
 	@Override
 	protected void configure(HttpSecurity http)throws Exception{

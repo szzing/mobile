@@ -79,7 +79,12 @@ let index = {
 		});
 		
 		$("#btn-userdelete").on("click", () => {
-			this.userDelete();
+			let delConfirm = confirm("정말 탈퇴하시겠습니까?\n확인 시 되돌릴 수 없습니다.");
+			if(!delConfirm) {
+				return false;
+			} else {
+				this.userDelete();
+			}
 		});
 	},
 	
@@ -116,19 +121,20 @@ let index = {
 			address : $("#address").val(),
 			addrdetail: $("#addrdetail").val()
 		};
-		console.log(data); //자바스크립트 오브젝트
+		
 		$.ajax({ 
 			type:"POST",
 			url:"/auth/joinProc",
 			data:JSON.stringify(data),
 			contentType:"application/json; charset=utf-8",	
-			dataType:"json" 
+			dataType:"json"
+			
 		}).done(function(resp){
 			if(resp.status==500){
 				alert("회원가입에 실패하였습니다.");
 			}else{
 				alert("회원가입이 완료되었습니다.");
-				location.href="/";
+				location.href="/auth/loginForm";
 			}
 			
 		}).fail(function(error){
@@ -144,7 +150,7 @@ let index = {
 			phone: $("#phone").val(),
 			email: $("#email").val()
 		};
-		console.log(data); //자바스크립트 오브젝트
+
 		$.ajax({ 
 			type:"POST",
 			url:"/auth/adminjoin",
@@ -156,7 +162,7 @@ let index = {
 				alert("관리자 계정 생성에 실패하였습니다.");
 			}else{
 				alert("관리자 계정 생성이 완료되었습니다.");
-				location.href="/";
+				location.href="/auth/loginForm";
 			}
 			
 		}).fail(function(error){
@@ -177,7 +183,7 @@ let index = {
 			addrdetail: $("#addrdetail").val(),
 			oauth: $("#oauth").val()
 			};
-			console.log(data)
+
 			$.ajax({ 
 				type:"PUT",
 				url:"/user",

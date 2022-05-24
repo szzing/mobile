@@ -11,7 +11,7 @@ import com.cos.mobile.model.Users;
 import lombok.Getter;
 
 @Getter
-@SuppressWarnings("serial")
+//@SuppressWarnings("serial")
 public class PrincipalDetail implements UserDetails{
 	private Users user;
 	
