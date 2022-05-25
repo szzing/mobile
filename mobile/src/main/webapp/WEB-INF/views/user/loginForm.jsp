@@ -30,7 +30,7 @@
 		</form>
 
 		<div class="btns">	
-			<button type="button" class="btn button_btn skyblue">아이디 찾기</button>
+			<a href="/auth/finduserid"><button type="button" class="btn button_btn skyblue">아이디 찾기</button></a>
 			<button type="button" class="btn button_btn pink">비밀번호 찾기</button>
 			<span class="span_txt"><b>▶ 아직 회원이 아니신가요?</b> <a href="/auth/joinForm"><button type="button" class="btn btn_alt">회원가입하기</button></a></span>
 		</div>

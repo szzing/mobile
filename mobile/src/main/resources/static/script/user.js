@@ -81,6 +81,10 @@ let index = {
 		$("#btn-userdelete").on("click", () => {
 			this.userDelete();
 		});
+		
+		$("#btn-finduserid").on("click", () => {
+			this.findUserid();
+		});
 	},
 	
 	idcheck: function() {
@@ -100,6 +104,31 @@ let index = {
 				alert("이미 존재하는 아이디 입니다.");
 				idchk.value = 0;
 			}
+		}).fail(function(error){
+			// alert(JSON.stringify(error));
+		});
+	},
+	
+	findUserid: function() {
+		let data={
+			username: $("#username").val(),
+			phone: $("#phone").val()
+		}
+		console.log(data)
+		$.ajax({ 
+			type:"POST",
+			url:"/auth/findmissingid",
+			data: data,
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			dataType:"json" 
+		}).done(function(resp){
+			if(resp.userid=="noid"){
+				alert("아이디를 찾을 수 없습니다.");
+			}else{
+				alert("아이디는 "+resp.userid+" 입니다.");
+				location.href="/auth/loginForm";
+			}
+			
 		}).fail(function(error){
 			// alert(JSON.stringify(error));
 		});

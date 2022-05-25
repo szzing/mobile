@@ -26,6 +26,12 @@ public class UserService {
 		return user.isPresent();
 	}
 	
+	@Transactional(readOnly=true)
+	public Users findUseridByNameAndPhone(String username, String phone) {
+		Users user = userRepository.findByUsernameAndPhone(username, phone);
+		return user;
+	}
+	
 	@Transactional
 	public void join(Users user) {
 		String rawPassword = user.getPassword();

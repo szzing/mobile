@@ -1,10 +1,15 @@
 package com.cos.mobile.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -51,20 +56,28 @@ public class UserController {
 		return "user/updateForm";
 	}
 	
-	@PostMapping("/auth/idcheck")
+	@RequestMapping(value = "/auth/findmissingid" , method = RequestMethod.POST)
 	@ResponseBody
-	public int idCheck(@RequestParam("userid") String userid) {
-		int cnt = 0;
-		System.out.println("전달받은 id:"+userid);
-		Users originUser = userService.findUserid(userid);
-		if(originUser.getUserid()==null) {
-			System.out.println("cnt : "+ cnt);
-			// 기존 가입자 0명으로 없으면 중복아이디가 아니라 사용가능함
-			return cnt;
+	public Map<String, String> findUseridMissing(@ModelAttribute Users user) {
+		Map<String, String> map = new HashMap<String, String>();
+		String userid="";
+		String username = user.getUsername();
+		String phone = user.getPhone();
+		System.out.println("전달받은 username:"+username);
+		System.out.println("전달받은 phone:"+phone);
+		if(userService.findUseridByNameAndPhone(username, phone)==null) {
+			map.put("userid", "noid");
 		}else {
-			cnt = 1;
-			System.out.println("cnt : "+cnt);
-			return cnt;
+			Users finduser = userService.findUseridByNameAndPhone(username, phone);
+			userid = finduser.getUserid();
+			map.put("userid", userid);
+			System.out.println("userid : "+ userid);
 		}
+		return map;
+	}
+	
+	@GetMapping("/auth/finduserid")
+	public String findUserid() {
+		return "user/findUserid";
 	}
 }
