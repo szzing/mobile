@@ -2,220 +2,317 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <link rel="stylesheet" href="../css/product.css">
+<link rel="stylesheet" href="../css/productDetail.css">
 
 <section>
-<div>
-	<!-- 상품이미지 출력 (외부경로에 맞는 파일이 있어야 출력됨) -->
-	<img src="/images/${product.imgName}" width="300px">
-</div>
-상품명 : ${product.name} <br/>
-제조사 : ${product.maker} <br/>
-상품분류 : ${product.category} <br/>
-출고가 : ${product.price} <br/>
-MO:BILE 할인 : ${product.dcprice} <br/>
-할부원금은 출고가-할인액-추가할인액-선택요금제에 따라서 결정<br/>
-용량 : ${product.storage}G <br/>
---고객이 선택하는 옵션 영역이 별도로 필요--
-<form>
-<input id="productid" name="productid" type="hidden" value="${product.id}">
-
-	<div>
-		사용중인 통신사 : 
-		<input name="beforetel" id="beforetel1" value="SKT" type="radio">
-		<label for="tel1">SKT</label>
-		<input name="beforetel" id="beforetel2" value="KT" type="radio">
-		<label for="tel2">KT</label>
-		<input name="beforetel" id="beforetel3" value="LGUplus" type="radio">
-		<label for="tel3">LGU+</label>
-		<input name="beforetel" id="beforetel4" value="altteul" type="radio">
-		<label for="tel4">알뜰폰</label>
-	</div>
-
-	<div>
-		사용하실 통신사 : 
-		<input name="tel" id="tel1" value="SKT" type="radio">
-		<label for="tel1">SKT</label>
-		<input name="tel" id="tel2" value="KT" type="radio">
-		<label for="tel2">KT</label>
-		<input name="tel" id="tel3" value="LGUplus" type="radio">
-		<label for="tel3">LGU+</label>
-	</div>
-	<div id="colors" class="colors">
-		자바스크립트로 색상옵션 출력하는 영역
-	</div>
-	<hr>
-	<div>
-		- 옵션으로 선택가능할 요금제 영역 - (순서상 SKT가 기본이며 '사용하실 통신사' 선택시 그 통신사 요금제만 나옴)
-		<!-- 반복문으로 요금제 목록 출력 -->
-		<c:forEach var="telecomfee" items="${telecomfee}">
-			<div class="skt">
-				<c:if test="${telecomfee.telecom.name eq 'SKT'}">
-					<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id"/>
-							<div>(SKT만 출력)</div>
-							통신사명 ${telecomfee.telecom.name}/
-							요금제명 ${telecomfee.feeName}/
-							요금(원) ${telecomfee.fee}/
-							<hr>
-							---선약할인 또는 공시할인을 선택---<br>
-							<input type="radio" name="dc" value="선택약정">
-								<input type="hidden" name="contractDc" value="${telecomfee.contractDc}">
-							<label for="dc">선약할인</label> ${telecomfee.contractDc}원
-							<br>
-							<input type="radio" name="dc" value="공시지원">
-								<input type="hidden" name="officialDc" value="${telecomfee.officialDc}">
-							<label for="dc">공시할인</label> ${telecomfee.officialDc}원
-							<br>
-						
-						<hr>
-						<div class="contractDc">
-						-선약할인 선택 시 할부원금 -<br>
-						
-							출고가(${product.price})-MO:BILE 할인(${product.dcprice})-선약할인(${telecomfee.contractDc})=
-							할부원금 : <c:out value="${product.price-product.dcprice-telecomfee.contractDc}"/>원
-						</div>
-						<hr>
-						<div class="officialDc">
-						-공시할인 선택 시 할부원금 -<br>
-						
-							출고가(${product.price})-MO:BILE 할인(${product.dcprice})-공시할인(${telecomfee.officialDc})
-							할부원금 : <c:out value="${product.price-product.dcprice-telecomfee.officialDc}"/>원
-						</div>
-				</c:if>
-			</div>
-			<div class="kt">
-				<c:if test="${telecomfee.telecom.name eq 'KT'}">
-					<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id"/>
-						<div>(KT만 출력)</div>
-						통신사명 ${telecomfee.telecom.name}/
-						요금제명 ${telecomfee.feeName}/
-						요금(원) ${telecomfee.fee}/
-						<hr>
-						---선약할인 또는 공시할인을 선택---<br>
-							<input type="radio" name="dc" value="선택약정">
-								<input type="hidden" name="contractDc" value="${telecomfee.contractDc}">
-							<label for="dc">선약할인</label> ${telecomfee.contractDc}원
-							<br>
-							<input type="radio" name="dc" value="공시지원">
-								<input type="hidden" name="officialDc" value="${telecomfee.officialDc}">
-							<label for="dc">공시할인</label> ${telecomfee.officialDc}원
-							<br>
-							
-						<hr>
-						<div class="contractDc">
-						-선약할인 선택 시 할부원금 -<br>
-						
-							출고가(${product.price})-MO:BILE 할인(${product.dcprice})-선약할인(${telecomfee.contractDc})=
-							할부원금 : <c:out value="${product.price-product.dcprice-telecomfee.contractDc}"/>원
-						</div>
-						<hr>
-						<div class="officialDc">
-						-공시할인 선택 시 할부원금 -<br>
-						
-							출고가(${product.price})-MO:BILE 할인(${product.dcprice})-공시할인(${telecomfee.officialDc})
-							할부원금 : <c:out value="${product.price-product.dcprice-telecomfee.officialDc}"/>원
-						</div>
-				</c:if>
-			</div>
-			<div class="lguplus">
-				<c:if test="${telecomfee.telecom.name eq 'LGUplus'}">
-					<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id"/>
-							<div>(LGUplus만 출력)</div>
-							통신사명 ${telecomfee.telecom.name}/
-							요금제명 ${telecomfee.feeName}/
-							요금(원) ${telecomfee.fee}/
-							<hr>
-							---선약할인 또는 공시할인을 선택---<br>
-							<input type="radio" name="dc" value="선택약정">
-								<input type="hidden" name="contractDc" value="${telecomfee.contractDc}">
-							<label for="dc">선약할인</label> ${telecomfee.contractDc}원
-							<br>
-							<input type="radio" name="dc" value="공시지원">
-								<input type="hidden" name="officialDc" value="${telecomfee.officialDc}">
-							<label for="dc">공시할인</label> ${telecomfee.officialDc}원
-							<br>
-						
-						<hr>
-						<div class="contractDc">
-						-선약할인 선택 시 할부원금 -<br>
-						
-							출고가(${product.price})-MO:BILE 할인(${product.dcprice})-선약할인(${telecomfee.contractDc})=
-							할부원금 : <c:out value="${product.price-product.dcprice-telecomfee.contractDc}"/>원
-						</div>
-						<hr>
-						<div class="officialDc">
-						-공시할인 선택 시 할부원금 -<br>
-						
-							출고가(${product.price})-MO:BILE 할인(${product.dcprice})-공시할인(${telecomfee.officialDc})
-							할부원금 : <c:out value="${product.price-product.dcprice-telecomfee.officialDc}"/>원
-						</div>
-				</c:if>
-			</div>
-		</c:forEach>
-		<hr>
-		<div>
-			 약정기간 선택
-			<input name="period" id="1" value="1" type="radio" onclick='getPeriod(event)'>
-			<label for="period">일시불</label>
-			<input name="period" id="24" value="24" type="radio" onclick='getPeriod(event)'>
-			<label for="period">24개월</label>
-			<input name="period" id="30" value="30" type="radio" onclick='getPeriod(event)'>
-			<label for="period">30개월</label>
-			<input name="period" id="36" value="36" type="radio" onclick='getPeriod(event)'>
-			<label for="period">36개월</label>
+	<div class="product_container">
+		<div class="product_info">
+			<img src="../image/${product.category}/${product.name}.jpg" class="product_image">
+			
+			<table class="product_info_detail">
+				<tr>
+					<th>상품명</th>
+					<td>${product.name}</td>
+				</tr>
+				<tr>
+					<th>제조사</th>
+					<td>${product.maker}</td>
+				</tr>
+				<tr>
+					<th>분 류</th>
+					<td>${product.category}</td>
+				</tr>
+			</table>
 		</div>
-		<div>
-			월 납부액 = 할부원금(선택 요금제에 따라 값 바뀜)
-			/약정기간 <span id="getperiod"></span>개월 + 선택요금제(월)
-		</div>
-	</div>
-</form>
-<button id="btn-buy">신청하기</button>
-<hr>
-//상품상세내용// <br>
-${product.content}
-</section>
-		<script>
 		
-		function getPeriod(event){
-			document.getElementById('getperiod').innerText = 
-			    event.target.value;
-		}
-			//DB 상품 색상 옵션을 가져옴
-			var beforeStr = "${product.color}";
-			//여러 색상이 저장되어있어 , 로 나누어 배열로 저장함
-			var afterStr = beforeStr.split(',');
-			for(var i=0; i< afterStr.length; i++){
-				// 콘솔에서 배열로 저장된 색상옵션 확인 가능함
-				console.log(afterStr[i]);
-			}
-	
-			// 요소 생성 함수
-			function createInput(color) {
-				for(var i=0; i< afterStr.length; i++){
-					
-					// input 태그를 만든다.
-					var $input = document.createElement('input');
-					// 태그의 name을 설정한다.
-					$input.name = color;
-					// 태그의 type을 설정한다.
-					$input.type = "radio";
-					// 생성된 태그를 리턴한다.
-					return $input;
-				}
+		<div class="product_options">
+			<form>
+				<input id="productid" name="productid" type="hidden" value="${product.id}">
+				<h3>옵션선택</h3>
+				<!-- 용량옵션 -->
+				<div class="option_div" id="storages">
+					<span class="option_name">용량</span>
+				</div>
 				
-			}
-			var colors = document.getElementById('colors')
-			for(var i=0; i< afterStr.length; i++){
-				// id가 color+i+1이고 value가 컬러 옵션명
-				$input = createInput("color");
-				$input.id = "color"+(i+1);
-				// 태그의 value를 설정한다.
-				$input.value = afterStr[i];
-				// colors에 input 태그를 추가
-				colors.appendChild($input);
-				// input(radio) 앞에 컬러옵션명 출력
-				$input.before('/ '+afterStr[i]+'');
-			}
+				<!-- 색상옵션 -->
+				<div class="option_div" id="colors">
+					<span class="option_name">색상</span>
+				</div>
+				
+				<!-- 사용중인 통신사 -->
+				<div class="option_div">
+					<span class="option_name">사용중인 통신사</span><input name="beforetel"
+						id="beforetel1" value="SKT" type="radio"><label
+						for="beforetel1">SKT</label><input name="beforetel"
+						id="beforetel2" value="KT" type="radio"><label
+						for="beforetel2">KT</label><input name="beforetel"
+						id="beforetel3" value="LGUplus" type="radio"><label
+						for="beforetel3">LGU+</label><input name="beforetel"
+						id="beforetel4" value="altteul" type="radio"><label
+						for="beforetel4">알뜰폰</label>
+				</div>
+				
+				<!-- 변경 통신사 -->
+				<div class="option_div">
+					<span class="option_name">사용하실 통신사</span><input name="aftertel"
+						id="aftertel1" value="SKT" type="radio"><label for="aftertel1">SKT</label><input name="aftertel" id="aftertel2" value="KT" type="radio"><label
+						for="aftertel2">KT</label><input name="aftertel" id="aftertel3"
+						value="LGUplus" type="radio"><label for="aftertel3">LGU+</label>
+				</div>
+				
+				<!-- 요금제 옵션 선택 -->
+				<div class="option_div">
+ 					<span class="telecom_msg">사용하실 통신사를 선택하세요</span>
+					<c:forEach var="telecomfee" items="${telecomfee}">
+					<div id="sel_fee_fist">
+					</div>
+						<!-- SKT -->
+ 						<div class="skt">
+							<c:if test="${telecomfee.telecom.name eq 'SKT'}">
+ 							<c:choose>
+							<c:when test="${empty (telecomfee.telecom.name eq 'SKT')}">
+								<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
+							</c:when>
+							<c:otherwise>
+								<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id"/>
+								<div class="telecom_fee">
+									<div>
+										<label for="telecom_name">통신사명</label>
+										<input id="telecom_name" type="text" value="${telecomfee.telecom.name}" disabled>
+									</div>
+									<div>
+										<label for="fee_name">요금제명</label>
+										<input id="fee_name" type="text" value="${telecomfee.feeName}" disabled>
+									</div>
+									<div>
+										<label for="fee">요금(월)</label>
+										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
+									</div>
+									<div>
+										<label for="dc_option">할인옵션</label>
+										<select id="dc_option" name="dc_option" onchange="saveObj(this)">
+											<option value="0">선택안함</option>
+											<option value="${telecomfee.fee}">선택약정</option>
+											<option value="${telecomfee.officialDc}">공시지원</option>
+										</select>
+									</div>
+								</div>
+ 							</c:otherwise>
+ 							</c:choose>
+ 							</c:if>
+						</div>
+						
+						<!-- KT -->
+						<div class="kt">
+							<c:if test="${telecomfee.telecom.name eq 'KT'}">
+							<c:choose>
+							<c:when test="${empty (telecomfee.telecom.name eq 'KT')}">
+								<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
+							</c:when>
+							<c:otherwise>
+								<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id" />
+								<div class="telecom_fee">
+									<div>
+										<label for="telecom_name">통신사명</label>
+										<input id="telecom_name" type="text" value="${telecomfee.telecom.name}" disabled>
+									</div>
+									<div>
+										<label for="fee_name">요금제명</label>
+										<input id="fee_name" type="text" value="${telecomfee.feeName}" disabled>
+									</div>
+									<div>
+										<label for="fee">요금(월)</label>
+										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
+									</div>
+									<div>
+										<label for="dc_option">할인옵션</label>
+										<select id="dc_option" name="dc_option" onchange="saveObj(this)">
+											<option value="0">선택안함</option>
+											<option value="${telecomfee.fee}">선택약정</option>
+											<option value="${telecomfee.officialDc}">공시지원</option>
+										</select>
+									</div>
+								</div>
+								</c:otherwise>
+								</c:choose>
+							</c:if>
+						</div>
+						
+						<!-- LGU+ -->
+						<div class="lguplus">
+							<c:if test="${telecomfee.telecom.name eq 'LGUplus'}">
+								<c:choose>
+									<c:when test="${empty (telecomfee.telecom.name eq 'LGUplus')}">
+											<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
+									</c:when>
+									<c:otherwise>
+								<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id" />
+								<div class="telecom_fee">
+									<div>
+										<label for="telecom_name">통신사명</label>
+										<input id="telecom_name" type="text" value="${telecomfee.telecom.name}" disabled>
+									</div>
+									<div>
+										<label for="fee_name">요금제명</label>
+										<input id="fee_name" type="text" value="${telecomfee.feeName}" disabled>
+									</div>
+									<div>
+										<label for="fee">요금(월)</label>
+										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
+									</div>
+									<div>
+										<label for="dc_option">할인옵션</label>
+										<select id="dc_option" name="dc_option" onchange="saveObj(this)">
+											<option value="0">선택안함</option>
+											<option value="${telecomfee.fee}">선택약정</option>
+											<option value="${telecomfee.officialDc}">공시지원</option>
+										</select>
+									</div>
+								</div>
+									</c:otherwise>
+								</c:choose>
+							</c:if>
+						</div>
+					</c:forEach>
+					</div>
+					
+					<!-- 약정기간 -->					
+					<div class="option_div" id="period_sel">
+						<span class="option_name">약정기간 선택</span>
+						<input name="period" id="period1" value="1" type="radio"><label
+							for="period1">일시불</label><input name="period" id="period24"
+							value="24" type="radio"><label for="period24">24개월</label><input
+							name="period" id="period30" value="30" type="radio"><label
+							for="period30">30개월</label><input name="period" id="period36"
+							value="36" type="radio"><label for="period36">36개월</label>
+							<input id="getperiod" type="number" hidden="hidden">
+					</div>
+					
+					<div class="calc_price">
+						<div class="calc_price_item">
+							<label for="product_price">출고가</label>
+							<input id="product_price" type="number" hidden="hidden" value="${product.price}">
+							<fmt:formatNumber value="${product.price}" pattern="#,###원"/>
+						</div>
+						
+						<div class="calc_price_item">
+							<label for="product_dcprice">MO:BILE 할인</label>
+							<input id="product_dcprice" type="number" hidden="hidden" value="${product.dcprice}">
+							<fmt:formatNumber value="${product.dcprice}" pattern="#,###원"/>
+						</div>
+						
+						<div class="calc_price_item">
+							<label for="product_principal">할부원금</label>
+							<input id="product_principal" type="text" disabled>
+						</div>
+						<hr>
+						<div class="calc_price_item">
+							<label for="dc_option_print">옵션할인</label>
+							<input id="dc_option_print" type="text" disabled>
+						</div>
+						<div class="calc_price_item">
+							<label for="month_price">월할부금</label>
+							<input id="month_price" type="text" disabled>
+						</div>
+						<div class="calc_price_item">
+							<label for="month_fee">요금제</label>
+							<input id="month_fee" type="text" disabled>
+						</div>
+						<hr>
+						<div class="calc_price_item">
+							<label for="month_total">월납부액</label>
+							<input id="month_total" type="text" class="input_emph" disabled>
+						</div>
+						
+					</div>
+				
+			</form>
+			
+			<button type="button" id="btn-buy" class="buy_btn">신청하기</button>
+			
+		</div>
+	</div>
+	
+	<div class="detail_content">
+		<div class="detail_content_head">제품정보</div>
+		<div class="detail_content_body">
+			${product.content}
+		</div>
+
+	</div>
+</section>
+
+<!-- 자바스크립트 -->
+<script>
+	// 요금제
+	$("input[name='aftertel']").change(function() {
+		
+	/*if ($("input[name='aftertel']:checked").val() == 'SKT') {
+		console.log("SKT");
+	}  else if ($("input[name='aftertel']:checked").val() == 'KT') {
+		$('.skt').hide();
+		$('.lguplus').hide();
+		$('.kt').show();
+	} else if ($("input[name='aftertel']:checked").val() == 'LGUplus') {
+		$('.skt').hide();
+		$('.kt').hide();
+		$('.lguplus').show();
+	} */
+});
+
+	// 라벨 생성 함수
+	function createLabel(arr, labelfor, labelval) {
+		for (let i = 0; i < arr.length; i++) {
+			let $label = document.createElement('label');
+			$label.htmlFor = labelfor;
+			$label.innerText = labelval;
+			return $label;
+		}
+	}
+	
+	// 인풋 생성 함수
+	function createInput(arr, input) {
+		for (let i = 0; i < arr.length; i++) {
+			let $input = document.createElement('input');
+			$input.type = "radio";
+			$input.name = input;
+			return $input;
+		}
+	}
+	
+	//색상 옵션
+	let productColors = "${product.color}";
+	let colorArr = productColors.split(', ');
+	
+	// 색상 옵션 생성
+	let colors = document.getElementById('colors');
+	for (let i = 0; i < colorArr.length; i++) {
+		let $input = createInput(colorArr, "color");
+		$input.id = "color" + (i + 1);
+		$input.value = colorArr[i];
+		
+		let $label = createLabel(colorArr, $input.id, $input.value);
+		colors.appendChild($input);
+		colors.appendChild($label);
+	}
+	
+	// 용량옵션
+	let productStorages = "${product.storage}";
+	let storageArr = productStorages.split(', ');
+	
+	// 용량 옵션 생성
+	let storages = document.getElementById('storages');
+	for (let i = 0; i < storageArr.length; i++) {
+		let $input = createInput(storageArr, "storage");
+		$input.id = "storage" + (i + 1);
+		$input.value = storageArr[i];
+		
+		let $label = createLabel(storageArr, $input.id, $input.value);
+		storages.appendChild($input);
+		storages.appendChild($label);
+	}
 </script>
+
 <script type="text/javascript" src="/script/product.js"></script>
+<script type="text/javascript" src="/script/productDetail.js"></script>
 <%@ include file="../layout/footer.jsp"%>

@@ -4,6 +4,31 @@
     align-items: flex-start;
 }
 
+.product_info {
+    border-radius: 12px;
+    background-color: white;
+    
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.product_info_detail {
+	margin: 2rem 0;
+}
+
+.product_info_detail th, .product_info_detail td {
+	padding: 0 0.5rem;
+}
+
+.product_image {
+	display: block;
+	margin: 0 auto;
+	max-width: 450px;
+	
+    border-radius: 12px;
+    background-color: white;
+}
+
 .product_options {
     width: 500px;
     border-radius: 12px;
@@ -13,34 +38,13 @@
     margin: 1rem;
 }
 
-.product_image {
-    border-radius: 12px;
-    background-color: white;
-    
-    padding: 2rem;
-    margin: 1rem;
-}
-
-.product_image img {
-	width: 500px;
-}
-
 .option_div {
+	width: 450px;
     margin: 1rem 0;
 }
 
-#totla_price {
-    padding: 1rem;
-}
-
-.device_name {
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 2rem;
-}
-
 .option_name {
-    width: 100px;
+	display: block;
     margin-bottom: 10px;
     color: #666;
     font-size: 0.9em;
@@ -53,105 +57,112 @@ input[type=radio] {
 input[type=radio]+label {
     padding: 5px 10px;
     border: 1px solid #999;
+    background-color: #f2f2f2;
     border-radius: 5px;
     min-width: 100px;
+    margin-right: 0.5rem;
 }
 
 input[type=radio]:checked+label {
-    border: 2px solid #333;
+    border: 1px solid #8ecbec;
+    background-color: #c5e4f5;
 }
 
-input[type=radio]+label:hover {
+input[type=radio]:hover {
     cursor: pointer;
 }
 
-.device_colors {
-    list-style-type: none;
-    display: flex;
-    justify-content: flex-start;
-
+.telecom_fee {
+	font-size: 15px;
+	line-height: 180%;
+	border-radius: 8px;
+	padding: 1rem;
+	border: 1px solid #ccc;
 }
 
-.color_chip {
-    border-radius: 100%;
-    width: 22px;
-    height: 22px;
-    margin: 2px;
-}
-
-
-#device_color1 {
-    background-color: #3c3c3c;
-}
-
-#device_color2 {
-    background-color: #ff9dae;
-}
-
-#device_color3 {
-    background-color: #1330a2;
-}
-
-#device_color4 {
-    background-color: #e9daba;
-}
-
-#device_color5 {
-    background-color: #de3207;
-}
-
-.calc_price {
-	margin-top: 2rem;
-	border-top: 1px solid;
-	padding: 2rem 0;
-}
-
-.calc_price label {
+.telecom_fee label {
 	display: inline-block;
 	width: 100px;
 }
 
-input[type=number] {
-	outline:none;
-	border:none;
-	background: none;
-	
-	display: inline-block;
-	margin: 0;
-	text-align: right;
+.telecom_fee input[type=text] {
 	font-size: inherit;
+	outline: none;
+	border: none;
+	background: none;
 }
 
-#total_price {
-	color: #ff375a;
-	font-size: 30px;
+.calc_price {
+	font-size: 15px;
+	border-radius: 8px;
+	margin: 2rem 0;
+	padding: 2rem;
+	line-height: 180%;
+	background: linear-gradient(#fff2f4, #fffbfc);
+}
+
+.calc_price label {
+	display: block;
+}
+
+.calc_price input[type=text] {
+	font-size: inherit;
+	outline: none;
+	border: none;
+	background: none;
+	display: block;
+	text-align: right;
+}
+
+.calc_price_item {
+	display: flex;
+	justify-content: space-between;
+}
+
+input[type=text].input_emph {
 	font-weight: bold;
+	font-size: 20px;
+	color: #652323;
 }
 
-.price_option3 {
-	color: #ff375a;
+.buy_btn {
+	display: block;
+	background: none;
+	margin: 1rem auto 0;
+	padding: 1rem 5rem;
+	border-radius: 12px;
+	border: 1px solid;
+	font-size: 15px;
+	font-weight: bold;
+	transition: 0.5s;
 }
 
-.device_content {
+.buy_btn:hover {
+	color: white;
+	background: linear-gradient(to right, skyblue, pink);
+	transition: 0.5s;
+}
+
+.detail_content {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.detail_page_menu {
-	display: flex;
-	flex-direction: row;
-    justify-content: center;
-    align-items: center;
     
-    text-align: center;
-    background-color: #333;
-    padding: 20px;
-    border-right: 1px solid white;
+    margin-top: 2rem;
 }
 
-.product_detail_image {
+.detail_content_head {  
+	width: 1060px;
+	color: white;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 12px 12px 0 0;
+}
+
+.detail_content_body {
+	width: 1060px;
+	padding: 1rem;
+	background-color: white;
     text-align: center;
-    width: 1240px;
 }
