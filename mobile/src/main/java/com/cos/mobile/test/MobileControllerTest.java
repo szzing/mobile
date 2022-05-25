@@ -80,6 +80,10 @@ public class MobileControllerTest {
 	public String productdetail() {
 		return "product/productDetail";
 	}
+	@GetMapping("/test/proRequest")
+	public String productrequest() {
+		return "product/proRequest";
+	}
 	
 	@GetMapping("/test/reviewForm")
 	public String reviewform() {
