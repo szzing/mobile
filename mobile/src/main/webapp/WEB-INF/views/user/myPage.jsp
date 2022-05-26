@@ -14,7 +14,6 @@
 		<ul class="mypage_menu">
 			<li class="mypage_menu_item"><a href="/user/updateForm"><i class="bi bi-pencil-fill"></i> 회원정보 수정</a></li>
 			<li class="mypage_menu_item"><a><i class="bi bi-question-circle-fill"></i> 나의 문의</a></li>
-			<li class="mypage_menu_item"><a><i class="bi bi-bag-fill"></i> 장바구니</a></li>
 			<li class="mypage_menu_item"><a><i class="bi bi-card-checklist"></i> 주문목록</a></li>
 			<li class="mypage_menu_item"><a href="https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm?sid1=%EC%86%A1%EC%9E%A5%EB%B2%88%ED%98%B8&displayHeader=N"
                                 onclick="window.open(this.href, '_blank', 'width=700, height=300, resizeable=no, scrollbars=no, toolbar=no'); return false;"><i class="bi bi-cart-fill"></i> 배송조회</a></li>

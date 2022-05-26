@@ -84,9 +84,7 @@
 }
 
 .input_item::placeholder {
-	border-bottom: 3px solid transparent;
-	border-image: linear-gradient(to right, skyblue, pink);
-    border-image-slice: 1;
+	color: #ccc;
 }
 
 .btns {

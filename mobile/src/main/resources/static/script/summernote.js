@@ -63,6 +63,7 @@ function uploadSummernoteImageFile(file, editor) {
 	});
 }
 
+// 편집기에 드래그앤드롭으로 이미지 첨부
 $("div.note-editable").on('drop',function(e){
     for(i=0; i< e.originalEvent.dataTransfer.files.length; i++){
     	uploadSummernoteImageFile(e.originalEvent.dataTransfer.files[i],$("#summernote")[0]);

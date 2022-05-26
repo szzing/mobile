@@ -7,7 +7,6 @@ let index = {
 		$("#btn-feesave").on("click", () => {
 			this.feesave();
 		});
-		
 	},
 	
 	
@@ -102,7 +101,7 @@ let index = {
 				}); 
 			}
 			
-		},	
+		},
 };
 index.init();
 

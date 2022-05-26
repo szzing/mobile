@@ -29,10 +29,10 @@
 				
 				<div class="btns">
 					<button type="submit" id="btn-login" class="btn submit_btn">로그인</button>
-					<button type="button" class="btn button_btn skyblue">아이디 찾기</button>
+					<button type="button" class="btn button_btn skyblue" onclick="location.href='/auth/finduserid'">아이디 찾기</button>
 					<button type="button" class="btn button_btn pink">비밀번호 찾기</button>
 					<span class="span_txt"><b>▶ 아직 회원이 아니신가요?</b>
-					<a href="/auth/joinForm"><button type="button" class="btn btn_alt">회원가입하기</button></a></span>
+					<button type="button" class="btn btn_alt" onclick="location.href='/auth/joinForm'">회원가입하기</button></span>
 				</div>
 		</form>
 		
