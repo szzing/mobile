@@ -1,3 +1,46 @@
+$(document).on("click", "#btn-buy", function(){
+	var dc = '';
+	var option = '';
+		if($('input[name="aftertel"]:checked').val()=='KT'){
+			dc = document.getElementById("kt_option");
+			option = $('#kt_option option:selected').val();
+		}else if($('input[name="aftertel"]:checked').val()=='SKT'){
+			dc = document.getElementById("skt_option");
+			option = $('#skt_option option:selected').val();
+		}else if($('input[name="aftertel"]:checked').val()=='LGUplus'){
+			dc = document.getElementById("lg_option");
+			option = $('#lg_option option:selected').val();
+		}
+		let data={
+			productid: $("#productid").val(),
+			storage : $('input[name="storage"]:checked').val(),
+			color: $('input[name="color"]:checked').val(),
+			beforetel: $('input[name="beforetel"]:checked').val(),
+			aftertel: $('input[name="aftertel"]:checked').val(),
+			telfeeid: $("#telfeeid").val(),
+			dc_option: option,
+			dcchoice: dc.options[dc.selectedIndex].text,
+			period: $('input[name="period"]:checked').val()
+		};
+		console.log(data)
+		$.ajax({ 
+			type:"POST",
+			url:"/order",
+			data:JSON.stringify(data),
+			contentType:"application/json; charset=utf-8",
+			dataType:"text" ,
+			traditional:true
+		}).done(function(resp){
+			alert("전송!");
+			location.href="/order";
+
+		}).fail(function(error){
+			alert(JSON.stringify(error));
+		});
+	
+});
+	
+
 let index = {
 	init: function() {
 		$("#btn-telsave").on("click", () => {

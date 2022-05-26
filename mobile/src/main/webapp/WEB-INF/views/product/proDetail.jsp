@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="../css/productDetail.css">
 
 <!-- 
->>>>>>> refs/remotes/origin/dev
 
 주문 뷰로 보내는 정보
 
@@ -41,7 +40,7 @@
 			</table>
 		</div>
 	<div class="product_options">
-		<form action="/order" method="get">
+		<form>
 			<input id="productid" name="productid" type="hidden" value="${product.id}">
 				<!-- 용량옵션 -->
 				<div class="option_div" id="storages">
@@ -88,7 +87,7 @@
 								<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
 							</c:when>
 							<c:otherwise>
-								<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id"/>
+								<input type="hidden" id="telfeeid" name="telfeeid" value="${telecomfee.id}" />
 								<div class="telecom_fee">
 									<div>
 										<label for="telecom_name">통신사명</label>
@@ -103,8 +102,8 @@
 										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
 									</div>
 									<div>
-										<label for="dc_option">할인옵션</label>
-										<select id="dc_option" name="dc_option" onchange="saveObj(this)">
+										<label for="skt_option">할인옵션</label>
+										<select id="skt_option" name="skt_option" onchange="saveObj(this)">
 											<option value="0">선택안함</option>
 											<option value="${telecomfee.fee}">선택약정</option>
 											<option value="${telecomfee.officialDc}">공시지원</option>
@@ -124,7 +123,7 @@
 								<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
 							</c:when>
 							<c:otherwise>
-								<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id" />
+								<input type="hidden" id="telfeeid" name="telfeeid" value="${telecomfee.id}" />
 								<div class="telecom_fee">
 									<div>
 										<label for="telecom_name">통신사명</label>
@@ -139,8 +138,8 @@
 										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
 									</div>
 									<div>
-										<label for="dc_option">할인옵션</label>
-										<select id="dc_option" name="dc_option" onchange="saveObj(this)">
+										<label for="kt_option">할인옵션</label>
+										<select id="kt_option" name="kt_option" onchange="saveObj(this)">
 											<option value="0">선택안함</option>
 											<option value="${telecomfee.fee}">선택약정</option>
 											<option value="${telecomfee.officialDc}">공시지원</option>
@@ -160,7 +159,7 @@
 											<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
 									</c:when>
 									<c:otherwise>
-								<input type="hidden" id="telfeeid" name="telfeeid" value="telecomfee.id" />
+								<input type="hidden" id="telfeeid" name="telfeeid" value="${telecomfee.id}" />
 								<div class="telecom_fee">
 									<div>
 										<label for="telecom_name">통신사명</label>
@@ -175,8 +174,8 @@
 										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
 									</div>
 									<div>
-										<label for="dc_option">할인옵션</label>
-										<select id="dc_option" name="dc_option" onchange="saveObj(this)">
+										<label for="lg_option">할인옵션</label>
+										<select id="lg_option" name="lg_option" onchange="saveObj(this)">
 											<option value="0">선택안함</option>
 											<option value="${telecomfee.fee}">선택약정</option>
 											<option value="${telecomfee.officialDc}">공시지원</option>
