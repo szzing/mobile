@@ -57,6 +57,7 @@
 				<ul class="header_right_menu">
 					<li class="menu_item"><a href="/auth/notice">고객센터</a></li>
 					<li class="menu_item"><a href="/user/myPage">마이페이지</a></li>
+					<li class="menu_item"><a href="/cart">장바구니</a></li>
 					<li class="menu_item"><a href="/logout">로그아웃</a></li>
 				</ul>
 			</sec:authorize>

@@ -262,7 +262,7 @@
 	// 요금제
 	$("input[name='aftertel']").change(function() {
 		
-	/*if ($("input[name='aftertel']:checked").val() == 'SKT') {
+	if ($("input[name='aftertel']:checked").val() == 'SKT') {
 		console.log("SKT");
 	}  else if ($("input[name='aftertel']:checked").val() == 'KT') {
 		$('.skt').hide();
@@ -272,7 +272,7 @@
 		$('.skt').hide();
 		$('.kt').hide();
 		$('.lguplus').show();
-	} */
+	} 
 });
 
 	// 라벨 생성 함수

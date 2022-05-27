@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class OrderItemList {
-	private List<OrderItem> orders;
+	private List<CartItem> orders;
 }
