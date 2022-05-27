@@ -80,9 +80,9 @@ public class MobileControllerTest {
 	public String productdetail() {
 		return "product/productDetail";
 	}
-	@GetMapping("/test/proRequest")
+	@GetMapping("/test/orderForm")
 	public String productrequest() {
-		return "product/proRequest";
+		return "order/orderForm";
 	}
 	
 	@GetMapping("/test/reviewForm")

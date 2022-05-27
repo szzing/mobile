@@ -144,6 +144,30 @@ input[type=text].input_emph {
 	transition: 0.5s;
 }
 
+.btns {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.login_btn {
+	display: block;
+	background: none;
+	margin: 1rem auto 0;
+	padding: 1rem 5rem;
+	border-radius: 12px;
+	border: 1px solid;
+	font-size: 15px;
+	font-weight: bold;
+	transition: 0.5s;
+}
+
+.login_btn:hover {
+	background: #eee;
+	transition: 0.5s;
+}
+
 .detail_content {
     display: flex;
     justify-content: center;

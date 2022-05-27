@@ -11,19 +11,6 @@
 		</div>
 		
 		<form id="request" class="form request_form">
-		
-			<div class="request_option_box">
-				// 주문 옵션 불러오기
-				<div class="request_option_item">
-					<div class="request_product">상품옵션</div>
-					<div class="request_price">가격옵션</div>
-				</div>
-				<div class="check_div">
-					// 주문사항 체크
-					<input type="checkbox" id="option_check">
-					<label for="option_check">주문사항을 확인하였습니다</label>
-				</div>
-			</div>
 			
 			<div class="form_heading">
 				<h3>가입자 정보</h3>
@@ -55,6 +42,7 @@
 			<!--배송지 입력-->
 			<div class="form_heading">
 				<h3>배송지 정보</h3>
+				<span class="necessary">* 은 필수 입력 항목입니다.</span>
 			</div>
 			<div class="input_boxes">
 				<div class="input_box">
@@ -93,4 +81,5 @@
 	</div>
 </section>
 
+<script type="text/javascript" src="/script/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

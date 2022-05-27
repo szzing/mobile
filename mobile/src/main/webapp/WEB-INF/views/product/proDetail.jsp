@@ -240,8 +240,17 @@
 					</div>
 				
 			</form>
-			
-			<button type="button" id="btn-buy" class="buy_btn">신청하기</button>
+			<c:choose>
+				<c:when test="${empty principal}">
+					<div class="btns">
+						<span>로그인 후 신청 가능합니다</span>
+						<button type="button" class="login_btn" onclick="location.href='/auth/loginForm'">로그인하기</button>
+					</div>
+				</c:when>
+				<c:otherwise>
+					<button type="button" id="btn-buy" class="buy_btn">신청하기</button>
+				</c:otherwise>
+			</c:choose>
 			
 		</div>
 	</div>
@@ -259,21 +268,6 @@
 
 <!-- 자바스크립트 -->
 <script>
-	// 요금제
-	$("input[name='aftertel']").change(function() {
-		
-	/*if ($("input[name='aftertel']:checked").val() == 'SKT') {
-		console.log("SKT");
-	}  else if ($("input[name='aftertel']:checked").val() == 'KT') {
-		$('.skt').hide();
-		$('.lguplus').hide();
-		$('.kt').show();
-	} else if ($("input[name='aftertel']:checked").val() == 'LGUplus') {
-		$('.skt').hide();
-		$('.kt').hide();
-		$('.lguplus').show();
-	} */
-});
 
 	// 라벨 생성 함수
 	function createLabel(arr, labelfor, labelval) {

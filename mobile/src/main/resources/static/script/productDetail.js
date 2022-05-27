@@ -1,5 +1,4 @@
-
-$("input:radio[name=dc]").click(function(){			
+/*$("input:radio[name=dc]").click(function(){			
 		if($("input[name='dc']:checked").val()=='선택약정'){
 				$('.officialDc').hide();
 				$('.contractDc').show();
@@ -7,9 +6,7 @@ $("input:radio[name=dc]").click(function(){
 				$('.contractDc').hide();
 				$('.officialDc').show();
 			}
-	});
-
-let telNum = 0;
+	});*/
 
 $(document).ready(function(){
 	$('.skt').hide();
