@@ -75,7 +75,7 @@
 				
 				<!-- 요금제 옵션 선택 -->
 				<div class="option_div">
- 					<span class="telecom_msg">사용하실 통신사를 선택하세요</span>
+ 					<span class="telecom_msg">통신사를 선택하면 요금제 옵션이 표시됩니다</span>
 					<c:forEach var="telecomfee" items="${telecomfee}">
 					<div id="sel_fee_fist">
 					</div>

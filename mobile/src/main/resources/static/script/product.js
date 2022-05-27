@@ -22,17 +22,28 @@ let index = {
 				option = $('#lg_option option:selected').val();
 			}
 			
-			if(!($('input[name="storage"]').checked)) {
+			if(($('input[name="storage"]:checked').length < 1)) {
 				alert("용량을 선택하세요.");
 				return false;
-			}
-			
-			if(dc == '' || option == 0) {
-				alert("옵션을 선택해주세요.");
+			} else if(($('input[name="color"]:checked').length < 1)) {
+				alert("색상을 선택하세요.");
 				return false;
-			} else {
-				this.ordercheck(dc, option);
-			}
+			} else if(($('input[name="beforetel"]:checked').length < 1)) {
+				alert("기존 통신사를 선택하세요.");
+				return false;
+			} else if(($('input[name="aftertel"]:checked').length < 1)) {
+				alert("변경할 통신사를 선택하세요.");
+				return false;
+			} else if(($('input[name="period"]:checked').length < 1)) {
+				alert("할부기간을 선택하세요.");
+				return false;
+			} else if(dc.options[dc.selectedIndex].value==0) {
+				alert("할인 옵션을 선택하세요.");
+				return false;
+			} 
+			
+
+			this.ordercheck(dc, option);
 		});
 	},
 	
