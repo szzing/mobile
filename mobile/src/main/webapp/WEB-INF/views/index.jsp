@@ -6,11 +6,7 @@
 <a id="topbtn" class="off">▲<br>TOP</a>
 	
 	<div class="intro_background">
-        <!-- 
-        <img class="intro_background_img" src="../css/images/main/background-g8d3776f9d_1920.jpg">
-         -->
     <div class="main_intro">
-	    <!-- <input type="button" value="◀" id="imgBackBtn"> -->
                 <h1 class="main_intro_h1">Welcome to MO:BILE World</h1>
                 <p class="main_intro_p">모빌에서만 누릴 수 있는 구매 혜택을 절대 놓치지 마세요!</p>
         <input type="button" value="▶" id="imgNextBtn">
@@ -18,7 +14,7 @@
     </div>
         <!-- 배너 -->
         <div class="banners">
-            <div class="ban_item ban1" onclick="location.href='/event'">다양한 이벤트</div>
+            <div class="ban_item ban1" onclick="location.href='/auth/event'">다양한 이벤트</div>
             <div class="ban_item ban2" onclick="location.href='/test/review'">고객 리뷰</div>
         </div>
 
@@ -61,7 +57,7 @@
                         
                     </div>
                     
-                    <input type="button" value="인기상품 더 알아보기  &nbsp; &nbsp; ▶">
+                    <input type="button" onclick="location.href='/auth/product'" value="인기상품 더 알아보기  &nbsp; &nbsp; ▶">
                 </div>
 
                 <hr>
@@ -76,19 +72,19 @@
                         <h3>모빌에서 다양한 제품을 만나보세요</h3>
                     </div>
                     <div class="products_right_item">
-                            <div class="smartphone">
+                            <div class="smartphone" onclick="location.href='/auth/product'">
                                 <img src="../css/images/product/phone/phone.jpg">
                                 <h3>스마트폰</h3>
                             </div>
-                            <div class="tablet">
+                            <div class="tablet" onclick="location.href='/auth/product'">
                                 <img src="../css/images/product/tablet/ipad-air.jpg">
                                 <h3>태블릿PC</h3>
                             </div>
-                            <div class="etc">
+                            <div class="etc" onclick="location.href='/auth/product'">
                                 <img src="../css/images/product/etc/cable.jpg">
                                 <h3>주변 기기</h3>
                             </div>
-                            <div class="more">
+                            <div class="more" onclick="location.href='/auth/product'">
                                 <h3>제품 더 알아보기 ▶</h3>
                             </div>
                     </div>
