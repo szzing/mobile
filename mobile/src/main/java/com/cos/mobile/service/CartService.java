@@ -65,5 +65,10 @@ public class CartService {
 		System.out.println("Page<CartItem> items(findById) :" + items);
 		return items;
 	}
+	
+	@Transactional
+	public void cartDelete(int cartitemId) {
+		cartRepository.deleteById(cartitemId);
+	}
 
 }

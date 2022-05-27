@@ -13,6 +13,7 @@
 
 		<div class="product_image">
 			<img id="phoneimage" src="../css/images/product/detail/iphone13_midnight.jpg">
+			
 		</div>
 
 		<div class="product_options">
