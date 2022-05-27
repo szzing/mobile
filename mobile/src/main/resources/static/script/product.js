@@ -40,10 +40,16 @@ let index = {
 			} else if(dc.options[dc.selectedIndex].value==0) {
 				alert("할인 옵션을 선택하세요.");
 				return false;
-			} 
-			
-
+			}
 			this.ordercheck(dc, option);
+		});
+		
+		$("#btn-check").on("click", () => {
+			if($('#order-check').is(":checked") == false) {
+				alert("선택한 옵션을 확인 후 동의해주세요.");
+				return false;
+			}
+			
 		});
 	},
 	

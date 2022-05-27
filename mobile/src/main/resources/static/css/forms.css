@@ -143,3 +143,22 @@
 	font-size: 15px;
 	font-weight: bold;
 }
+
+.caution_box {
+	display: flex;
+	justify-content: center;
+}
+
+.caution_box input[type="password"] {
+	padding: 0.2rem;
+	text-align: center;
+	outline: none;
+	border: none;
+	border-bottom: 3px solid;
+}
+
+.caution_box input[type="password"]:focus {
+	border-bottom: 3px solid transparent;
+	border-image: linear-gradient(to right, skyblue, pink);
+    border-image-slice: 1;
+}

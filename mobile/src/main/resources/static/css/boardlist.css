@@ -70,7 +70,7 @@
 }
 
 .board_content {
-	padding: 2rem;
+	padding: 2rem 0;
 }
 
 .detail_info {
@@ -137,4 +137,77 @@
 .menu_now {
 	font-weight: bold;
 	color: #6d6d6d;
+}
+
+/* 댓글 */
+.reply_area {
+	padding: 1rem;
+}
+
+.load_reply {
+	padding: 1rem;
+}
+
+.reply_box {
+	padding: 1rem;
+	margin: 0.5rem;
+	border-bottom: 1px solid #ccc;
+	
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+
+.reply_writer{
+	font-weight: bold;
+}
+
+.reply_content {
+	padding: 1rem;
+}
+
+.reply_date {
+	color: #ccc;
+}
+
+.reply_btn {
+	margin-left: auto;
+}
+
+.reply_btn a {
+	display: inline-block;
+	padding: 0.2rem;
+	border: 1px solid #ccc;
+	background: #eee;
+	border-radius: 4px;
+}
+
+.reply_btn a:hover {
+	background: white;
+}
+
+.write_reply {
+	padding: 1rem;
+	background: #f3f3f3;
+}
+
+.reply_write {
+	margin: 0.5rem;
+	padding: 0 1rem;
+	
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+
+.reply_textarea {
+	width: 100%;
+	font-size: 15px;
+	border: 1px solid #f3f3f3;
+	padding: 0.2rem;
+	outline: none;
+}
+
+.reply_textarea:focus {
+	border: 1px solid #ccc;
 }
