@@ -1,0 +1,193 @@
+.product_container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.product_info {
+    border-radius: 12px;
+    background-color: white;
+    
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.product_info_detail {
+	margin: 2rem 0;
+}
+
+.product_info_detail th, .product_info_detail td {
+	padding: 0 0.5rem;
+}
+
+.product_image {
+	display: block;
+	margin: 0 auto;
+	max-width: 450px;
+	
+    border-radius: 12px;
+    background-color: white;
+}
+
+.product_options {
+    width: 500px;
+    border-radius: 12px;
+    background-color: white;
+    
+    padding: 2rem;
+    margin: 1rem;
+}
+
+.option_div {
+	width: 450px;
+    margin: 1rem 0;
+}
+
+.option_name {
+	display: block;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input[type=radio]+label {
+    padding: 5px 10px;
+    border: 1px solid #999;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    min-width: 100px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+input[type=radio]:checked+label {
+    border: 1px solid #8ecbec;
+    background-color: #c5e4f5;
+}
+
+input[type=radio]:hover {
+    cursor: pointer;
+}
+
+.telecom_fee {
+	font-size: 15px;
+	line-height: 180%;
+	border-radius: 8px;
+	padding: 1rem;
+	border: 1px solid #ccc;
+}
+
+.telecom_fee label {
+	display: inline-block;
+	width: 100px;
+}
+
+.telecom_fee input[type=text] {
+	font-size: inherit;
+	outline: none;
+	border: none;
+	background: none;
+}
+
+.calc_price {
+	font-size: 15px;
+	border-radius: 8px;
+	margin: 2rem 0;
+	padding: 2rem;
+	line-height: 180%;
+	background: linear-gradient(#fff2f4, #fffbfc);
+}
+
+.calc_price label {
+	display: block;
+}
+
+.calc_price input[type=text] {
+	font-size: inherit;
+	outline: none;
+	border: none;
+	background: none;
+	display: block;
+	text-align: right;
+}
+
+.calc_price_item {
+	display: flex;
+	justify-content: space-between;
+}
+
+input[type=text].input_emph {
+	font-weight: bold;
+	font-size: 20px;
+	color: #652323;
+}
+
+.buy_btn {
+	display: block;
+	background: none;
+	margin: 1rem auto 0;
+	padding: 1rem 5rem;
+	border-radius: 12px;
+	border: 1px solid;
+	font-size: 15px;
+	font-weight: bold;
+	transition: 0.5s;
+}
+
+.buy_btn:hover {
+	color: white;
+	background: linear-gradient(to right, skyblue, pink);
+	transition: 0.5s;
+}
+
+.btns {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.login_btn {
+	display: block;
+	background: none;
+	margin: 1rem auto 0;
+	padding: 1rem 5rem;
+	border-radius: 12px;
+	border: 1px solid;
+	font-size: 15px;
+	font-weight: bold;
+	transition: 0.5s;
+}
+
+.login_btn:hover {
+	background: #eee;
+	transition: 0.5s;
+}
+
+.detail_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    margin-top: 2rem;
+}
+
+.detail_content_head {  
+	width: 1060px;
+	color: white;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 12px 12px 0 0;
+}
+
+.detail_content_body {
+	width: 1060px;
+	padding: 1rem;
+	background-color: white;
+    text-align: center;
+}
