@@ -1,20 +1,20 @@
-/*$("input:radio[name=dc]").click(function(){			
-		if($("input[name='dc']:checked").val()=='선택약정'){
-				$('.officialDc').hide();
-				$('.contractDc').show();
-			}else if($("input[name='dc']:checked").val()=='공시지원'){
-				$('.contractDc').hide();
-				$('.officialDc').show();
-			}
-	});*/
+let productPrice = document.getElementById('product_price').value;
+let dcPrice = document.getElementById('product_dcprice').value;
 
+// 요금제 선택
 $(document).ready(function(){
+	let infoPrice = document.getElementById('product_infoprice');
+	infoPrice.value = Number(productPrice - dcPrice).toLocaleString()+"원";
+	
+	$('.fee_select').hide();
 	$('.skt').hide();
 	$('.kt').hide();
 	$('.lguplus').hide();
-			
 		$("input[name='aftertel']").change(function(){
-			$('.telecom_msg').hide();
+			$('.fee_select').show();
+			$('.fee_select').val("0").prop("selected", true);
+			saveFee();
+			
 			if ($("input[name='aftertel']:checked").val()=='SKT'){
 				$('.kt').hide();
 				$('.lguplus').hide();
@@ -34,84 +34,90 @@ $(document).ready(function(){
 		});
 });
 
-let getObj = "";
-
-function saveObj(obj) {
-	getObj = obj;
-	calcPrice(getObj);
-}
-
-$("input[name='period']").click(function() {
-	calcPrice(getObj);
+$('.fee_select').change(function(){
+	saveFee();
 });
 
+let selectedFee = 0;
+let selectedOfficialDc = 0;
 
-function calcPrice(getObj) {	
-	// 약정기간
-	let per_value = $("input[name='period']:checked").val();
-	let period = Number(per_value);
+// 선택 요금제 금액 저장
+function saveFee(){
+	let feeSelectBox = document.getElementById('telecom_fee_option');
+	let selectedFeeArr = feeSelectBox.options[feeSelectBox.selectedIndex].value.split('+');
 	
-	document.getElementById('getperiod').value = period;
+	selectedFee = Number(selectedFeeArr[0]);
+	selectedOfficialDc = Number(selectedFeeArr[1]);
+};
+
+// 옵션이 변경될 때마다 요금 계산
+$('.options_box').change(function() {
+	saveFee();
+	calcFee();
+});
+
+// 요금 계산
+function calcFee(){
+	let period = $("input[name='period']:checked").val();
+	let dc = $("input[name='dcoption']:checked").val();
 	
-	// 할인옵션
-	const sel_dc = getObj;
-	let dc_idx = Number(sel_dc.selectedIndex);
+	let productPrincipal = 0;
 	let dc_value = 0;
+	let mon_value = 0;
+	let fee_value = 0;
 	
-	// 월납입액
-	const pro_price = Number(document.getElementById('product_price').value);//제품가
-	const pro_dcprice = Number(document.getElementById('product_dcprice').value);//할인가
-	let principal = pro_price-pro_dcprice;//할부원금
+	if(dc == "선택약정" && !isNaN(period)) {
+		//할부원금
+		productPrincipal = productPrice - dcPrice;
+		document.getElementById('product_principal').value = Number(productPrincipal).toLocaleString()+"원";
 		
-	if(dc_idx==1 && !isNaN(period)) { //선택약정
-		principal = pro_price-pro_dcprice;
-		document.getElementById('product_principal').value = principal.toLocaleString()+'원';
-		
+		//옵션할인
 		if(period==1) {
-			dc_value = Math.floor(Number(sel_dc.options[1].value * 0.25 * 12));
+			dc_value = Math.floor(selectedFee * 0.25 * 12);
 		} else {
-			dc_value = Math.floor(Number(sel_dc.options[1].value * 0.25 * period));
+			dc_value = Math.floor(selectedFee * 0.25 * period);
 		}
-		document.getElementById('dc_option_print').value = dc_value.toLocaleString()+'원';
+		document.getElementById('dc_option').value = Number(dc_value).toLocaleString()+'원';
 		
-		mon_price = Math.floor(Number(principal / period));
-		document.getElementById('month_price').value = mon_price.toLocaleString()+'원';
+		mon_value = Math.floor(Number(productPrincipal / period));
+		document.getElementById('month_price').value = mon_value.toLocaleString()+'원';
 		
-		fee_value = Math.floor(Number(sel_dc.options[1].value * 0.75));
+		fee_value = Math.floor(Number(selectedFee * 0.75));
 		document.getElementById('month_fee').value = fee_value.toLocaleString()+'원';
 		
 		if(period==1) {
 			total_value = Number(fee_value);
 		} else {
-			total_value = Number(mon_price + fee_value);
+			total_value = Number(mon_value + fee_value);
 		}
 		
 		document.getElementById('month_total').value = total_value.toLocaleString()+'원';
 		
-	} else if(dc_idx==2 && !isNaN(period)){ //공시지원
-		dc_value = Number(sel_dc.options[2].value);
-		principal = pro_price-pro_dcprice-dc_value;
-		document.getElementById('product_principal').value = principal.toLocaleString()+'원';
-		document.getElementById('dc_option_print').value = dc_value.toLocaleString()+'원';
+	} else if(dc == "공시지원" && !isNaN(period)) {
+		productPrincipal = productPrice - dcPrice - selectedOfficialDc;
+		document.getElementById('product_principal').value = Number(productPrincipal).toLocaleString()+"원";
+
+		dc_value = selectedOfficialDc;
+		document.getElementById('dc_option').value = dc_value.toLocaleString()+'원';
 		
-		mon_price = Math.floor(Number(principal / period));
-		document.getElementById('month_price').value = mon_price.toLocaleString()+'원';
-		
-		fee_value = Number(sel_dc.options[1].value);
+		mon_value = Math.floor(Number(productPrincipal / period));
+		document.getElementById('month_price').value = mon_value.toLocaleString()+'원';
+		fee_value = Number(selectedFee);
 		document.getElementById('month_fee').value = fee_value.toLocaleString()+'원';
 		
 		if(period==1) {
 			total_value = Number(fee_value);
 		} else {
-			total_value = Number(mon_price + fee_value);
+			total_value = Number(mon_value + fee_value);
 		}
 		
 		document.getElementById('month_total').value = total_value.toLocaleString()+'원';
 		
-	} else { //기타
-		document.getElementById('dc_option_print').value = '';
-		document.getElementById('month_price').value = '';
-		document.getElementById('month_fee').value = '';
-		document.getElementById('month_total').value = '';
+	} else {
+		document.getElementById('dc_option').value = '원';
+		document.getElementById('month_price').value = '원';
+		document.getElementById('month_fee').value = '원';
+		document.getElementById('month_total').value = '원';
 	}
+
 }

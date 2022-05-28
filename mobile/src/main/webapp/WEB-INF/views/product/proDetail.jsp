@@ -22,8 +22,9 @@
 <section>
 	<div class="product_container">
 		<div class="product_info">
-			<img src="/images/${product.imgName}" width="200px" class="product_image">
-			
+			<img src="/images/${product.imgName}" width="200px"
+				class="product_image">
+
 			<table class="product_info_detail">
 				<tr>
 					<th>상품명</th>
@@ -38,233 +39,170 @@
 					<td>${product.category}</td>
 				</tr>
 			</table>
+
+			<div class="calc_price1">
+				<div class="calc_price_item">
+					<label for="product_price">출고가</label> <input id="product_price"
+						type="number" hidden="hidden" value="${product.price}">
+					<fmt:formatNumber value="${product.price}" pattern="#,###원" />
+				</div>
+
+				<div class="calc_price_item">
+					<label for="product_dcprice">MO:BILE 할인</label> <input
+						id="product_dcprice" type="number" hidden="hidden"
+						value="${product.dcprice}">
+					<fmt:formatNumber value="${product.dcprice}" pattern="#,###원" />
+				</div>
+				<hr>
+				<div class="calc_price_item">
+					<label for="product_infoprice">할인가</label>
+					<!-- <input
+							id="product_principal" type="text" disabled> -->
+					<input id="product_infoprice" type="text"
+						class="input_emph" disabled />
+				</div>
+			</div>
+			
 		</div>
-	<div class="product_options">
-		<form>
-			<input id="productid" name="productid" type="hidden" value="${product.id}">
-				<!-- 용량옵션 -->
-				<div class="option_div" id="storages">
-					<span class="option_name">용량</span>
-				</div>
-				
-				<!-- 색상옵션 -->
-				<div class="option_div" id="colors">
-					<span class="option_name">색상</span>
-				</div>
-				
-				<!-- 사용중인 통신사 -->
-				<div class="option_div">
-					<span class="option_name">사용중인 통신사</span><input name="beforetel"
-						id="beforetel1" value="SKT" type="radio"><label
-						for="beforetel1">SKT</label><input name="beforetel"
-						id="beforetel2" value="KT" type="radio"><label
-						for="beforetel2">KT</label><input name="beforetel"
-						id="beforetel3" value="LGUplus" type="radio"><label
-						for="beforetel3">LGU+</label><input name="beforetel"
-						id="beforetel4" value="altteul" type="radio"><label
-						for="beforetel4">알뜰폰</label>
-				</div>
-				
-				<!-- 변경 통신사 -->
-				<div class="option_div">
-					<span class="option_name">사용하실 통신사</span><input name="aftertel"
-						id="aftertel1" value="SKT" type="radio"><label for="aftertel1">SKT</label><input name="aftertel" id="aftertel2" value="KT" type="radio"><label
-						for="aftertel2">KT</label><input name="aftertel" id="aftertel3"
-						value="LGUplus" type="radio"><label for="aftertel3">LGU+</label>
-				</div>
-				
-				<!-- 요금제 옵션 선택 -->
-				<div class="option_div">
- 					<span class="telecom_msg">통신사를 선택하면 요금제 옵션이 표시됩니다</span>
-					<c:forEach var="telecomfee" items="${telecomfee}">
-					<div id="sel_fee_fist">
+		
+		<div class="product_options">
+			<form>
+				<input id="productid" name="productid" type="hidden"
+					value="${product.id}">
+					
+				<div class="options_box">
+					<h3>상품옵션 선택</h3>
+					<!-- 용량옵션 -->
+					<div class="option_div" id="storages">
+						<span class="option_name">용량</span>
 					</div>
-						<!-- SKT -->
- 						<div class="skt">
-							<c:if test="${telecomfee.telecom.name eq 'SKT'}">
- 							<c:choose>
-							<c:when test="${empty (telecomfee.telecom.name eq 'SKT')}">
-								<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
-							</c:when>
-							<c:otherwise>
-								<input type="hidden" id="telfeeid" name="telfeeid" value="${telecomfee.id}" />
-								<div class="telecom_fee">
-									<div>
-										<label for="telecom_name">통신사명</label>
-										<input id="telecom_name" type="text" value="${telecomfee.telecom.name}" disabled>
-									</div>
-									<div>
-										<label for="fee_name">요금제명</label>
-										<input id="fee_name" type="text" value="${telecomfee.feeName}" disabled>
-									</div>
-									<div>
-										<label for="fee">요금(월)</label>
-										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
-									</div>
-									<div>
-										<label for="skt_option">할인옵션</label>
-										<select id="skt_option" name="skt_option" onchange="saveObj(this)">
-											<option value="0">선택안함</option>
-											<option value="${telecomfee.fee}">선택약정</option>
-											<option value="${telecomfee.officialDc}">공시지원</option>
-										</select>
-									</div>
-								</div>
- 							</c:otherwise>
- 							</c:choose>
- 							</c:if>
-						</div>
-						
-						<!-- KT -->
-						<div class="kt">
-							<c:if test="${telecomfee.telecom.name eq 'KT'}">
-							<c:choose>
-							<c:when test="${empty (telecomfee.telecom.name eq 'KT')}">
-								<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
-							</c:when>
-							<c:otherwise>
-								<input type="hidden" id="telfeeid" name="telfeeid" value="${telecomfee.id}" />
-								<div class="telecom_fee">
-									<div>
-										<label for="telecom_name">통신사명</label>
-										<input id="telecom_name" type="text" value="${telecomfee.telecom.name}" disabled>
-									</div>
-									<div>
-										<label for="fee_name">요금제명</label>
-										<input id="fee_name" type="text" value="${telecomfee.feeName}" disabled>
-									</div>
-									<div>
-										<label for="fee">요금(월)</label>
-										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
-									</div>
-									<div>
-										<label for="kt_option">할인옵션</label>
-										<select id="kt_option" name="kt_option" onchange="saveObj(this)">
-											<option value="0">선택안함</option>
-											<option value="${telecomfee.fee}">선택약정</option>
-											<option value="${telecomfee.officialDc}">공시지원</option>
-										</select>
-									</div>
-								</div>
-								</c:otherwise>
-								</c:choose>
-							</c:if>
-						</div>
-						
-						<!-- LGU+ -->
-						<div class="lguplus">
-							<c:if test="${telecomfee.telecom.name eq 'LGUplus'}">
+
+					<!-- 색상옵션 -->
+					<div class="option_div" id="colors">
+						<span class="option_name">색상</span>
+					</div>
+				</div>
+				
+				<div class="options_box" id="telecom_options">
+					<h3>통신사 옵션 선택</h3>
+
+					<!-- 사용중인 통신사 -->
+					<div class="option_div">
+						<span class="option_name">사용중인 통신사</span><input name="beforetel"
+							id="beforetel1" value="SKT" type="radio"><label
+							for="beforetel1">SKT</label><input name="beforetel"
+							id="beforetel2" value="KT" type="radio"><label
+							for="beforetel2">KT</label><input name="beforetel"
+							id="beforetel3" value="LGUplus" type="radio"><label
+							for="beforetel3">LGU+</label><input name="beforetel"
+							id="beforetel4" value="altteul" type="radio"><label
+							for="beforetel4">알뜰폰</label>
+					</div>
+
+					<!-- 변경 통신사 -->
+					<div class="option_div">
+						<span class="option_name">사용하실 통신사</span><input name="aftertel"
+							id="aftertel1" value="SKT" type="radio"><label
+							for="aftertel1">SKT</label><input name="aftertel" id="aftertel2"
+							value="KT" type="radio"><label for="aftertel2">KT</label><input
+							name="aftertel" id="aftertel3" value="LGUplus" type="radio"><label
+							for="aftertel3">LGU+</label>
+					</div>
+
+					<!-- 요금제 옵션 선택 -->
+					<div class="option_div">
+						<select class="fee_select" id="telecom_fee_option">
+							<option selected disabled hidden="hidden" value="0">옵션을
+								선택하세요</option>
+							<c:forEach var="telecomfee" items="${telecomfee}">
 								<c:choose>
-									<c:when test="${empty (telecomfee.telecom.name eq 'LGUplus')}">
-											<span>해당 통신사의 요금제가 존재하지 않습니다.</span>
+									<c:when test="${telecomfee.telecom.name eq 'SKT'}">
+										<option class="skt" value="${telecomfee.fee}+${telecomfee.officialDc}">${telecomfee.feeName}</option>
 									</c:when>
-									<c:otherwise>
-								<input type="hidden" id="telfeeid" name="telfeeid" value="${telecomfee.id}" />
-								<div class="telecom_fee">
-									<div>
-										<label for="telecom_name">통신사명</label>
-										<input id="telecom_name" type="text" value="${telecomfee.telecom.name}" disabled>
-									</div>
-									<div>
-										<label for="fee_name">요금제명</label>
-										<input id="fee_name" type="text" value="${telecomfee.feeName}" disabled>
-									</div>
-									<div>
-										<label for="fee">요금(월)</label>
-										<fmt:formatNumber value="${telecomfee.fee}" pattern="#,###원"/>
-									</div>
-									<div>
-										<label for="lg_option">할인옵션</label>
-										<select id="lg_option" name="lg_option" onchange="saveObj(this)">
-											<option value="0">선택안함</option>
-											<option value="${telecomfee.fee}">선택약정</option>
-											<option value="${telecomfee.officialDc}">공시지원</option>
-										</select>
-									</div>
-								</div>
-									</c:otherwise>
+									<c:when test="${telecomfee.telecom.name eq 'KT'}">
+										<option class="kt" value="${telecomfee.fee}+${telecomfee.officialDc}">${telecomfee.feeName}</option>
+									</c:when>
+									<c:when test="${telecomfee.telecom.name eq 'LGUplus'}">
+										<option class="lguplus" value="${telecomfee.fee}+${telecomfee.officialDc}">${telecomfee.feeName}</option>
+									</c:when>
 								</c:choose>
-							</c:if>
-						</div>
-					</c:forEach>
+							</c:forEach>
+						</select>
 					</div>
 					
-					<!-- 약정기간 -->					
+					<!-- 할인옵션 -->
+					<div class="option_div">
+						<span class="option_name">할인옵션</span><input name="dcoption"
+							id="dcoption1" type="radio" value="선택약정"><label
+							for="dcoption1">선택약정</label><input name="dcoption" id="dcoption2"
+							type="radio" value="공시지원"><label for="dcoption2">공시지원</label>
+					</div>
+
+
+					<!-- 약정기간 -->
 					<div class="option_div" id="period_sel">
-						<span class="option_name">약정기간 선택</span>
-						<input name="period" id="period1" value="1" type="radio"><label
-							for="period1">일시불</label><input name="period" id="period24"
-							value="24" type="radio"><label for="period24">24개월</label><input
-							name="period" id="period30" value="30" type="radio"><label
-							for="period30">30개월</label><input name="period" id="period36"
-							value="36" type="radio"><label for="period36">36개월</label>
-							<input id="getperiod" type="number" hidden="hidden">
+						<span class="option_name">약정기간 선택</span> <input name="period"
+							id="period1" value="1" type="radio"><label for="period1">일시불</label><input
+							name="period" id="period24" value="24" type="radio"><label
+							for="period24">24개월</label><input name="period" id="period30"
+							value="30" type="radio"><label for="period30">30개월</label><input
+							name="period" id="period36" value="36" type="radio"><label
+							for="period36">36개월</label>
 					</div>
-					
-					<div class="calc_price">
-						<div class="calc_price_item">
-							<label for="product_price">출고가</label>
-							<input id="product_price" type="number" hidden="hidden" value="${product.price}">
-							<fmt:formatNumber value="${product.price}" pattern="#,###원"/>
-						</div>
-						
-						<div class="calc_price_item">
-							<label for="product_dcprice">MO:BILE 할인</label>
-							<input id="product_dcprice" type="number" hidden="hidden" value="${product.dcprice}">
-							<fmt:formatNumber value="${product.dcprice}" pattern="#,###원"/>
-						</div>
-						
-						<div class="calc_price_item">
-							<label for="product_principal">할부원금</label>
-							<input id="product_principal" type="text" disabled>
-						</div>
-						<hr>
-						<div class="calc_price_item">
-							<label for="dc_option_print">옵션할인</label>
-							<input id="dc_option_print" type="text" disabled>
-						</div>
-						<div class="calc_price_item">
-							<label for="month_price">월할부금</label>
-							<input id="month_price" type="text" disabled>
-						</div>
-						<div class="calc_price_item">
-							<label for="month_fee">요금제</label>
-							<input id="month_fee" type="text" disabled>
-						</div>
-						<hr>
-						<div class="calc_price_item">
-							<label for="month_total">월납부액</label>
-							<input id="month_total" type="text" class="input_emph" disabled>
-						</div>
-						
-					</div>
+				</div>
 				
+				<div class="calc_price">
+					<div class="calc_price_item">
+						<label for="product_principal">할부원금</label>
+						<input
+							id="product_principal" type="text" disabled>
+					</div>
+					<hr>
+					<div class="calc_price_item">
+						<label for="dc_option">옵션할인</label> <input
+							id="dc_option" type="text" disabled>
+					</div>
+					<div class="calc_price_item">
+						<label for="month_price">월할부금</label> <input id="month_price"
+							type="text" disabled>
+					</div>
+					<div class="calc_price_item">
+						<label for="month_fee">요금제</label> <input id="month_fee"
+							type="text" disabled>
+					</div>
+					<hr>
+					<div class="calc_price_item">
+						<label for="month_total">월납부액</label> <input id="month_total"
+							type="text" class="input_emph" disabled>
+					</div>
+
+				</div>
+
 			</form>
 			<c:choose>
 				<c:when test="${empty principal}">
 					<div class="btns">
 						<span>로그인 후 신청 가능합니다</span>
-						<button type="button" class="login_btn" onclick="location.href='/auth/loginForm'">로그인하기</button>
+						<button type="button" class="login_btn"
+							onclick="location.href='/auth/loginForm'">로그인하기</button>
 					</div>
 				</c:when>
 				<c:otherwise>
 					<button type="button" id="btn-buy" class="buy_btn">신청하기</button>
 				</c:otherwise>
 			</c:choose>
-			
+
 		</div>
 	</div>
-	
+
 	<div class="detail_content">
 		<div class="detail_content_head">제품정보</div>
-		<div class="detail_content_body">
-			${product.content}
-		</div>
+		<div class="detail_content_body">${product.content}</div>
 
 	</div>
 </section>
-				
-				
+
+
 
 <!-- 자바스크립트 -->
 <script>

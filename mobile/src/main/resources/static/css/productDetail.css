@@ -5,6 +5,7 @@
 }
 
 .product_info {
+	width: 500px;
     border-radius: 12px;
     background-color: white;
     
@@ -23,7 +24,7 @@
 .product_image {
 	display: block;
 	margin: 0 auto;
-	max-width: 450px;
+	width: 450px;
 	
     border-radius: 12px;
     background-color: white;
@@ -73,6 +74,17 @@ input[type=radio]:hover {
     cursor: pointer;
 }
 
+select  {
+	font-size: inherit;
+	padding: 5px 10px;
+	border: 1px solid #999;
+	background-color: #fbfbfb;
+	border-radius: 5px;
+	min-width: 100px;
+	margin-right: 0.5rem;
+	cursor: pointer;
+}
+
 .telecom_fee {
 	font-size: 15px;
 	line-height: 180%;
@@ -91,6 +103,32 @@ input[type=radio]:hover {
 	outline: none;
 	border: none;
 	background: none;
+}
+
+.calc_price1 {
+	font-size: 15px;
+	border-radius: 8px;
+	margin: 2rem 0;
+	padding: 2rem;
+	line-height: 180%;
+	background: linear-gradient(rgb(230, 253, 255), rgb(251, 255, 255));
+}
+
+.calc_price1 label {
+	display: block;
+}
+
+.calc_price1 input[type=text].input_emph {
+	outline: none;
+	border: none;
+	background: none;
+	display: block;
+	text-align: right;
+	
+	width: 150px;
+	font-weight: bold;
+	font-size: 20px;
+	color: #0000a0;
 }
 
 .calc_price {
