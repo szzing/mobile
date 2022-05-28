@@ -69,6 +69,12 @@ function calcFee(){
 	let period = $("input[name='period']:checked").val();
 	let dc = $("input[name='dcoption']:checked").val();
 	
+	productPrincipal = 0;
+	dc_value = 0;
+	mon_value = 0;
+	fee_value = 0;
+	total_value = 0;
+	
 	if(dc == "선택약정" && !isNaN(period)) {
 		//할부원금
 		productPrincipal = productPrice - dcPrice;
@@ -97,6 +103,10 @@ function calcFee(){
 		document.getElementById('month_total').value = total_value.toLocaleString()+'원';
 		
 	} else if(dc == "공시지원" && !isNaN(period)) {
+		document.getElementById('dc_option').value = '원';
+		document.getElementById('month_price').value = '원';
+		document.getElementById('month_fee').value = '원';
+		document.getElementById('month_total').value = '원';
 		productPrincipal = productPrice - dcPrice - selectedOfficialDc;
 		document.getElementById('product_principal').value = Number(productPrincipal).toLocaleString()+"원";
 
@@ -117,10 +127,10 @@ function calcFee(){
 		document.getElementById('month_total').value = total_value.toLocaleString()+'원';
 		
 	} else {
-		document.getElementById('dc_option').value = '원';
-		document.getElementById('month_price').value = '원';
-		document.getElementById('month_fee').value = '원';
-		document.getElementById('month_total').value = '원';
+		document.getElementById('dc_option').value = '';
+		document.getElementById('month_price').value = '';
+		document.getElementById('month_fee').value = '';
+		document.getElementById('month_total').value = '';
 	}
 
 }
