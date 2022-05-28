@@ -9,39 +9,30 @@ let index = {
 		});
 		
 		$("#btn-buy").on("click", () => {
-			var dc = '';
-			var option = '';
-			if ($('input[name="aftertel"]:checked').val() == 'KT') {
-				dc = document.getElementById("kt_option");
-				option = $('#kt_option option:selected').val();
-			} else if ($('input[name="aftertel"]:checked').val() == 'SKT') {
-				dc = document.getElementById("skt_option");
-				option = $('#skt_option option:selected').val();
-			} else if ($('input[name="aftertel"]:checked').val() == 'LGUplus') {
-				dc = document.getElementById("lg_option");
-				option = $('#lg_option option:selected').val();
-			}
-			
-			if(($('input[name="storage"]:checked').length < 1)) {
+			if($('input[name="storage"]:checked').length < 1) {
 				alert("용량을 선택하세요.");
 				return false;
-			} else if(($('input[name="color"]:checked').length < 1)) {
+			} else if($('input[name="color"]:checked').length < 1) {
 				alert("색상을 선택하세요.");
 				return false;
-			} else if(($('input[name="beforetel"]:checked').length < 1)) {
+			} else if($('input[name="beforetel"]:checked').length < 1) {
 				alert("기존 통신사를 선택하세요.");
 				return false;
-			} else if(($('input[name="aftertel"]:checked').length < 1)) {
+			} else if($('input[name="aftertel"]:checked').length < 1) {
 				alert("변경할 통신사를 선택하세요.");
 				return false;
-			} else if(($('input[name="period"]:checked').length < 1)) {
-				alert("할부기간을 선택하세요.");
+			} else if(document.getElementById('telecom_fee_option').value==0) {
+				alert("통신사 요금제 옵션을 선택하세요.");
 				return false;
-			} else if(dc.options[dc.selectedIndex].value==0) {
+			} else if($('input[name="dcoption"]:checked').length < 1) {
 				alert("할인 옵션을 선택하세요.");
 				return false;
-			}
-			this.ordercheck(dc, option);
+			} else if($('input[name="period"]:checked').length < 1) {
+				alert("할부기간을 선택하세요.");
+				return false;
+			} 
+			
+			this.ordercheck();
 		});
 		
 		$("#btn-check").on("click", () => {
@@ -53,26 +44,27 @@ let index = {
 		});
 	},
 	
-	ordercheck: function(dc, option) {
+	ordercheck: function() {
+		let dc = document.getElementById('telecom_fee_option');
 		let data = {
 			productid: $("#productid").val(),
 			storage: $('input[name="storage"]:checked').val(),
 			color: $('input[name="color"]:checked').val(),
 			beforetel: $('input[name="beforetel"]:checked').val(),
 			aftertel: $('input[name="aftertel"]:checked').val(),
-			telfeeid: $("#telfeeid").val(),
-			dc_option: option,
-			dcchoice: dc.options[dc.selectedIndex].text,
+			telfeeid: telfeeid,
+			dc_option: dc_value,
+			dcchoice: $('input[name="dcoption"]:checked').val(),
 			period: $('input[name="period"]:checked').val()
 		};
 		console.log(data)
 
 		$.ajax({
 			type: "POST",
-			url: "api/cart",
+			url: "/api/cart",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
-			dataType: "text",
+			dataType: "json",
 			traditional: true
 		}).done(function(resp) {
 			alert("장바구니 전송!");

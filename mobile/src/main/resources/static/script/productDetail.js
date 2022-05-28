@@ -40,6 +40,7 @@ $('.fee_select').change(function(){
 
 let selectedFee = 0;
 let selectedOfficialDc = 0;
+let telfeeid = 0;
 
 // 선택 요금제 금액 저장
 function saveFee(){
@@ -48,6 +49,7 @@ function saveFee(){
 	
 	selectedFee = Number(selectedFeeArr[0]);
 	selectedOfficialDc = Number(selectedFeeArr[1]);
+	telfeeid = Number(selectedFeeArr[2]);
 };
 
 // 옵션이 변경될 때마다 요금 계산
@@ -56,15 +58,16 @@ $('.options_box').change(function() {
 	calcFee();
 });
 
+let productPrincipal = 0;
+let dc_value = 0;
+let mon_value = 0;
+let fee_value = 0;
+let total_value = 0;
+	
 // 요금 계산
 function calcFee(){
 	let period = $("input[name='period']:checked").val();
 	let dc = $("input[name='dcoption']:checked").val();
-	
-	let productPrincipal = 0;
-	let dc_value = 0;
-	let mon_value = 0;
-	let fee_value = 0;
 	
 	if(dc == "선택약정" && !isNaN(period)) {
 		//할부원금

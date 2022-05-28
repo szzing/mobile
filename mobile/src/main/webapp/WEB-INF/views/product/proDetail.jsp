@@ -117,13 +117,13 @@
 							<c:forEach var="telecomfee" items="${telecomfee}">
 								<c:choose>
 									<c:when test="${telecomfee.telecom.name eq 'SKT'}">
-										<option class="skt" value="${telecomfee.fee}+${telecomfee.officialDc}">${telecomfee.feeName}</option>
+										<option class="skt" value="${telecomfee.fee}+${telecomfee.officialDc}+${telecomfee.id}">${telecomfee.feeName}</option>
 									</c:when>
 									<c:when test="${telecomfee.telecom.name eq 'KT'}">
-										<option class="kt" value="${telecomfee.fee}+${telecomfee.officialDc}">${telecomfee.feeName}</option>
+										<option class="kt" value="${telecomfee.fee}+${telecomfee.officialDc}+${telecomfee.id}">${telecomfee.feeName}</option>
 									</c:when>
 									<c:when test="${telecomfee.telecom.name eq 'LGUplus'}">
-										<option class="lguplus" value="${telecomfee.fee}+${telecomfee.officialDc}">${telecomfee.feeName}</option>
+										<option class="lguplus" value="${telecomfee.fee}+${telecomfee.officialDc}+${telecomfee.id}">${telecomfee.feeName}</option>
 									</c:when>
 								</c:choose>
 							</c:forEach>
