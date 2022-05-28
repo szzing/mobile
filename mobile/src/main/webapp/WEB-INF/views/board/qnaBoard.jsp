@@ -49,7 +49,7 @@
 					<!-- 비밀글 작성자 본인과 관리자만 상세보기 가능 -->
 						<tr class="board_item">
 							<td>${board.id}</td>
-								<c:if test="${empty board.users.username}">
+								<c:if test="${empty board.user.username}">
 									<!-- 비회원 글작성 -->
 									<c:choose>
 										<c:when test="${principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
@@ -71,7 +71,8 @@
 								<c:if test="${empty board.writer}">
 									<!-- 회원 글작성 -->
 									<c:choose>
-										<c:when test="${!empty principal && board.users.id == principal.user.id || principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
+										<c:when test="${!empty principal && board.user.id == principal.user.id 
+										|| principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
 											<!-- 글작성 회원 본인 & 관리자 상세보기 가능 -->
 											<td onclick="location.href='/qna/${board.id}'">
 												<img src="/css/icon/lock_icon.png" width="15px">
@@ -90,11 +91,11 @@
 				
 								<!-- 작성자명 시작 -->
 								<c:choose>
-									<c:when test="${empty board.users.username}">
+									<c:when test="${empty board.user.username}">
 										<td>${board.writer}</td>
 									</c:when>
 									<c:otherwise>
-										<td>${board.users.username}</td>
+										<td>${board.user.username}</td>
 									</c:otherwise>
 								</c:choose>
 								<!-- 작성자명 끝 -->
@@ -109,11 +110,11 @@
 							<td>${board.id}</td>
 							<td onclick="location.href='/qna/${board.id}'">${board.title}[${board.replyCnt}]</td>
 							<c:choose>
-								<c:when test="${empty board.users.username}">
+								<c:when test="${empty board.user.username}">
 									<td>${board.writer}</td>
 								</c:when>
 								<c:otherwise>
-									<td>${board.users.username}</td>
+									<td>${board.user.username}</td>
 								</c:otherwise>
 							</c:choose>
 							<td><fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd"/></td>

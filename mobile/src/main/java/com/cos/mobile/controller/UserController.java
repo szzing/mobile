@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.mobile.config.auth.PrincipalDetail;
 import com.cos.mobile.model.Users;
+import com.cos.mobile.service.BoardService;
 import com.cos.mobile.service.UserService;
 
 @Controller
@@ -21,6 +27,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private BoardService boardService;
 	
 	@GetMapping("/auth/loginForm")
 	public String loginForm(@RequestParam(value = "error", required = false)String error, 
@@ -54,6 +63,15 @@ public class UserController {
 	@GetMapping("/user/updateForm")
 	public String userUpdate() {
 		return "user/updateForm";
+	}
+	
+	@GetMapping({"/user/myqna"})
+	public String faqBoard(Model model, 
+			@PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable,
+			@AuthenticationPrincipal PrincipalDetail principal) {
+		// FAQ 게시판 목록 출력
+		model.addAttribute("boards", boardService.toMyQna(pageable, principal.getUser()));
+		return "user/myQna";
 	}
 	
 	@RequestMapping(value = "/auth/findmissingid" , method = RequestMethod.POST)

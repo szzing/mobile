@@ -42,7 +42,7 @@
 					</div>
 					<div class="board_input_box">
 						<label for="content" class="labels">상품설명</label>
-						<textarea id="summernote" name="content">일단 게시판 폼 복붙! 이미지나 옵션 등 테이블 생성 및 코드작성 후 추가예정!</textarea>
+						<textarea id="summernote" name="content">상품 상세페이지를 작성해주세요.</textarea>
 					</div>
 				</div>
 			<div class="buttons_submit">

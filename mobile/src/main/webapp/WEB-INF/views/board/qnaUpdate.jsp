@@ -25,7 +25,7 @@
 					<input type="text" class="input_item board_txt" value="${board.title}" id="title" name="title">
 				</div>
 			
-				<c:if test="${empty board.users.username}">
+				<c:if test="${empty board.user.username}">
 					<!-- 로그인 하지않고 작성한 글일 경우에 비번 설정 -->
 					<div class="board_input_box">
 						<label for="writer" class="labels">작성자명</label>

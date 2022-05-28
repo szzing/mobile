@@ -20,8 +20,7 @@ display:none;
 	<div class="telecomHide">
 		<h2>통신사 관리</h2>
 		<form>
-		 	통신사 추가
-			<input id="telname" type="text">
+		 	통신사 추가 : <input id="telname" type="text">
 		</form>
 		<button id="btn-telsave">통신사 추가</button>
 		<hr>
@@ -60,7 +59,6 @@ display:none;
 			<input type="text" id="officialDc"/>
 			<label for="contractDc">선약할인(원)</label>
 			<input type="text" id="contractDc"/>
-			
 		</form>
 		<button id="btn-feesave">요금제 등록</button>
 		<hr>

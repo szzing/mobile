@@ -19,11 +19,11 @@
 			<!-- 글작성자 본인과 관리자만 삭제버튼 -->
 			<c:choose>
 				<c:when
-					test="${!empty principal && board.users.id == principal.user.id 
+					test="${!empty principal && board.user.id == principal.user.id 
 			|| principal.user.roles eq 'ADMIN'||principal.user.roles eq 'SYSTEM'}">
 					<div class="detail_btns">
 						<!-- 글 작성자 본인만 수정버튼 -->
-						<c:if test="${board.users.id == principal.user.id}">
+						<c:if test="${board.user.id == principal.user.id}">
 							<button type="button" class="pink" onclick="location.href='/board/${board.id}/qnaUpdate'">수정</button>
 						</c:if>
 						<button id="btn-delete" class="pink">삭제</button>
@@ -31,7 +31,7 @@
 				</c:when>
 				<c:otherwise>
 					<!-- 비로그인 사용자가 작성한 글 -->
-					<c:if test="${empty board.users.username}">
+					<c:if test="${empty board.user.username}">
 						<div class="detail_btns">
 							<button type="button" class="pink" onclick="location.href='/board/${board.id}/qnaUpdate'">수정</button>
 							<button id="btn-delete" class="pink">삭제</button>

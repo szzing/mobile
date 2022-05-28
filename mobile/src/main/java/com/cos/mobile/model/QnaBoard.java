@@ -21,6 +21,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Formula;
+import org.springframework.data.domain.Page;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -62,7 +63,7 @@ public class QnaBoard {
 	
 	@ManyToOne(fetch = FetchType.EAGER, optional = true)
 	@JoinColumn(name="userid", foreignKey = @ForeignKey(foreignKeyDefinition = "FOREIGN KEY (userid) references users (id) ON DELETE SET NULL"))
-	private Users users;
+	private Users user;
 
 	@OneToMany (mappedBy="qnaboard", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)	// qnaboard 삭제 시 댓글도 삭제함
 	@JsonIgnoreProperties({"qnaboard"})
@@ -77,5 +78,4 @@ public class QnaBoard {
 	
 	@Column(nullable=false, length=1)
 	private boolean secret;
-
 }

@@ -44,7 +44,7 @@ public class BoardService {
 	public void qnawrite(QnaBoard qna, Users user) throws IllegalStateException, IOException{
 		qna.setCount(0);
 		if(qna.getWriter()==null) {
-			qna.setUsers(user);
+			qna.setUser(user);
 		}
 		qna.setPass(qna.getPass());
 		qnaRepository.save(qna);
@@ -82,6 +82,13 @@ public class BoardService {
 		// 문의 게시판에 게시물 리턴
 		Page<QnaBoard> qna = qnaRepository.findAll(pageable);
 		return qna;
+	}
+	
+	@Transactional(readOnly=true)
+	public Page<QnaBoard> toMyQna(Pageable pageable, Users user){
+		// 나의 문의 게시판에 게시물 리턴
+		Page<QnaBoard> myqna = qnaRepository.findByUser_Id(user.getId(), pageable);
+		return myqna;
 	}
 	
 	@Transactional(readOnly=true)

@@ -16,7 +16,10 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 
 public class LoginAuthFailureHandler extends SimpleUrlAuthenticationFailureHandler{
 	
-	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+	public void onAuthenticationFailure(HttpServletRequest request, 
+			HttpServletResponse response, 
+			AuthenticationException exception) throws IOException, ServletException {
+		
 		String errorMessage;
 		
 		if (exception instanceof UsernameNotFoundException) {
