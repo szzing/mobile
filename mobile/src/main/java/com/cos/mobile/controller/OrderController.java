@@ -8,6 +8,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cos.mobile.config.auth.PrincipalDetail;
 import com.cos.mobile.service.CartService;
@@ -24,5 +25,12 @@ public class OrderController {
 		model.addAttribute("principal", principal);
 		model.addAttribute("cartitems", cartService.toCart(pageable, principal.getUser()));
 		return "order/Cart";
+	}
+	
+	@GetMapping("/cart/order/{cartitemId}")
+	public String cartItemOrder(@PathVariable int cartitemId, Model model, @AuthenticationPrincipal PrincipalDetail principal) {
+		model.addAttribute("principal", principal);
+		model.addAttribute("cart", cartService.cartOrder(cartitemId));
+		return "order/orderForm";
 	}
 }
