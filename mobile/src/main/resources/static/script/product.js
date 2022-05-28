@@ -69,14 +69,14 @@ let index = {
 
 		$.ajax({
 			type: "POST",
-			url: "/order",
+			url: "api/cart",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			dataType: "text",
 			traditional: true
 		}).done(function(resp) {
-			alert("전송!");
-			location.href = "/order";
+			alert("장바구니 전송!");
+			location.href = "/cart";
 		}).fail(function(error) {
 			alert(JSON.stringify(error));
 		});

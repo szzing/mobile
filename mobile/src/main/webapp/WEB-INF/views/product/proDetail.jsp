@@ -22,7 +22,7 @@
 <section>
 	<div class="product_container">
 		<div class="product_info">
-			<img src="../image/${product.category}/${product.name}.jpg" class="product_image">
+			<img src="/images/${product.imgName}" width="200px" class="product_image">
 			
 			<table class="product_info_detail">
 				<tr>
@@ -268,7 +268,6 @@
 
 <!-- 자바스크립트 -->
 <script>
-
 	// 라벨 생성 함수
 	function createLabel(arr, labelfor, labelval) {
 		for (let i = 0; i < arr.length; i++) {

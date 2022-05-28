@@ -15,7 +15,9 @@
 	
 		<c:forEach var="product" items="${product}">
 			<li class="product_item" onclick="location.href='/product/${product.id}'">
-				<div class="product_item_img"><img src="../image/${product.category}/${product.name}.jpg" width="100%"></div>
+				<div class="product_item_img"><img src="../image/${product.category}/${product.name}.jpg" width="100%">
+				<!-- 상품을 등록한 경우 이미지 정상출력 -->
+				<img src="/images/${product.imgName}" width="200px"></div>
 				<div class="product_item_txt">
 					<div class="product_item_name">[${product.maker}] ${product.name}</div>
 					<div class="product_item_price">
