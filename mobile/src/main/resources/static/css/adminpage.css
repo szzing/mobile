@@ -1,0 +1,52 @@
+.adminpage_card {
+	width: 640px;
+	background-color: white;
+	border-radius: 8px;
+	padding: 1rem;
+	margin: 1rem auto;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.adminpage_user {
+	width: 100%;
+	margin: auto;
+	border-radius: 8px;
+	background: linear-gradient(to right, skyblue, pink);
+}
+
+.greeting {
+	text-align: center;
+	padding: 2rem;
+}
+
+.greeting h2, h3 {
+	color: white;
+}
+
+.adminpage_menu {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+}
+
+.adminpage_menu_item {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	margin: 0.5rem;
+	cursor: pointer;
+}
+
+.adminpage_menu_item a {
+	display: inline-block;
+	padding: 1rem;
+	width: 100%;
+}
+
+.adminpage_menu_item:hover {
+	background-color: #eee;
+}
+
+.adminpage_title {
+	text-align: center;
+	margin: 1rem auto;
+}

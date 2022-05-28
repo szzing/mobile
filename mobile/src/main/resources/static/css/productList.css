@@ -3,6 +3,35 @@
 	display: flex;
 }
 
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+	margin: 2rem auto;
+	width: 1280px;
+}
+
+.skyblue {
+	border: 1px solid skyblue;
+	background: none;
+	flex-grow:1;
+}
+
+.pink {
+	border: 1px solid pink;
+	background: none;
+	flex-grow:1;
+}
+
+.skyblue:hover {
+	background: rgba(135,206,235,0.2);
+}
+
+.pink:hover {
+	background: rgba(255,192,203,0.2);
+}
+
 .side_menu_bar {
 	display: block;
 	margin: 3rem 1rem;
@@ -82,13 +111,15 @@ input[type=date] {
 }
 
 .product_list {
-	padding: 1rem;
+	width: 1280px;
+	margin: auto;
+	padding: 2rem;
 	background-color: white;
 	border-radius: 8px;
 	box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
 	
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
 }
 
 .product_item {

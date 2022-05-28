@@ -14,7 +14,7 @@
 			<div class="buttons">
 				<a href="/"><button class="btn skyblue">메인으로 돌아가기</button></a>
 			</div>
-			<table class="board_list">
+			<table class="board_list" style="text-align: center">
 				<colgroup>
 					<col width="10%">
 					<col width="60%">
@@ -25,23 +25,23 @@
 				<thead class="board_index">
 					<tr>
 						<th>번호</th>
-						<th class="list_title">제목</th>
+						<th style="text-align: left">제목</th>
 						<th>작성자</th>
 						<th>작성일</th>
 					</tr>
 				</thead>
 			
 				<tbody class="board_items">
-				
+
 				<c:forEach var="board" items="${boards.content}">
-					<tr class="board_item" onclick="location.href=''">
+					<tr class="board_item" onclick="location.href='/notice/${board.id}'">
 						<td>${board.id}</td>
-						<td>${board.title}</td>
-						<td>${board.user.username}</td>
+						<td style="text-align: left">${board.title}</td>
+						<td>관리자</td>
 						<td><fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd"/></td>
 					</tr>
 				</c:forEach>
-			
+				
 				</tbody>
 			
 			</table>

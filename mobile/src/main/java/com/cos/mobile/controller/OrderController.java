@@ -33,4 +33,13 @@ public class OrderController {
 		model.addAttribute("cart", cartService.cartOrder(cartitemId));
 		return "order/orderForm";
 	}
+	
+	@GetMapping("/delivery")
+	public String delivery(Model model, 
+			@PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable, 
+			@AuthenticationPrincipal PrincipalDetail principal) {
+		model.addAttribute("principal", principal);
+		model.addAttribute("deliveryitems", cartService.toCart(pageable, principal.getUser())); //delivery 아이템 모델 생성해야함
+		return "user/delivery";
+	}
 }

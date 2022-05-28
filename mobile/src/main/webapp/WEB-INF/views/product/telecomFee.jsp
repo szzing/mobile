@@ -6,6 +6,25 @@
 .feeHide{
 display:none;
 }
+
+.insert_telecom {
+	font-size: 16px;
+	margin: 1rem;
+	padding: 1rem;
+	background: #f3f3f3;
+}
+
+.insert_telecom input {
+	font-size: inherit;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid;
+	background: none;
+}
+
+table td {
+	padding: 0.5rem;
+}
 </style>
 <section class="board_wrap">
 <aside class="side_menu_bar">	
@@ -17,35 +36,50 @@ display:none;
 	</aside>
 <div class="board_container">
 	<!-- 통신사 영역 시작 -->
-	<div class="telecomHide">
-		<h2>통신사 관리</h2>
-		<form>
-		 	통신사 추가
-			<input id="telname" type="text">
-		</form>
-		<button id="btn-telsave">통신사 추가</button>
-		<hr>
-		<div>
-		--DB에 저장된 통신사 목록--
-		<!-- 반복문으로 통신사명 출력 -->
-		<c:forEach var="telecom" items="${telecom}">
+		<div class="telecomHide">
+			<h2>통신사 관리</h2>
+			<form class="insert_telecom">
+				통신사 추가 : <input id="telname" type="text">
+			<button type="button" id="btn-telsave">통신사 추가</button>
+			</form>
 			<div>
-				${telecom.name}
-				<button onClick="index.telDelete(${telecom.id})">삭제</button>
+				<table class="board_list" style="text-align: center">
+
+					<thead class="board_index">
+						<tr>
+							<th colspan="2">통신사 목록</th>
+						</tr>
+					</thead>
+
+					<tbody class="board_items">
+						<c:forEach var="telecom" items="${telecom}">
+							<tr style="border-top: 1px solid">
+								<td>${telecom.name}</td>
+								<td><button onClick="index.telDelete(${telecom.id})" class="pink">삭제</button></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+
+				</table>
+
 			</div>
-		</c:forEach>
 		</div>
-	</div>
-	<!-- 통신사 영역 끝 -->
+		<!-- 통신사 영역 끝 -->
 	<!-- 요금제 영역 시작 -->
 	<div class="feeHide">
 		<h2>요금제 관리</h2>
-		<form>
+		<form class="insert_telecom">
+			<div>
+			<label for="productid">제품명</label>
 			<select id="productid">
 				<c:forEach var="product" items="${product}">
 					<option value="${product.id}">${product.name}</option>
 				</c:forEach>
 			</select>
+			</div>
+			
+			<div>
+			<label for="telid">통신사</label>
 			<select id="telid">
 				<c:forEach var="telecom" items="${telecom}">
 					<option value="${telecom.id}">${telecom.name}</option>
@@ -55,28 +89,46 @@ display:none;
 			<input type="text" id="feename"/>
 			<label for="fee">요금(원)</label>
 			<input type="text" id="fee"/>
-			<br/>
+			</div>
+			<div>
 			<label for="officialDc">공시지원(원)</label>
 			<input type="text" id="officialDc"/>
 			<label for="contractDc">선약할인(원)</label>
 			<input type="text" id="contractDc"/>
-			
-		</form>
-		<button id="btn-feesave">요금제 등록</button>
-		<hr>
-		--DB에 저장된 요금제 목록--
-				<!-- 반복문으로 요금제 목록 출력 -->
-		<c:forEach var="telecomfee" items="${telecomfee}">
-			<div>
-				상품명 ${telecomfee.product.name}/
-				통신사명 ${telecomfee.telecom.name}/
-				요금제명 ${telecomfee.feeName}/
-				요금(원) ${telecomfee.fee}/
-				공시지원 ${telecomfee.officialDc}/
-				선약할인 ${telecomfee.contractDc}
-				<button onClick="index.feeDelete(${telecomfee.id})">삭제</button>
+			<button type="button" id="btn-feesave">요금제 등록</button>
 			</div>
-		</c:forEach>
+		</form>
+		
+		<table class="board_list" style="text-align: center">
+
+					<thead class="board_index">
+						<tr>
+							<th>상품명</th>
+							<th>통신사명</th>
+							<th>요금제명</th>
+							<th>요금(원)</th>
+							<th>공시지원</th>
+							<th>선약할인</th>
+							<th>삭제</th>
+						</tr>
+					</thead>
+
+					<tbody class="board_items">
+						<c:forEach var="telecomfee" items="${telecomfee}">
+							<tr style="border-top: 1px solid">
+								<td>${telecomfee.product.name}</td>
+								<td>${telecomfee.telecom.name}</td>
+								<td>${telecomfee.feeName}</td>
+								<td>${telecomfee.fee}</td>
+								<td>${telecomfee.officialDc}</td>
+								<td>${telecomfee.contractDc}</td>
+								<td><button onClick="index.feeDelete(${telecomfee.id})" class="pink">삭제</button></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+
+				</table>
+
 	</div>
 </div>
 </section>

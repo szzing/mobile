@@ -16,14 +16,20 @@
 		<!--  -->
 		<div class="buttons">
 			<a><button class="btn skyblue" onclick="history.back()">목록으로 돌아가기</button></a>
-		</div>
-		
-		<div class="detail_info">
-			<span>작성일 : <fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd HH:mm" /></span>
-			<span>조회수 : ${board.count}</span>
+			
+			<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SYSTEM')">
+			<div class="detail_btns">
+				<button type="button" class="pink" onclick="location.href='/board/${board.id}/eventUpdate'">수정</button>
+				<button id="btn-delete" class="pink">삭제</button>
+			</div>
+		</sec:authorize>
 		</div>
 		
 		<table class="board_list">
+			<colgroup>
+				<col width="10%">
+				<col width="90%">
+			</colgroup>
 			<thead class="board_index">
 				<tr class="board_list">
 					<th>제목</th>
@@ -32,19 +38,19 @@
 			</thead>
 			
 			<tbody>
+				<tr  class="board_list">
+					<th>내용</th>
+					<td class="board_content">${board.content}</td>
+				</tr>
 				<tr>
-					<td colspan="9" class="board_content">${board.content}</td>
-				</tr>		
+					<td colspan="2" style="text-align: right; font-size: 12px;">
+						<span>작성일 : <fmt:formatDate value="${board.createDate}" pattern="YYYY-MM-dd HH:mm" /></span>
+						<span>조회수 : ${board.count}</span>
+					</td>
+				</tr>	
 			</tbody>
 			
 		</table>
-		
-		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SYSTEM')">
-			<div class="detail_btns">
-				<a href="/board/${board.id}/eventUpdate"><button type="button">수정</button></a>
-				<button id="btn-delete">삭제</button>
-			</div>
-		</sec:authorize>
 	</div>
 
 </section>
