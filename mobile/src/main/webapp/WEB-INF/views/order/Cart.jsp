@@ -66,5 +66,5 @@
 	</div>
 </section>
 
-<script type="text/javascript" src="../script/order.js"></script>
+<script type="text/javascript" src="../script/cart.js"></script>
 <%@ include file="../layout/footer.jsp"%>

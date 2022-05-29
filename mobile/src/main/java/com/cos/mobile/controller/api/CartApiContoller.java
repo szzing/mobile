@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.mobile.config.auth.PrincipalDetail;
 import com.cos.mobile.dto.CartItemDto;
+import com.cos.mobile.dto.OrderDto;
 import com.cos.mobile.dto.ResponseDto;
 import com.cos.mobile.service.CartService;
 
@@ -32,6 +33,13 @@ public class CartApiContoller {
 	@DeleteMapping("/api/cart/{cartitemId}")
 	public ResponseDto<Integer> cartDelete(@PathVariable int cartitemId){
 		cartService.cartDelete(cartitemId);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
+	}
+	
+	@PostMapping("/api/order")
+	public ResponseDto<Integer> cartDelete(@RequestBody OrderDto orderDto,
+			@AuthenticationPrincipal PrincipalDetail principal)throws IllegalStateException, IOException{
+		cartService.orderSave(orderDto, principal.getUser());
 		return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
 	}
 }
