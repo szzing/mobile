@@ -15,7 +15,7 @@
 			<li class="adminpage_menu_item"><a href="/auth/admin/joinForm">관리자 계정생성</a></li>
 			<li class="adminpage_menu_item"><a href="/admin/telecom">통신사 관리 및 요금제 관리</a></li>
 			<li class="adminpage_menu_item"><a href="/admin/product">관리자용 상품목록페이지</a></li>
-			<li class="adminpage_menu_item"><a href="">주문 배송 관리(미구현)</a></li>
+			<li class="adminpage_menu_item"><a href="/admin/delivery">주문 배송 관리(미구현)</a></li>
 		</ul>
 	</div>
 </section>

@@ -39,7 +39,13 @@ public class OrderController {
 			@PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable, 
 			@AuthenticationPrincipal PrincipalDetail principal) {
 		model.addAttribute("principal", principal);
-		model.addAttribute("deliveryitems", cartService.toCart(pageable, principal.getUser())); //delivery 아이템 모델 생성해야함
+		model.addAttribute("deliveryitems", cartService.toDelivery(pageable, principal.getUser())); //delivery 아이템 모델 생성해야함
 		return "user/delivery";
+	}
+	
+	@GetMapping("/admin/delivery")
+	public String adminDelivery(Model model,@PageableDefault(size=5, sort="id", direction= Sort.Direction.DESC) Pageable pageable) {
+		model.addAttribute("deliveryitems", cartService.toAdminDelivery(pageable));
+		return "admin/delivery";
 	}
 }

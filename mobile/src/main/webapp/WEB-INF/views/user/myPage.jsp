@@ -30,8 +30,8 @@
 			</li>
 			<li class="process_arrow"><img alt=">" src="../css/images/mypage/v.png"></li>
 			<li class="mypage_process_item">
-				<img alt="결제완료" src="../css/images/mypage/2.png">
-				<span>결제완료</span>
+				<img alt="신청완료" src="../css/images/mypage/2.png">
+				<span>신청완료</span>
 			</li>
 			<li class="process_arrow"><img alt=">" src="../css/images/mypage/v.png"></li>
 			<li class="mypage_process_item">

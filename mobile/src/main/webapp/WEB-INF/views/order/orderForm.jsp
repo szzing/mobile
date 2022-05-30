@@ -41,6 +41,7 @@
 									선택사항 : ${cart.dcchoice}<br>
 									할인금액 : ${cart.dc_option}원<br>
 									지불방법 : ${cart.period}개월<br>
+									<input type="hidden" id="cartid" value="${cart.id}"/>
 									<input type="hidden" id="color" value="${cart.color}"/>
 									<input type="hidden" id="storage" value="${cart.storage}"/>
 									<input type="hidden" id="beforetel" value="${cart.beforetel}"/>
@@ -71,7 +72,7 @@
 				
 				<div class="input_box">
 					<label for="birth" class="labels">생년월일<span class="point">*</span></label>
-					<input id="birth" class="input_item" type="date" required/>
+					<input id="birth" class="input_item" placeholder="ex)19990909" type="text" required/>
 				</div>
 				
 				<div class="input_box">

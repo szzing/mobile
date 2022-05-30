@@ -1,8 +1,5 @@
 package com.cos.mobile.dto;
 
-import java.sql.Date;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDto {
-	private int id;
+	private String id;
+	
+	private int cartid;
 	
 	private String color;
 	
@@ -27,7 +26,7 @@ public class OrderDto {
 	
 	private int userid;
 	
-	private Date birth;
+	private String birth;
 	
 	private String newphone;
 	
@@ -50,4 +49,6 @@ public class OrderDto {
 	private String addrdetail;
 	
 	private String requestmsg;
+	
+	private int period;
 }

@@ -49,8 +49,7 @@ public class Order {
 	@JoinColumn(name="userid")
 	private Users user;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.S")
-	private Date birth;
+	private String birth;
 	
 	private String newphone;
 	
@@ -63,6 +62,8 @@ public class Order {
 	private String dcchoice;
 	
 	private int dc_option;
+	
+	private int period;
 	
 	@CreationTimestamp
 	private Timestamp createDate;

@@ -1,7 +1,6 @@
 package com.cos.mobile.service;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 
@@ -23,7 +22,6 @@ import com.cos.mobile.repository.OrderRepository;
 import com.cos.mobile.repository.ProductRepository;
 import com.cos.mobile.repository.TelecomFeeRepository;
 import com.cos.mobile.repository.UserRepository;
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Service
@@ -88,19 +86,41 @@ public class CartService {
 		Order order = Order.builder().user(finduser).product(product).id(orderId)
 				.telfee(telfee).color(orderDto.getColor()).storage(orderDto.getStorage())
 				.beforetel(orderDto.getBeforetel()).aftertel(orderDto.getAftertel())
-				.newphone(orderDto.getNewphone())
+				.newphone(orderDto.getNewphone()).birth(orderDto.getBirth())
 				.postname(orderDto.getNewphone()).email(orderDto.getEmail())
 				.dcchoice(orderDto.getDcchoice()).dc_option(orderDto.getDc_option())
 				.status("신청완료").requestmsg(orderDto.getRequestmsg())
 				.address(orderDto.getAddress()).addrdetail(orderDto.getAddrdetail())
 				.zipcode(orderDto.getZipcode())
 				.build();
+		cartRepository.deleteById(orderDto.getCartid());
 		orderRepository.save(order);
+	}
+	
+	@Transactional
+	public void updateDelivery(String id, Order order)throws IllegalStateException, IOException{
+		
+		Order findorder = orderRepository.findById(id);
+		System.out.println("findorder" + findorder);
+		System.out.println(order);
+		findorder.setStatus(order.getStatus());
 	}
 	
 	@Transactional(readOnly=true)
 	public Page<CartItem> toCart(Pageable pageable, Users user){
 		Page<CartItem> items = cartRepository.findByUser_Id(user.getId(), pageable);
+		return items;
+	}
+	
+	@Transactional(readOnly=true)
+	public Page<Order> toDelivery(Pageable pageable, Users user){
+		Page<Order> items = orderRepository.findByUser_Id(user.getId(), pageable);
+		return items;
+	}
+	
+	@Transactional(readOnly=true)
+	public Page<Order> toAdminDelivery(Pageable pageable){
+		Page<Order> items = orderRepository.findAll(pageable);
 		return items;
 	}
 	
