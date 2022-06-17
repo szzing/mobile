@@ -33,7 +33,7 @@
 
 ## 2. 프로젝트 개요
 ### 1) 역할분담
-프론트엔드 : 강수진(szzing), 어기덕(eogideok)
+프론트엔드 : 강수진(szzing), 어기덕(eogideok)<br>
 백엔드 : 박세현(Frimerry), 박영준(yjyjyj0526)
 ![image](https://user-images.githubusercontent.com/93658676/173049172-29750988-e078-4f47-9da1-5df8fd16568b.png)
 
